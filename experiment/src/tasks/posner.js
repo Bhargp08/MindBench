@@ -2,6 +2,8 @@ import htmlKeyboardResponse from "@jspsych/plugin-html-keyboard-response";
 import htmlButtonResponse from "@jspsych/plugin-html-button-response";
 
 import { buildPosnerTrials, isCorrectResponse } from "../lib/posner.js";
+import { tagTrialData } from "../lib/practice.js";
+import { feedbackTrial, introHtml } from "./common.js";
 
 // Timings are design choices (docs/design/design.md): cue 100 ms + 200 ms gap = SOA 300 ms,
 // target until response or 2,500 ms.
@@ -24,21 +26,27 @@ export function posnerDisplay({ center = "+", targetSide = null } = {}) {
 }
 
 /** Posner cueing block. `getSeed()` is read when the block starts; sizes can be reduced for dev runs. */
-export function buildPosnerTimeline({ getSeed, nValid = 96, nInvalid = 24 }) {
+export function buildPosnerTimeline({ getSeed, nValid = 96, nInvalid = 24, practice = false, taskLabel = () => "Task" }) {
   let trials = [];
   let i = 0;
+  let last = { correct: false, responded: false };
   const cur = () => trials[i];
 
   const intro = {
     type: htmlButtonResponse,
-    choices: ["Start"],
+    choices: [practice ? "Start practice" : "Start"],
     stimulus: () => {
       trials = buildPosnerTrials({ seed: getSeed() + 2, nValid, nInvalid });
       i = 0;
-      return `<p>Task 2 of 5: where is the dot?</p>
-        <p>Keep your eyes on the middle. An arrow will appear, then a dot will appear in the left or right box.
-        The arrow usually points to where the dot will appear, but not always.</p>
-        <p>Press <b>F</b> if the dot is in the <b>left</b> box and <b>J</b> if it is in the <b>right</b> box, as fast and accurately as you can.</p>`;
+      return introHtml({
+        label: taskLabel(),
+        practice,
+        title: "where is the dot?",
+        keysFor: "posner",
+        body: `<p>Keep your eyes on the middle. An arrow will appear, then a dot will appear in the left or right box.
+          The arrow usually points to where the dot will appear, but not always.</p>
+          <p>Press <b>F</b> if the dot is in the <b>left</b> box and <b>J</b> if it is in the <b>right</b> box, as fast and accurately as you can.</p>`,
+      });
     },
   };
 
@@ -57,13 +65,15 @@ export function buildPosnerTimeline({ getSeed, nValid = 96, nInvalid = 24 }) {
         trial_duration: TARGET_TIMEOUT_MS,
         on_start(t) {
           const c = cur();
-          t.data = { task: "posner", trial: c.trial, valid: c.valid, targetSide: c.targetSide, cueDirection: c.cueDirection, soaMs: CUE_MS + GAP_MS };
+          t.data = tagTrialData({ task: "posner", trial: c.trial, valid: c.valid, targetSide: c.targetSide, cueDirection: c.cueDirection, soaMs: CUE_MS + GAP_MS }, { practice });
         },
         on_finish(data) {
           data.correct = isCorrectResponse(data.targetSide, data.response);
+          last = { correct: data.correct, responded: data.response !== null };
           i += 1;
         },
       },
+      ...(practice ? [feedbackTrial(() => last)] : []),
     ],
     loop_function: () => i < trials.length,
   };

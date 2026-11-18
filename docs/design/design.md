@@ -8,7 +8,7 @@ Status: approved after Cursor review (Nov 17, 2026); Bharg merge authorized. Not
 - **Sleep is observed, never manipulated** (natural night-to-night variation).
 - **Timing windows [design choice]:** AM session starts 07:00-11:00 local time and at least 30 min after waking; PM session starts 17:00-21:00. Actual start time is logged.
 - **Same device and browser** for every session where possible; both are logged.
-- **Task order:** balanced Latin square across the 5 tasks (10 orders, square plus mirror; construction confirmed in MB-12). Session N maps to a fixed order; the order is logged.
+- **Task order:** balanced Latin square across the 5 tasks (10 orders, square plus mirror; construction confirmed in MB-12: zigzag base row, 5 cyclic shifts plus mirrors; the session-to-order map is offset by 5 for PM sessions so order is not tied to time of day. See `battery.md`). Session N maps to a fixed order; the order is logged.
 - **Session length:** about 25-35 min **(estimate; timed in MB-13)**.
 
 ## 2. Predictors and covariates

@@ -4,6 +4,8 @@ import htmlButtonResponse from "@jspsych/plugin-html-button-response";
 import pool from "../data/wordpool.json";
 import { getSessionLists, LISTS_PER_SESSION } from "../lib/recallLists.js";
 import { scoreRecall, sessionRecallProportion } from "../lib/recallScore.js";
+import { tagTrialData } from "../lib/practice.js";
+import { introHtml } from "./common.js";
 
 // Design choices (docs/design/design.md): 2 s per word, no distractor, 90 s typed recall per list.
 const WORD_MS = 2000;
@@ -14,7 +16,7 @@ const RECALL_MS = 90000;
  * `getSessionNumber()` picks the unused word lists for that session. `getLists`, `wordMs` and `recallMs`
  * can be overridden for dev runs.
  */
-export function buildRecallTimeline({ jsPsych, getSessionNumber, getLists, wordMs = WORD_MS, recallMs = RECALL_MS }) {
+export function buildRecallTimeline({ jsPsych, getSessionNumber, getLists, wordMs = WORD_MS, recallMs = RECALL_MS, practice = false, nLists = LISTS_PER_SESSION, taskLabel = () => "Task" }) {
   let lists = [];
   const results = [];
   let typed = "";
@@ -27,7 +29,7 @@ export function buildRecallTimeline({ jsPsych, getSessionNumber, getLists, wordM
         trial_duration: wordMs,
         stimulus: () => `<div style="font-size:56px">${lists[listIndex][wordIdx]}</div>`,
         on_start(t) {
-          t.data = { task: "recall_word", list: listIndex + 1, position: wordIdx + 1, word: lists[listIndex][wordIdx] };
+          t.data = tagTrialData({ task: "recall_word", list: listIndex + 1, position: wordIdx + 1, word: lists[listIndex][wordIdx] }, { practice });
         },
         on_finish() {
           wordIdx += 1;
@@ -58,7 +60,7 @@ export function buildRecallTimeline({ jsPsych, getSessionNumber, getLists, wordM
       box.focus();
     },
     on_start(t) {
-      t.data = { task: "recall", list: listIndex + 1, listWords: lists[listIndex].slice() };
+      t.data = tagTrialData({ task: "recall", list: listIndex + 1, listWords: lists[listIndex].slice() }, { practice });
     },
     on_finish(data) {
       const s = scoreRecall({ listWords: lists[listIndex], recallText: typed, pool: pool.words });
@@ -69,7 +71,7 @@ export function buildRecallTimeline({ jsPsych, getSessionNumber, getLists, wordM
 
   const intro = (listIndex) => ({
     type: htmlButtonResponse,
-    choices: ["Start list"],
+    choices: [practice ? "Start practice" : "Start list"],
     stimulus: () => {
       if (listIndex === 0) {
         results.length = 0;
@@ -77,22 +79,31 @@ export function buildRecallTimeline({ jsPsych, getSessionNumber, getLists, wordM
           lists = getLists ? getLists() : getSessionLists(getSessionNumber());
         } catch (e) {
           jsPsych.abortExperiment(`This study has no unused word lists left (${e.message}).`);
-          lists = Array.from({ length: LISTS_PER_SESSION }, () => ["error"]);
+          lists = Array.from({ length: nLists }, () => ["error"]);
         }
       }
-      return `<p>Task 5 of 5: word lists (list ${listIndex + 1} of ${LISTS_PER_SESSION}).</p>
-        <p>Words will appear one at a time. Try to remember as many as you can. Afterwards you will type the words you remember, in any order.</p>`;
+      return introHtml({
+        label: taskLabel(),
+        practice,
+        title: `word lists (list ${listIndex + 1} of ${nLists})`,
+        keysFor: null,
+        body: `<p>Words will appear one at a time. Try to remember as many as you can. Afterwards you will type the words you remember, in any order.</p>`,
+      });
     },
   });
 
   const timeline = [];
-  for (let k = 0; k < LISTS_PER_SESSION; k++) timeline.push(intro(k), wordTrials(k), recallTrial(k));
+  for (let k = 0; k < nLists; k++) timeline.push(intro(k), wordTrials(k), recallTrial(k));
   timeline.push({
     type: htmlButtonResponse,
     choices: ["Continue"],
-    stimulus: "<p>Word lists complete.</p>",
+    stimulus: () =>
+      practice
+        ? `<p>Practice complete: you remembered ${results.reduce((a, r) => a + r.nCorrect, 0)} of ${results.reduce((a, r) => a + r.listLength, 0)} words.</p>`
+        : "<p>Word lists complete.</p>",
     on_finish(data) {
       data.task = "recall_summary";
+      data.practice = practice;
       data.recallProportion = sessionRecallProportion(results);
       data.nCorrect = results.reduce((a, r) => a + r.nCorrect, 0);
       data.nWords = results.reduce((a, r) => a + r.listLength, 0);

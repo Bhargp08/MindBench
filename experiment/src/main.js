@@ -11,11 +11,9 @@ import { createSaver } from "./lib/save.js";
 import { pipeFilename } from "./lib/pipeExtension.js";
 import { buildSessionMetadata } from "./lib/sessionMetadata.js";
 import { INFO_SCREEN_TEXT } from "./lib/info.js";
-import { buildContrastTimeline, seedFrom } from "./tasks/contrast.js";
-import { buildPosnerTimeline } from "./tasks/posner.js";
-import { buildStroopTimeline } from "./tasks/stroop.js";
-import { buildNBackTimeline } from "./tasks/nback.js";
-import { buildRecallTimeline } from "./tasks/recall.js";
+import { orderForSession } from "./lib/latinSquare.js";
+import { seedFrom } from "./tasks/contrast.js";
+import { buildBatteryTimeline } from "./tasks/battery.js";
 
 const JSPSYCH_VERSION = "8.4.0";
 
@@ -88,7 +86,14 @@ try {
   throw e;
 }
 
-const jsPsych = initJsPsych({ extensions: saver.extensions ?? [], on_finish: finish });
+const jsPsych = initJsPsych({
+  extensions: saver.extensions ?? [],
+  on_finish: finish,
+  show_progress_bar: true,
+  auto_update_progress_bar: false,
+  message_progress_bar: "Progress",
+});
+const QUICK = import.meta.env.DEV && new URLSearchParams(window.location.search).has("quick"); // dev builds only
 
 function sessionMetadata() {
   return buildSessionMetadata({
@@ -124,6 +129,8 @@ async function finish() {
 }
 
 const html = (s) => s.split("\n\n").map((p) => `<p>${p}</p>`).join("");
+
+const battery = buildBatteryTimeline({ jsPsych, state, getSeed: () => seedFrom(state.participantCode, state.sessionNumber), quick: QUICK });
 
 const timeline = [
   { type: fullscreen, fullscreen_mode: true, message: "<p>This study runs in full screen. Click to continue.</p>" },
@@ -189,19 +196,11 @@ const timeline = [
         sessionNumber: state.sessionNumber,
         questionnaire: q,
         sessionMetadata: sessionMetadata(),
+        taskOrder: orderForSession(state.sessionNumber),
       });
     },
   },
-  ...buildContrastTimeline({ getSeed: () => seedFrom(state.participantCode, state.sessionNumber) }),
-  ...buildPosnerTimeline({ getSeed: () => seedFrom(state.participantCode, state.sessionNumber) }),
-  ...buildStroopTimeline({ getSeed: () => seedFrom(state.participantCode, state.sessionNumber) }),
-  ...buildNBackTimeline({ getSeed: () => seedFrom(state.participantCode, state.sessionNumber) }),
-  ...buildRecallTimeline({ jsPsych, getSessionNumber: () => state.sessionNumber }),
-  {
-    type: htmlButtonResponse,
-    stimulus: "<p>All five tasks complete. Counterbalanced task order, practice blocks and timing checks are added in the next step of the project (MB-12).</p>",
-    choices: ["Finish"],
-  },
+  ...battery.timeline,
 ];
 
 jsPsych.run(timeline);
