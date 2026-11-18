@@ -1,0 +1,11 @@
+# Disabled until MB-12 (needs Bharg's approval to deploy).
+name: Deploy to GitHub Pages
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    if: false
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Enabled in MB-12"
