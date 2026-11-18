@@ -2,6 +2,8 @@ import htmlKeyboardResponse from "@jspsych/plugin-html-keyboard-response";
 import htmlButtonResponse from "@jspsych/plugin-html-button-response";
 
 import { buildStroopTrials, isCorrectStroopResponse, STROOP_HEX, STROOP_KEYS } from "../lib/stroop.js";
+import { tagTrialData } from "../lib/practice.js";
+import { feedbackTrial, introHtml } from "./common.js";
 
 // Timings are design choices (docs/design/design.md): ITI 500 ms, stimulus until response or 2,500 ms.
 const ITI_MS = 500;
@@ -12,9 +14,10 @@ export function stroopDisplay({ word, ink }) {
 }
 
 /** Stroop block. `getSeed()` is read when the block starts; sizes can be reduced for dev runs. */
-export function buildStroopTimeline({ getSeed, nCongruent = 60, nIncongruent = 60, nNeutral = 0 }) {
+export function buildStroopTimeline({ getSeed, nCongruent = 60, nIncongruent = 60, nNeutral = 0, practice = false, taskLabel = () => "Task" }) {
   let trials = [];
   let i = 0;
+  let last = { correct: false, responded: false };
   const cur = () => trials[i];
   const keyList = Object.values(STROOP_KEYS);
 
@@ -22,13 +25,18 @@ export function buildStroopTimeline({ getSeed, nCongruent = 60, nIncongruent = 6
 
   const intro = {
     type: htmlButtonResponse,
-    choices: ["Start"],
+    choices: [practice ? "Start practice" : "Start"],
     stimulus: () => {
       trials = buildStroopTrials({ seed: getSeed() + 3, nCongruent, nIncongruent, nNeutral });
       i = 0;
-      return `<p>Task 3 of 5: ink colors.</p>
-        <p>A color word will appear. Ignore what the word says and press the key for the <b>ink color</b> it is printed in, as fast and accurately as you can:</p>
-        <p>${["red", "green", "blue", "yellow"].map(swatch).join(" &nbsp; ")}</p>`;
+      return introHtml({
+        label: taskLabel(),
+        practice,
+        title: "ink colors",
+        keysFor: "stroop",
+        body: `<p>A color word will appear. Ignore what the word says and press the key for the <b>ink color</b> it is printed in, as fast and accurately as you can:</p>
+          <p>${["red", "green", "blue", "yellow"].map(swatch).join(" &nbsp; ")}</p>`,
+      });
     },
   };
 
@@ -42,13 +50,15 @@ export function buildStroopTimeline({ getSeed, nCongruent = 60, nIncongruent = 6
         trial_duration: TIMEOUT_MS,
         on_start(t) {
           const c = cur();
-          t.data = { task: "stroop", trial: c.trial, condition: c.condition, word: c.word, ink: c.ink };
+          t.data = tagTrialData({ task: "stroop", trial: c.trial, condition: c.condition, word: c.word, ink: c.ink }, { practice });
         },
         on_finish(data) {
           data.correct = isCorrectStroopResponse(data.ink, data.response);
+          last = { correct: data.correct, responded: data.response !== null };
           i += 1;
         },
       },
+      ...(practice ? [feedbackTrial(() => last)] : []),
     ],
     loop_function: () => i < trials.length,
   };

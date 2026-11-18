@@ -100,3 +100,14 @@
 - Limitations: word frequency is not controlled (design asked for it); the pool had a keyword check only for sensitive words and contains a few brand/unusual words.
 - Cursor review (Nov 18, 2026): acceptance criteria met; TDD order preserved (no test weakening vs 105051e); local JS 147/147; serial-position hand example recomputed as [1, 2/3, 1/3, 0, 1]; 52×2×20 no-reuse assignment verified via tests.
 - Approved by Bharg and merged after Cursor review (Nov 18, 2026).
+
+## MB-12: Battery integration (merged)
+- Tested logic: balanced Latin square (zigzag base row + cyclic shifts + mirrors = 10 orders; each task in each position twice; all 20 ordered adjacent pairs twice), AM/PM-balanced session-to-order map, consistent key map (F/J for every two-choice response, D F J K for Stroop, SPACE for 2-back), practice settings and feedback messages, battery plan with progress fractions, 57 cm viewing instruction, refresh-rate estimation (with timeout and plausibility flag) and a per-task timing log. 192 JS tests pass.
+- Shell: setup screen (viewing distance, key reminders, refresh-rate measurement), five tasks in Latin-square order each with practice then real block, progress bar, final timing record. Dev-only `?quick` mode.
+- **Findings:** (1) a plain cyclic square plus its mirror is NOT balanced (covers 10 of 20 ordered pairs); the zigzag base row is needed. (2) Mapping order by `session mod 10` would confound task order with time of day (each order only AM or only PM); fixed with a PM offset of 5.
+- **Design changes recorded in `docs/design/battery.md`:** contrast keys moved from 1/2 and Y/N to F/J; practice blocks added (tagged `practice: true`; MB-15 must exclude them).
+- Verified in a browser (dev `?quick`, scripted participant): full battery ran with no errors; session 5 ran stroop, nback, posner, recall, contrast (matches the map); practice/real trial counts correct; 34 feedback rows all tagged practice; progress bar advanced; timing record complete. The preview pane throttled animation frames (1.01 Hz measured), which exposed the missing timeout/plausibility handling, now added and tested.
+- Not done: GitHub Pages deploy (needs Bharg's approval; pages.yml still disabled); full-length timing and real-display checks (MB-13); physical stimulus size calibration.
+- Instruction handling: Bharg said to continue without pausing; failing tests were committed first, deploy left gated.
+- Cursor review (Nov 18, 2026): Latin square balance independently verified (10 orders, 20 pairs ×2); TDD order preserved (`keymap` uniqueness check refined per-screen, not weakened); local JS 192/192, `npm run build` OK; Pages deploy correctly still disabled.
+- Approved by Bharg and merged after Cursor review (Nov 18, 2026).
