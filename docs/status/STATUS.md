@@ -10,3 +10,8 @@
 - `experiment/index.html` (MB-06 / MB-12)
 - `dashboard/app.py` (MB-16)
 - `renv.lock` (once R is installed and confirmed)
+
+## MB-01: Ethics, consent, data management (PR open)
+- Drafted `docs/ethics/{consent_form,data_management,self_pilot_policy}.md`. Session length (25–35 min) is an **estimate** until timed in MB-13.
+- Open placeholders for Bharg: contact method (consent form), retention end date (data management), final timestamp rule (MB-24).
+- Pending: Cursor review, Bharg's read-through and approval.
