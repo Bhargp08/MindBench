@@ -118,3 +118,5 @@
 - Smoke-tested through the CLI on fixtures (212 rows from 2 files, repeat load unchanged, bad JSON reported, partial upload skipped, `download` without credentials exits 2 naming the variables).
 - **Not tested live:** the real Google Drive download (no credentials; API facts checked against Google's docs). Needs Bharg's one-time service-account setup (external) in `docs/design/etl.md`.
 - Hand-offs: MB-15 must exclude `practice = 1` rows and apply the exclusion rules into `excluded_reason`.
+- Cursor review (Nov 18, 2026): acceptance criteria met; TDD preserved (empty diff on `etl/tests/` vs `19b5526`); local ETL pytest 88/88; fixture task counts sum to 106; credentials/env-only pattern verified in `test_download.py`.
+- Approved by Bharg and merged after Cursor review (Nov 18, 2026).
