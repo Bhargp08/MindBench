@@ -70,3 +70,11 @@
 - Hypothesis handling follows design.md: the validity effect (S2) is secondary/exploratory and two-sided; MB-15 owns the preregistered exclusion functions.
 - Cursor fix before merge: intro text no longer says the arrow is “usually right” (misread as side); clarified to “usually points to where the dot will appear.”
 - Approved by Bharg and merged after Cursor review (Nov 17, 2026).
+
+## MB-09: Stroop (PR open)
+- Tested pure logic: seeded trial generator (default 60 congruent + 60 incongruent; each ink 15x per condition; each of 12 incongruent pairs exactly 5x; no consecutive word/ink repeats across 1,000 seeds; optional neutral "XXXX" trials, off by default), key mapping (D red, F green, J blue, K yellow), scoring (interference = mean correct incongruent - congruent RT, trim 200/2500 with bounds kept; accuracy interference; neutral RT/accuracy when present). 92 JS tests pass.
+- Shell (`src/tasks/stroop.js`) wired into the battery after Posner: ITI 500 ms, stimulus until response or 2,500 ms.
+- Design choices added to `design.md`: key-to-color mapping; neutral trials supported but off by default (design says no neutral; Bharg's message listed neutral, so asked for proportions if wanted).
+- Verified in a browser harness (8 trials, scripted responder, 4 congruent + 4 incongruent): correct logging, condition/word/ink consistent, no errors; ink colors checked visually. Full 120-trial block and real timing not run.
+- Stroop interference is S1 (secondary/exploratory).
+- Standing instruction from Bharg (Nov 17, 2026): self-approve failing tests and continue; Bharg still merges.
