@@ -8,6 +8,7 @@ import { loadConfig } from "./lib/config.js";
 import { CODE_ALPHABET, CODE_LENGTH, generateParticipantCode, isValidParticipantCode } from "./lib/participantCode.js";
 import { validateQuestionnaire } from "./lib/questionnaire.js";
 import { createSaver } from "./lib/save.js";
+import { pipeFilename } from "./lib/pipeExtension.js";
 import { buildSessionMetadata } from "./lib/sessionMetadata.js";
 import { INFO_SCREEN_TEXT } from "./lib/info.js";
 
@@ -62,25 +63,47 @@ try {
   throw e;
 }
 
+const state = { participantCode: null, sessionNumber: null, questionnaire: null };
+const SIMULATE = new URLSearchParams(window.location.search).has("simulate");
+
 let saver;
 try {
-  saver = createSaver({ mode: config.mode });
+  saver = createSaver({
+    mode: config.mode,
+    experimentId: config.experimentId,
+    simulate: SIMULATE,
+    // Evaluated at start (code not known yet, so it throws) and again at the end, as the extension documents.
+    getFilename: () => pipeFilename({ participantCode: state.participantCode, sessionNumber: state.sessionNumber }),
+    onSave: (result) => {
+      if (!result.ok) showError("Your data could not be saved. Please contact the researcher and keep this page open.");
+    },
+  });
 } catch (e) {
   showError(`This build cannot save data yet: ${e.message}`);
   throw e;
 }
 
-const state = { participantCode: null, sessionNumber: null, questionnaire: null };
-const jsPsych = initJsPsych({ on_finish: finish });
+const jsPsych = initJsPsych({ extensions: saver.extensions ?? [], on_finish: finish });
 
-async function finish() {
-  const metadata = buildSessionMetadata({
+function sessionMetadata() {
+  return buildSessionMetadata({
     now: new Date(),
     timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
     userAgent: navigator.userAgent,
     screen: { width: window.screen.width, height: window.screen.height },
     jsPsychVersion: JSPSYCH_VERSION,
   });
+}
+
+async function finish() {
+  // Production: the DataPipe extension uploads jsPsych's data (which carries the properties added
+  // after the questionnaire) and shows its own done message. Only mock mode saves here.
+  if (SIMULATE && config.mode !== "mock") {
+    showError("Simulated session complete (DataPipe disabled; nothing was saved).");
+    return;
+  }
+  if (config.mode !== "mock") return;
+  const metadata = sessionMetadata();
   const data = {
     participantCode: state.participantCode,
     sessionNumber: state.sessionNumber,
@@ -91,7 +114,7 @@ async function finish() {
   };
   const filename = `${state.participantCode}_session${state.sessionNumber}.json`;
   await saver.save(filename, data);
-  if (config.mode === "mock") downloadJson(filename, data);
+  downloadJson(filename, data);
   document.body.innerHTML = `<p style="font:16px sans-serif;margin:2rem">Session complete (mock mode: a JSON file was downloaded, nothing was sent anywhere).</p>`;
 }
 
@@ -155,6 +178,13 @@ const timeline = [
         return;
       }
       state.questionnaire = q;
+      // Attach to every trial row so the uploaded jsPsych data is self-describing.
+      jsPsych.data.addProperties({
+        participantCode: state.participantCode,
+        sessionNumber: state.sessionNumber,
+        questionnaire: q,
+        sessionMetadata: sessionMetadata(),
+      });
     },
   },
   {
