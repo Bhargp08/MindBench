@@ -52,3 +52,12 @@
 - `experiment/src/lib/pipeExtension.js` (DataPipe extension adapter) + production branch of `createSaver`; shell wired for production mode and a `?simulate` flag. 32 JS tests pass.
 - Verified in browser with a fake ID and `?simulate` only; no real upload tested.
 - Do not merge before PR #7 (MB-06).
+
+## MB-07: Contrast staircase + SDT block (PR open)
+- Pure logic (tested): seeded RNG, 1-up/2-down and 1-up/3-down staircase (dB units, range [-40, 0], start -10, step 3 then 1.5 dB after the 2nd reversal, stop at 10 reversals or 60 trials, threshold = mean of last 6 reversals), Gabor luminance, balanced 2IFC intervals, 60-trial yes/no block (30 signal / 30 noise) with hit/FA counts. 60 JS tests pass.
+- Canvas shell (`src/tasks/contrast.js`, `src/lib/drawGabor.js`): 2IFC staircase then yes/no block at the session threshold; logs level, contrast, target interval, response and correctness per trial.
+- Verified in a browser (mock mode, scripted responder): full session ran without errors; 38 staircase trials, 60 yes/no trials (30/30), per-trial fields logged, Gabor rendering checked visually.
+- Design choices recorded: if fewer than 6 reversals occur (trial cap), the final level is used as the threshold and `usedFallback` is logged. d' and c are computed in MB-15.
+- Observation for MB-15/ETL: a guessing observer pins the staircase at the 0 dB ceiling (reversals recorded at the clamp). Add a data-quality flag for thresholds at the ceiling or floor.
+- Not verified: physical stimulus size and timing accuracy on real displays (Gabor size is in pixels; viewing distance is unspecified); no practice block yet (MB-12).
+- Keeping the consent-form lint active (structure only) per Bharg, Nov 17, 2026.

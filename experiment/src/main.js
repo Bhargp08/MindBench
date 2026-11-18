@@ -11,6 +11,7 @@ import { createSaver } from "./lib/save.js";
 import { pipeFilename } from "./lib/pipeExtension.js";
 import { buildSessionMetadata } from "./lib/sessionMetadata.js";
 import { INFO_SCREEN_TEXT } from "./lib/info.js";
+import { buildContrastTimeline, seedFrom } from "./tasks/contrast.js";
 
 const JSPSYCH_VERSION = "8.4.0";
 
@@ -187,9 +188,10 @@ const timeline = [
       });
     },
   },
+  ...buildContrastTimeline({ getSeed: () => seedFrom(state.participantCode, state.sessionNumber) }),
   {
     type: htmlButtonResponse,
-    stimulus: "<p>Setup complete. The tasks are added in later steps of the project (MB-07 to MB-12).</p>",
+    stimulus: "<p>Contrast tasks complete. The other tasks are added in later steps of the project (MB-08 to MB-12).</p>",
     choices: ["Finish"],
   },
 ];
