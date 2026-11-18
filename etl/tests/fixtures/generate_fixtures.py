@@ -103,7 +103,8 @@ def build(code, session, task_order, day):
                 add("html-keyboard-response", task="recall", list=1 if practice else li, listWords=ws, recallText=" ".join(ws[:2]),
                     recalled=[True, True] + [False] * (len(ws) - 2), nCorrect=2, proportion=2 / len(ws), intrusions=[], repeats=0, practice=practice, rt=None)
                 if li in (0, 2):
-                    add("html-button-response", task="recall_summary", recallProportion=0.5 if practice else 0.375, nCorrect=2 if practice else 3,
+                    # consistent with the recall rows above: practice 2 of 3 words, real 2 + 2 of 4 + 4 words
+                    add("html-button-response", task="recall_summary", recallProportion=2 / 3 if practice else 0.5, nCorrect=2 if practice else 4,
                         nWords=3 if practice else 8, practice=practice)
     add("html-button-response", task="timing", timing={"tasks": {t: {"ms": 60000} for t in task_order}, "totalTaskMs": 300000, "unfinished": []},
         refresh={"hz": 59.94, "medianFrameMs": 16.68, "sdMs": 0.21, "nDroppedFrames": 0, "nFrames": 60, "plausible": True, "nominalHz": 60},
