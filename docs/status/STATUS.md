@@ -32,3 +32,10 @@
 - Flag for MB-04: Holm correction over 5 primary outcomes reduces power relative to the spec's figures.
 - Cursor fix before merge: free-recall word-pool requirement corrected to 2,080 (52 sessions × 40 words).
 - Approved by Bharg and merged after Cursor review (Nov 17, 2026).
+
+## MB-04: Power analysis (PR open)
+- `analysis/python/mindbench/power.py` + tests (14 pass), `docs/design/power.md`, figure and numbers via `scripts/power_report.py`.
+- Effective power at 42 sessions, r = .43: about 0.77 with AR(1) + shared nightly sleep, about 0.66 after Holm over 5 outcomes. 80% effective power needs r of about 0.49.
+- Spec nuance: AR(1) errors alone do not inflate type-I; shared AM/PM sleep does (0.083 uncorrected).
+- Decision for Bharg: keep 42 sessions (recommended) or extend to up to 60.
+- numpy 2.4.6, scipy 1.17.1, matplotlib pinned.
