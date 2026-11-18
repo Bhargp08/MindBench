@@ -16,6 +16,7 @@
 | jsPsych canvas-keyboard-response, html-keyboard-response | 2.1.0, 2.2.0 | pinned (MB-07) |
 | EFF Large Wordlist | sha256 addd3553... (see wordpool.json) | source of the recall word pool (MB-11) |
 | google-auth, jsonschema, requests | 2.62.2, 4.26.0, 2.34.2 | pinned in etl/pyproject.toml (MB-14) |
+| Streamlit (dashboard) | 1.67.0 (pandas comes with it) | pinned in dashboard/pyproject.toml (MB-16) |
 | @jspsych/extension-pipe | 0.2.0 | verified on npm, not yet installed |
 | PyMC | 6.4.0 | recorded, not yet installed (MB-20) |
 | ArviZ | 1.3.0 | recorded, not yet installed (MB-20) |

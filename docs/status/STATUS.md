@@ -147,3 +147,11 @@
 - Also flagged: the stopped-session / session-number consumption means collection can reach slot 52 (D9).
 - Cursor review (Nov 18, 2026): MB-18–MB-21 coverage table complete; pilot/smoke exclusion and no false IRB/pilot claims in lint; local ETL 97/97 (prereg lint); freeze tag remains Bharg's action after merge.
 - Approved by Bharg and merged after Cursor review (Nov 18, 2026). **Bharg still submits to OSF; no agent submission.**
+
+## MB-16: Dashboard + nightly ETL (PR open)
+- `dashboard/`: Streamlit app (`app.py`), metrics (`mindbench_dashboard/metrics.py`), nightly ETL runner (`nightly.py`), config. **Completion and data quality only**: no outcome values (P1/P2/S1-S4), no hypothesis tests. Panels: Completion (with the preregistered stopping-rule status), Session-number gaps (explained as failed validation / partial upload / no file), Skipped partial uploads, Data quality (per-session table and trends), Sleep log (local mode only). Public mode shows aggregates only (no participant codes, file names, user agent, time of day, sleep data or timestamps finer than a date).
+- 59 dashboard tests (written failing first, a9de1b3). Three structural guards: no outcome-like field names; invariance (changing performance data changes nothing displayed); the dashboard never imports the scoring/d' code.
+- Nightly ETL: optional Drive download (credentials from environment only; missing credentials reported as "skipped"), idempotent load, automatic exclusion reasons, JSON report; exit code 1 if a file failed. **Schedule templates only** (`dashboard/schedule/`: cron, macOS launchd, Windows Task Scheduler); nothing is installed.
+- CI: `dashboard` added to the Python job matrix. VERSIONS: Streamlit 1.67.0.
+- Not tested against real data or a real Drive folder (synthetic fixtures only). The stopped-session reality (partial uploads skipped by the ETL) is surfaced in the gaps panel.
+- If prereg decisions D1/D2 (time-of-day and day definitions) change, update `metrics._time_of_day` and the local-date logic.

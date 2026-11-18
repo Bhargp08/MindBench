@@ -1,0 +1,7 @@
+# TEMPLATE (not installed). Windows Task Scheduler: nightly ETL at 02:30. Edit the paths, then run once in PowerShell yourself.
+# Credentials: set MINDBENCH_DRIVE_FOLDER_ID and GOOGLE_APPLICATION_CREDENTIALS as user environment variables (outside the repo).
+$Repo = "C:\Users\YOURNAME\MindBench"
+$Action  = New-ScheduledTaskAction -Execute "uv" -Argument "run --project dashboard python -m mindbench_dashboard.nightly" -WorkingDirectory $Repo
+$Trigger = New-ScheduledTaskTrigger -Daily -At 2:30AM
+Register-ScheduledTask -TaskName "MindBench nightly ETL" -Action $Action -Trigger $Trigger
+# Remove with: Unregister-ScheduledTask -TaskName "MindBench nightly ETL" -Confirm:$false

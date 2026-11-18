@@ -1,0 +1,4 @@
+# TEMPLATE (not installed). macOS/Linux cron: run the nightly ETL at 02:30 every day.
+# Install yourself with:  crontab -e   and paste the line below, after editing the path.
+30 2 * * * /bin/sh /Users/YOURNAME/MindBench/dashboard/schedule/nightly.sh
+# Note: on macOS, cron may need Full Disk Access; launchd (com.mindbench.nightly.plist.template) is the more reliable option.
