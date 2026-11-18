@@ -106,12 +106,7 @@ describe("scoreNBack (positions 1-2 are not scored; lure responses are false ala
     const s = scoreNBack(perfect);
     expect(s.hits).toBe(18);
     expect(s.falseAlarms).toBe(0);
-    expect(s.dPrime).toBeCloseTo(dPrimeFor(18, 18, 0, 40), 6);
+    expect(s.dPrime).toBeCloseTo(4.188857, 5); // scipy: H = 18.5/19, FA = 0.5/41
     expect(Number.isFinite(s.dPrime)).toBe(true);
   });
 });
-
-// perfect-session expectation from the SDT correction (computed independently with scipy: 4.188857)
-function dPrimeFor() {
-  return 4.188857;
-}
