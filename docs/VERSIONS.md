@@ -13,6 +13,7 @@
 | matplotlib | 3.11.2 | pinned (MB-04; analysis/python/pyproject.toml) |
 | Vite | 5.4.21 (experiment build) | pinned (MB-06) |
 | jsPsych plugins | html-button-response 2.1.0, survey-html-form 2.1.0, fullscreen 2.1.0 | pinned (MB-06) |
+| jsPsych canvas-keyboard-response, html-keyboard-response | 2.1.0, 2.2.0 | pinned (MB-07) |
 | @jspsych/extension-pipe | 0.2.0 | verified on npm, not yet installed |
 | PyMC | 6.4.0 | recorded, not yet installed (MB-20) |
 | ArviZ | 1.3.0 | recorded, not yet installed (MB-20) |
