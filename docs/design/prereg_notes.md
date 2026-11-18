@@ -20,3 +20,9 @@ Statements the preregistration should make, and things it must not claim. Not it
 - Practice rows (`practice = 1`) and smoke-test sessions are excluded; AR(1)/day-grouping model for the shared AM/PM nightly sleep (`power.md`).
 - Because there is no pilot phase, early confirmatory sessions include the steepest practice-related change; session number (linear and log) is a covariate.
 - Any protocol change after registration is a logged deviation (`deviations.md`, part B).
+
+## Scoring interpretations to state (from `scoring.md`)
+- 2-back responses count only within 2,000 ms of letter onset; P1 uses positions 3-60 (58 scored trials), lures count as non-targets.
+- The Stroop 60% accuracy check uses all scored congruent trials before RT trimming; RT outcomes use trimmed, correct trials only.
+- "Incomplete" means fewer scored trials than the design count (or no threshold/summary row, or no questionnaire).
+- A stopped session normally appears as a missing session (a skipped partial upload), not as an excluded one; the stopping rule counts completed sessions.
