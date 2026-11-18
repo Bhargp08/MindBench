@@ -20,8 +20,15 @@
 - Open placeholder: consent contact method (deferred form).
 - Approved by Bharg and merged after Cursor review (Nov 17, 2026).
 
-## MB-02: Canonical task parameters (PR open, slimmed scope)
+## MB-02: Canonical task parameters (merged, slimmed scope)
 - Scope change (Bharg, Nov 17, 2026): one table of canonical task parameters (`docs/design/literature.csv` + `literature.md`), each row with one source and a verified/[UNVERIFIED] flag.
 - **Deferred stretch work (not scheduled):** the expected-effect-size review and the sleep-deprivation literature section (including natural-vs-total sleep loss effect sizes, Lim & Dinges, Ratcliff & Van Dongen, KSS and the remaining spec reference list). Power analysis (MB-04) currently relies on the spec's simulation values.
 - Only the staircase rule is verified. All other rows are [UNVERIFIED]; verify against primary papers or set as explicit design choices in MB-03.
 - Follow-up: total-deprivation vs natural-variation caveat added to `literature.md` (PR mb/MB-02-caveat).
+
+## MB-03: Design document (merged)
+- `docs/design/design.md`: hypotheses H1-H3, primary outcomes P1-P5, explicit design choices for every unverified parameter (Posner 80/20, 2-back 30% targets, trial counts, timings), exclusion rules, analysis summary, stopping and deviation rules.
+- Built with Sonnet; spec recommends Opus for MB-03. No code or tests (doc unit).
+- Flag for MB-04: Holm correction over 5 primary outcomes reduces power relative to the spec's figures.
+- Cursor fix before merge: free-recall word-pool requirement corrected to 2,080 (52 sessions × 40 words).
+- Approved by Bharg and merged after Cursor review (Nov 17, 2026).
