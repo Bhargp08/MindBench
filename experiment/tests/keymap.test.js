@@ -27,12 +27,16 @@ describe("consistent key map: every two-choice task uses F (first/left/yes) and 
     expect(KEYMAP.nback).toEqual({ match: " " });
   });
 
-  it("never assigns one key to two responses within a task", () => {
-    for (const [task, keys] of Object.entries(KEYMAP)) {
-      if (task === "twoChoice") continue;
-      const vals = Object.values(keys);
-      expect(new Set(vals).size).toBe(vals.length);
-    }
+  it("never assigns one key to two responses within a response screen", () => {
+    // contrast reuses F/J on purpose across its two phases (interval 1/2 in the staircase, yes/no in the SDT block)
+    const screens = {
+      "contrast staircase": [KEYMAP.contrast.intervalOne, KEYMAP.contrast.intervalTwo],
+      "contrast yes/no": [KEYMAP.contrast.yes, KEYMAP.contrast.no],
+      posner: Object.values(KEYMAP.posner),
+      stroop: Object.values(KEYMAP.stroop),
+      nback: Object.values(KEYMAP.nback),
+    };
+    for (const keys of Object.values(screens)) expect(new Set(keys).size).toBe(keys.length);
   });
 });
 

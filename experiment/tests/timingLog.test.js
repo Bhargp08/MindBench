@@ -34,6 +34,34 @@ describe("estimateRefreshRate (from requestAnimationFrame timestamps)", () => {
   });
 });
 
+describe("plausibility and timeout (throttled or background tabs)", () => {
+  it("flags rates outside 20-500 Hz as implausible", () => {
+    expect(estimateRefreshRate(frames(60)).plausible).toBe(true);
+    expect(estimateRefreshRate(frames(144)).plausible).toBe(true);
+    expect(estimateRefreshRate(frames(1, 20)).plausible).toBe(false); // a throttled tab delivering ~1 frame per second
+  });
+
+  it("resolves null when animation frames never arrive (timeout)", async () => {
+    const raf = () => {}; // never calls back
+    expect(await measureRefreshRate({ raf, nFrames: 30, timeoutMs: 40 })).toBeNull();
+  });
+
+  it("resolves with the frames collected so far when frames stall after 10 or more", async () => {
+    let t = 0;
+    let calls = 0;
+    const raf = (cb) => {
+      if (++calls > 12) return; // stalls after 12 frames
+      t += 1000 / 60;
+      const stamp = t;
+      setTimeout(() => cb(stamp), 0);
+    };
+    const r = await measureRefreshRate({ raf, nFrames: 60, timeoutMs: 80 });
+    expect(r.nFrames).toBe(12);
+    expect(r.hz).toBeCloseTo(60, 2);
+    expect(r.plausible).toBe(true);
+  });
+});
+
 describe("nominalRefreshRate", () => {
   it("snaps to a common rate within 2%, otherwise null", () => {
     expect(nominalRefreshRate(59.94)).toBe(60);
