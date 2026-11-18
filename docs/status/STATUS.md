@@ -92,10 +92,11 @@
 - Cursor fix before merge: STATUS marked MB-06 / MB-06b / MB-07 as merged (were stale “PR open”).
 - Approved by Bharg and merged after Cursor review (Nov 17, 2026).
 
-## MB-11: Free recall (PR open)
+## MB-11: Free recall (merged)
 - 2,080-word pool built from the EFF Large Wordlist (`src/data/wordpool.json`, script `scripts/build-wordpool.mjs`, source sha256 recorded): 520 words each of length 5-8, no two words within one edit. Licence recorded in `docs/design/wordpool.md`: CC BY per EFF's site policy, **not confirmed per file** (policy text/badge disagree on version; list page has no licence line; article cites third-party Ghent data). Attribution in the JSON and README.
 - Tested logic: scorer ("Apple ", "aple", "APPLE" correct; "apply" incorrect when it is a pool word; typo tolerance only for 5+ letter words; deterministic ties; no double credit), exact serial-position proportions, session proportion (P2), and a fixed study-wide assignment with **no list reuse across all 52 sessions including the 10 pilot sessions** (every pool word used exactly once; lists length-matched). 147 JS tests pass.
 - Shell (`src/tasks/recall.js`) wired into the battery: 2 lists of 20 words at 2 s per word, no distractor, 90 s typed recall with an "I'm done" button; logs per-list score, intrusions and a session summary (`recall_summary`).
 - Verified in a browser harness (2 lists of 6 words, scripted typing): words shown in order, typo and punctuation handled, intrusions flagged, summary 6/12 = 0.5. Real study lists load for sessions 1 and 52 and session 53 is refused. Full 20-word/90 s timing not run.
 - Limitations: word frequency is not controlled (design asked for it); the pool had a keyword check only for sensitive words and contains a few brand/unusual words.
-- Cursor changes since MB-10: STATUS bookkeeping only.
+- Cursor review (Nov 18, 2026): acceptance criteria met; TDD order preserved (no test weakening vs 105051e); local JS 147/147; serial-position hand example recomputed as [1, 2/3, 1/3, 0, 1]; 52×2×20 no-reuse assignment verified via tests.
+- Approved by Bharg and merged after Cursor review (Nov 18, 2026).
