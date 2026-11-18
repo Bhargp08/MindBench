@@ -34,8 +34,9 @@
 - Approved by Bharg and merged after Cursor review (Nov 17, 2026).
 
 ## MB-04: Power analysis (PR open)
-- `analysis/python/mindbench/power.py` + tests (14 pass), `docs/design/power.md`, figure and numbers via `scripts/power_report.py`.
-- Effective power at 42 sessions, r = .43: about 0.77 with AR(1) + shared nightly sleep, about 0.66 after Holm over 5 outcomes. 80% effective power needs r of about 0.49.
-- Spec nuance: AR(1) errors alone do not inflate type-I; shared AM/PM sleep does (0.083 uncorrected).
-- Decision for Bharg: keep 42 sessions (recommended) or extend to up to 60.
-- numpy 2.4.6, scipy 1.17.1, matplotlib pinned.
+- `analysis/python/mindbench/power.py` + tests, `docs/design/power.md`, figure and numbers via `scripts/power_report.py`.
+- **Decisions (Bharg, Nov 17, 2026):** keep 42 sessions; reduce primary outcomes to 2 (P1 2-back d', P2 recall proportion), chosen from the verified Lim & Dinges (2010) Table 2; Stroop, Posner, contrast threshold and others are secondary/exploratory, outside the Holm family.
+- Effective power at 42 sessions, r = .43 (AR(1) + shared nightly sleep + Holm over 2): about 0.74. 80% effective power needs r of about 0.46. A null result is likely and acceptable.
+- Carry to MB-18: AR(1) errors alone do not inflate type-I; the shared AM/PM nightly sleep does (0.083 uncorrected). Model AR(1) errors and day grouping.
+- Design doc updated to match (primary/secondary outcomes, H1/H2/H3, Holm family of 2).
+- Pending: Cursor review of PR #6. MB-06 not started (waiting for the review, per Bharg).

@@ -88,3 +88,13 @@ def test_power_curve_20_to_60():
     ps = [p for _, p in curve]
     assert ns == [20, 30, 40, 50, 60]
     assert ps[-1] > ps[0] + 0.3
+
+
+def test_two_outcome_holm_costs_less_than_five():
+    """Two-outcome Holm family (the preregistered family) keeps more power than five outcomes."""
+    kw = dict(n=42, r=0.43, phi=0.3, paired_sleep=True, method="ar1", n_sims=1500, seed=SEED)
+    uncorrected = power.simulate_corr_power(**kw)
+    holm2 = power.simulate_holm_power(m=2, n_true=2, **kw)
+    holm5 = power.simulate_holm_power(m=5, n_true=5, **kw)
+    assert holm5 < holm2 < uncorrected + 0.03
+    assert holm2 == pytest.approx(0.74, abs=0.05)
