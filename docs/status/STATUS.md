@@ -139,9 +139,11 @@
 - Cursor review (Nov 18, 2026): no blockers — §5 docstring parity test, 2,000 ms n-back window, pre-trim Stroop 60%, Hautus log-linear default, JS/Python d' crosslang (1e-7); local analysis 124/124.
 - Approved by Bharg and merged after Cursor review (Nov 18, 2026).
 
-## MB-05: Preregistration draft (PR open; NOT submitted)
+## MB-05: Preregistration draft (merged; NOT submitted)
 - `docs/design/prereg_draft.md`: OSF-ready draft in the sections of the standard "OSF Preregistration" template (name confirmed on OSF help; field labels from secondary copies, **not verified** against the live form), with a pre-submission checklist for Bharg and a coverage table for MB-15 to MB-22. Includes P1 2-back d' and P2 recall proportion with Holm over 2, the 2,000 ms 2-back window, the Stroop 60% check before RT trimming, 44 planned sessions (42 confirmatory, sessions 3-44, plus 1-2 `is_pilot` smoke tests), and the skipped self-pilot as a deviation. Lint test (`etl/tests/test_prereg_lint.py`) checks sections, required items, agreement with `design.md`/`power.md`, and absence of false claims.
 - **Nothing was submitted or tagged.** Bharg submits, and creates the `prereg-v1` tag whose commit hash fills `[FREEZE COMMIT]`.
 - **Ten `[DECISION Dn]` items** mark details the design left open (time-of-day definition, day and PM sleep value, H1 model, H2 test, Bayesian priors, ICC, DDM groups, existing-data answer, completed-session definition and slot cap, AI/conflict statement). Confirm or change them before submitting; D3-D7 deserve a statistical read.
 - **Order of events matters:** smoke tests before registering mean data exist at registration (Option A, disclose; do not score them); registering first is Option B.
 - Also flagged: the stopped-session / session-number consumption means collection can reach slot 52 (D9).
+- Cursor review (Nov 18, 2026): MB-18–MB-21 coverage table complete; pilot/smoke exclusion and no false IRB/pilot claims in lint; local ETL 97/97 (prereg lint); freeze tag remains Bharg's action after merge.
+- Approved by Bharg and merged after Cursor review (Nov 18, 2026). **Bharg still submits to OSF; no agent submission.**
