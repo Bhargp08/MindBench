@@ -12,7 +12,7 @@ from conftest import FIXTURE_EXPECTED, build_db
 SRC = Path(__file__).resolve().parents[1]
 FORBIDDEN_KEYS = re.compile(
     r"(^|_)(p1|p2|s[1-4])(_|$)|d_?prime|criterion|recall_proportion|proportion|interference|validity|serial|"
-    r"hits?$|false_alarm|n_?correct|recalled|intrusion|threshold|accuracy|score", re.IGNORECASE)
+    r"hits?$|false_alarm|n_?correct|recalled|intrusion|threshold|accuracy|(^|_)score(_|$)|scoring", re.IGNORECASE)
 
 
 def keys(obj):

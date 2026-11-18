@@ -49,3 +49,20 @@ class TestExplainGaps:
     def test_status_text_is_human_readable(self):
         rows = explain_gaps([7], [], [])
         assert "no file" in rows[0]["detail"].lower()
+
+
+class TestFailedFilesExtendTheRange:
+    def test_a_failed_file_beyond_the_highest_loaded_session_shows_up_with_the_gaps_before_it(self, db_path, raw_dir, tmp_path):
+        import datetime as dt
+        import json
+
+        from mindbench_dashboard.metrics import build_dashboard_data
+
+        from conftest import FIXTURE_EXPECTED, build_db
+
+        build_db(db_path, [(3, None), (4, None)]).close()
+        report = tmp_path / "r.json"
+        report.write_text(json.dumps({"failed": [{"file": "K7M2QX9P_session7.json", "message": "bad"}]}))
+        d = build_dashboard_data(db_path=db_path, raw_dir=raw_dir, report_path=report, expected=FIXTURE_EXPECTED, today=dt.date(2026, 11, 20))
+        assert [(g["session_number"], g["status"]) for g in d["gaps"]] == [(5, "no_file"), (6, "no_file"), (7, "failed_validation")]
+        assert d["highest_session_number"] == 7

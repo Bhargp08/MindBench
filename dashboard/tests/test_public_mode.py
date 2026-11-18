@@ -40,7 +40,7 @@ def test_public_mode_keeps_only_aggregates(db_path, raw_dir):
     setup(db_path)
     d = build(db_path, raw_dir, public=True)
     assert d["summary"]["sessions_loaded"] == 4
-    assert d["summary"]["confirmatory_completed"] == 2
+    assert d["summary"]["confirmatory_completed"] == 3  # sessions 3, 4 and 6 all finished
     assert d["gap_count"] == 1 and d["partial_upload_count"] == 1
     assert d["task_completion"]["posner"] == {"sessions": 4, "complete": 4}
 
