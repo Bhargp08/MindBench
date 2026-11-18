@@ -29,6 +29,9 @@ initJsPsych({
 Notes: the extension wraps `on_data_update` and `on_finish`; failed saves are reported only through `on_save` (`result.ok`); keep requests under DataPipe's 32 MB limit; storage backends are Google Drive, Dataverse and Zenodo (D1: Google Drive).
 
 ## Status in this repo
-- MB-06 ships **mock mode only** (`createSaver({ mode: "mock" })`, with a JSON download). `mode: "production"` throws until the production adapter is added.
-- Production adapter (separate, tested step): build the extension config from the validated `experimentId`, use `enabled: false` when simulating, report failures through `on_save`, use a participant-code-based unique filename. Not yet written; install of `@jspsych/extension-pipe` and the exact import form still to be confirmed.
-- DataPipe dashboard setup (creating the experiment, choosing Google Drive) is an external action for Bharg.
+- **Mock mode** (default): `createSaver({ mode: "mock" })` keeps a JSON copy and the shell downloads it; nothing is sent anywhere.
+- **Production mode** (`VITE_MINDBENCH_MODE=production`, `VITE_DATAPIPE_EXPERIMENT_ID=<12-char ID>`): `createSaver` returns the DataPipe extension (`buildPipeExtension`), registered in `initJsPsych`. File name `<code>_session<N>.json`; format JSON; streaming on. Metadata, questionnaire, participant code and session number are attached to every trial row with `jsPsych.data.addProperties` after the questionnaire, because the extension uploads jsPsych's own data.
+- **`?simulate` URL flag:** disables the extension (`enabled: false`), so test runs never write to the dataset. Always use it when trying a production build with a real ID.
+- The extension logs a warning at start that the filename function threw (the participant code is not known yet) and calls it again at the end, as its README documents.
+- **Caution:** loading a production build **without** `?simulate` contacts DataPipe immediately (session start), even before any trial.
+- Verified in a browser with a fake experiment ID and `?simulate`: no DataPipe requests, session runs to the end. A real upload has **not** been tested; that needs a DataPipe experiment ID from Bharg (external action) and should be tried first with a throwaway experiment.
