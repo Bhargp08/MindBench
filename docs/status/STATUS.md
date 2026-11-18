@@ -111,3 +111,12 @@
 - Instruction handling: Bharg said to continue without pausing; failing tests were committed first, deploy left gated.
 - Cursor review (Nov 18, 2026): Latin square balance independently verified (10 orders, 20 pairs ×2); TDD order preserved (`keymap` uniqueness check refined per-screen, not weakened); local JS 192/192, `npm run build` OK; Pages deploy correctly still disabled.
 - Approved by Bharg and merged after Cursor review (Nov 18, 2026).
+
+## MB-14: ETL into SQLite (merged)
+- `etl/mindbench_etl/`: `download.py` (Google Drive, env-var credentials, MD5-based skip of unchanged files, skips `.partial.json` and unsafe names), `validate.py` (JSON schema per task, clear row/field errors), `schema.sql` (participants, sessions with `is_pilot` and `excluded_reason`, questionnaire, trials; foreign keys on), `load.py` (idempotent upsert, one transaction per file), `cli.py`. 88 ETL tests pass (77 new), using synthetic fixtures only.
+- Required behaviors tested: double load leaves counts unchanged; malformed file rejected with a clear message and nothing inserted; a failure mid-load rolls back everything; sessions 1-10 get `is_pilot = 1` (boundary 10 vs 11 tested); foreign keys enforced; counts per task match the fixture exactly (106 rows, hand-derived).
+- Smoke-tested through the CLI on fixtures (212 rows from 2 files, repeat load unchanged, bad JSON reported, partial upload skipped, `download` without credentials exits 2 naming the variables).
+- **Not tested live:** the real Google Drive download (no credentials; API facts checked against Google's docs). Needs Bharg's one-time service-account setup (external) in `docs/design/etl.md`.
+- Hand-offs: MB-15 must exclude `practice = 1` rows and apply the exclusion rules into `excluded_reason`.
+- Cursor review (Nov 18, 2026): acceptance criteria met; TDD preserved (empty diff on `etl/tests/` vs `19b5526`); local ETL pytest 88/88; fixture task counts sum to 106; credentials/env-only pattern verified in `test_download.py`.
+- Approved by Bharg and merged after Cursor review (Nov 18, 2026).

@@ -1,0 +1,3913 @@
+[
+ {
+  "trial_type": "fullscreen",
+  "trial_index": 0,
+  "time_elapsed": 1000,
+  "internal_node_id": "0.0-0.0",
+  "rt": null,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-button-response",
+  "trial_index": 1,
+  "time_elapsed": 2000,
+  "internal_node_id": "0.0-1.0",
+  "rt": 900,
+  "response": 0,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "survey-html-form",
+  "trial_index": 2,
+  "time_elapsed": 3000,
+  "internal_node_id": "0.0-2.0",
+  "rt": null,
+  "response": {
+   "code": "K7M2QX9P"
+  },
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "survey-html-form",
+  "trial_index": 3,
+  "time_elapsed": 4000,
+  "internal_node_id": "0.0-3.0",
+  "rt": null,
+  "response": {
+   "hoursSlept": "7.5"
+  },
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-button-response",
+  "trial_index": 4,
+  "time_elapsed": 5000,
+  "internal_node_id": "0.0-4.0",
+  "rt": null,
+  "task": "setup",
+  "viewingDistanceInstructedCm": 57,
+  "refresh": {
+   "hz": 59.94,
+   "medianFrameMs": 16.68,
+   "sdMs": 0.21,
+   "nDroppedFrames": 0,
+   "nFrames": 60,
+   "plausible": true,
+   "nominalHz": 60
+  },
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 5,
+  "time_elapsed": 6000,
+  "internal_node_id": "0.0-5.0",
+  "rt": null,
+  "task": "fixation",
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 6,
+  "time_elapsed": 7000,
+  "internal_node_id": "0.0-6.0",
+  "rt": 620,
+  "task": "stroop",
+  "trial": 1,
+  "condition": "congruent",
+  "word": "red",
+  "ink": "red",
+  "response": "d",
+  "correct": true,
+  "practice": true,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 7,
+  "time_elapsed": 8000,
+  "internal_node_id": "0.0-7.0",
+  "rt": null,
+  "task": "feedback",
+  "practice": true,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 8,
+  "time_elapsed": 9000,
+  "internal_node_id": "0.0-8.0",
+  "rt": null,
+  "task": "fixation",
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 9,
+  "time_elapsed": 10000,
+  "internal_node_id": "0.0-9.0",
+  "rt": 700,
+  "task": "stroop",
+  "trial": 2,
+  "condition": "incongruent",
+  "word": "red",
+  "ink": "blue",
+  "response": "j",
+  "correct": true,
+  "practice": true,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 10,
+  "time_elapsed": 11000,
+  "internal_node_id": "0.0-10.0",
+  "rt": null,
+  "task": "feedback",
+  "practice": true,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 11,
+  "time_elapsed": 12000,
+  "internal_node_id": "0.0-11.0",
+  "rt": null,
+  "task": "fixation",
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 12,
+  "time_elapsed": 13000,
+  "internal_node_id": "0.0-12.0",
+  "rt": 620,
+  "task": "stroop",
+  "trial": 1,
+  "condition": "congruent",
+  "word": "red",
+  "ink": "red",
+  "response": "d",
+  "correct": true,
+  "practice": false,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 13,
+  "time_elapsed": 14000,
+  "internal_node_id": "0.0-13.0",
+  "rt": null,
+  "task": "fixation",
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 14,
+  "time_elapsed": 15000,
+  "internal_node_id": "0.0-14.0",
+  "rt": 700,
+  "task": "stroop",
+  "trial": 2,
+  "condition": "incongruent",
+  "word": "red",
+  "ink": "blue",
+  "response": "j",
+  "correct": true,
+  "practice": false,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 15,
+  "time_elapsed": 16000,
+  "internal_node_id": "0.0-15.0",
+  "rt": null,
+  "task": "fixation",
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 16,
+  "time_elapsed": 17000,
+  "internal_node_id": "0.0-16.0",
+  "rt": 620,
+  "task": "stroop",
+  "trial": 3,
+  "condition": "congruent",
+  "word": "red",
+  "ink": "red",
+  "response": "d",
+  "correct": true,
+  "practice": false,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 17,
+  "time_elapsed": 18000,
+  "internal_node_id": "0.0-17.0",
+  "rt": null,
+  "task": "nback",
+  "trial": 1,
+  "position": 1,
+  "letter": "T",
+  "type": "start",
+  "isTarget": false,
+  "responded": false,
+  "response": null,
+  "practice": true,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 18,
+  "time_elapsed": 19000,
+  "internal_node_id": "0.0-18.0",
+  "rt": null,
+  "task": "feedback",
+  "practice": true,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 19,
+  "time_elapsed": 20000,
+  "internal_node_id": "0.0-19.0",
+  "rt": null,
+  "task": "nback",
+  "trial": 2,
+  "position": 2,
+  "letter": "B",
+  "type": "start",
+  "isTarget": false,
+  "responded": false,
+  "response": null,
+  "practice": true,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 20,
+  "time_elapsed": 21000,
+  "internal_node_id": "0.0-20.0",
+  "rt": null,
+  "task": "feedback",
+  "practice": true,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 21,
+  "time_elapsed": 22000,
+  "internal_node_id": "0.0-21.0",
+  "rt": 700,
+  "task": "nback",
+  "trial": 3,
+  "position": 3,
+  "letter": "D",
+  "type": "target",
+  "isTarget": true,
+  "responded": true,
+  "response": " ",
+  "practice": true,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 22,
+  "time_elapsed": 23000,
+  "internal_node_id": "0.0-22.0",
+  "rt": null,
+  "task": "feedback",
+  "practice": true,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 23,
+  "time_elapsed": 24000,
+  "internal_node_id": "0.0-23.0",
+  "rt": null,
+  "task": "nback",
+  "trial": 4,
+  "position": 4,
+  "letter": "G",
+  "type": "nontarget",
+  "isTarget": false,
+  "responded": false,
+  "response": null,
+  "practice": true,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 24,
+  "time_elapsed": 25000,
+  "internal_node_id": "0.0-24.0",
+  "rt": null,
+  "task": "feedback",
+  "practice": true,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 25,
+  "time_elapsed": 26000,
+  "internal_node_id": "0.0-25.0",
+  "rt": null,
+  "task": "nback",
+  "trial": 1,
+  "position": 1,
+  "letter": "T",
+  "type": "start",
+  "isTarget": false,
+  "responded": false,
+  "response": null,
+  "practice": false,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 26,
+  "time_elapsed": 27000,
+  "internal_node_id": "0.0-26.0",
+  "rt": null,
+  "task": "nback",
+  "trial": 2,
+  "position": 2,
+  "letter": "B",
+  "type": "start",
+  "isTarget": false,
+  "responded": false,
+  "response": null,
+  "practice": false,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 27,
+  "time_elapsed": 28000,
+  "internal_node_id": "0.0-27.0",
+  "rt": 700,
+  "task": "nback",
+  "trial": 3,
+  "position": 3,
+  "letter": "D",
+  "type": "target",
+  "isTarget": true,
+  "responded": true,
+  "response": " ",
+  "practice": false,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 28,
+  "time_elapsed": 29000,
+  "internal_node_id": "0.0-28.0",
+  "rt": null,
+  "task": "nback",
+  "trial": 4,
+  "position": 4,
+  "letter": "G",
+  "type": "nontarget",
+  "isTarget": false,
+  "responded": false,
+  "response": null,
+  "practice": false,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 29,
+  "time_elapsed": 30000,
+  "internal_node_id": "0.0-29.0",
+  "rt": null,
+  "task": "nback",
+  "trial": 5,
+  "position": 5,
+  "letter": "H",
+  "type": "nontarget",
+  "isTarget": false,
+  "responded": false,
+  "response": null,
+  "practice": false,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 30,
+  "time_elapsed": 31000,
+  "internal_node_id": "0.0-30.0",
+  "rt": 700,
+  "task": "nback",
+  "trial": 6,
+  "position": 6,
+  "letter": "K",
+  "type": "target",
+  "isTarget": true,
+  "responded": true,
+  "response": " ",
+  "practice": false,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 31,
+  "time_elapsed": 32000,
+  "internal_node_id": "0.0-31.0",
+  "rt": null,
+  "task": "fixation",
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 32,
+  "time_elapsed": 33000,
+  "internal_node_id": "0.0-32.0",
+  "rt": null,
+  "task": "posner_cue",
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 33,
+  "time_elapsed": 34000,
+  "internal_node_id": "0.0-33.0",
+  "rt": null,
+  "task": "posner_gap",
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 34,
+  "time_elapsed": 35000,
+  "internal_node_id": "0.0-34.0",
+  "rt": 365,
+  "task": "posner",
+  "trial": 1,
+  "valid": true,
+  "targetSide": "left",
+  "cueDirection": "left",
+  "soaMs": 300,
+  "response": "f",
+  "correct": true,
+  "practice": true,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 35,
+  "time_elapsed": 36000,
+  "internal_node_id": "0.0-35.0",
+  "rt": null,
+  "task": "feedback",
+  "practice": true,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 36,
+  "time_elapsed": 37000,
+  "internal_node_id": "0.0-36.0",
+  "rt": null,
+  "task": "fixation",
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 37,
+  "time_elapsed": 38000,
+  "internal_node_id": "0.0-37.0",
+  "rt": null,
+  "task": "posner_cue",
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 38,
+  "time_elapsed": 39000,
+  "internal_node_id": "0.0-38.0",
+  "rt": null,
+  "task": "posner_gap",
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 39,
+  "time_elapsed": 40000,
+  "internal_node_id": "0.0-39.0",
+  "rt": 380,
+  "task": "posner",
+  "trial": 2,
+  "valid": false,
+  "targetSide": "right",
+  "cueDirection": "right",
+  "soaMs": 300,
+  "response": "j",
+  "correct": true,
+  "practice": true,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 40,
+  "time_elapsed": 41000,
+  "internal_node_id": "0.0-40.0",
+  "rt": null,
+  "task": "feedback",
+  "practice": true,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 41,
+  "time_elapsed": 42000,
+  "internal_node_id": "0.0-41.0",
+  "rt": null,
+  "task": "fixation",
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 42,
+  "time_elapsed": 43000,
+  "internal_node_id": "0.0-42.0",
+  "rt": null,
+  "task": "posner_cue",
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 43,
+  "time_elapsed": 44000,
+  "internal_node_id": "0.0-43.0",
+  "rt": null,
+  "task": "posner_gap",
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 44,
+  "time_elapsed": 45000,
+  "internal_node_id": "0.0-44.0",
+  "rt": 365,
+  "task": "posner",
+  "trial": 1,
+  "valid": true,
+  "targetSide": "left",
+  "cueDirection": "left",
+  "soaMs": 300,
+  "response": "f",
+  "correct": true,
+  "practice": false,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 45,
+  "time_elapsed": 46000,
+  "internal_node_id": "0.0-45.0",
+  "rt": null,
+  "task": "fixation",
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 46,
+  "time_elapsed": 47000,
+  "internal_node_id": "0.0-46.0",
+  "rt": null,
+  "task": "posner_cue",
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 47,
+  "time_elapsed": 48000,
+  "internal_node_id": "0.0-47.0",
+  "rt": null,
+  "task": "posner_gap",
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 48,
+  "time_elapsed": 49000,
+  "internal_node_id": "0.0-48.0",
+  "rt": 380,
+  "task": "posner",
+  "trial": 2,
+  "valid": false,
+  "targetSide": "right",
+  "cueDirection": "right",
+  "soaMs": 300,
+  "response": "j",
+  "correct": true,
+  "practice": false,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 49,
+  "time_elapsed": 50000,
+  "internal_node_id": "0.0-49.0",
+  "rt": null,
+  "task": "fixation",
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 50,
+  "time_elapsed": 51000,
+  "internal_node_id": "0.0-50.0",
+  "rt": null,
+  "task": "posner_cue",
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 51,
+  "time_elapsed": 52000,
+  "internal_node_id": "0.0-51.0",
+  "rt": null,
+  "task": "posner_gap",
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 52,
+  "time_elapsed": 53000,
+  "internal_node_id": "0.0-52.0",
+  "rt": 395,
+  "task": "posner",
+  "trial": 3,
+  "valid": true,
+  "targetSide": "left",
+  "cueDirection": "left",
+  "soaMs": 300,
+  "response": "f",
+  "correct": true,
+  "practice": false,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 53,
+  "time_elapsed": 54000,
+  "internal_node_id": "0.0-53.0",
+  "rt": null,
+  "task": "recall_word",
+  "list": 1,
+  "position": 1,
+  "word": "window",
+  "practice": true,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 54,
+  "time_elapsed": 55000,
+  "internal_node_id": "0.0-54.0",
+  "rt": null,
+  "task": "recall_word",
+  "list": 1,
+  "position": 2,
+  "word": "pencil",
+  "practice": true,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 55,
+  "time_elapsed": 56000,
+  "internal_node_id": "0.0-55.0",
+  "rt": null,
+  "task": "recall_word",
+  "list": 1,
+  "position": 3,
+  "word": "bridge",
+  "practice": true,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 56,
+  "time_elapsed": 57000,
+  "internal_node_id": "0.0-56.0",
+  "rt": null,
+  "task": "recall",
+  "list": 1,
+  "listWords": [
+   "window",
+   "pencil",
+   "bridge"
+  ],
+  "recallText": "window pencil",
+  "recalled": [
+   true,
+   true,
+   false
+  ],
+  "nCorrect": 2,
+  "proportion": 0.6666666666666666,
+  "intrusions": [],
+  "repeats": 0,
+  "practice": true,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-button-response",
+  "trial_index": 57,
+  "time_elapsed": 58000,
+  "internal_node_id": "0.0-57.0",
+  "rt": null,
+  "task": "recall_summary",
+  "recallProportion": 0.5,
+  "nCorrect": 2,
+  "nWords": 3,
+  "practice": true,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 58,
+  "time_elapsed": 59000,
+  "internal_node_id": "0.0-58.0",
+  "rt": null,
+  "task": "recall_word",
+  "list": 1,
+  "position": 1,
+  "word": "alpha",
+  "practice": false,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 59,
+  "time_elapsed": 60000,
+  "internal_node_id": "0.0-59.0",
+  "rt": null,
+  "task": "recall_word",
+  "list": 1,
+  "position": 2,
+  "word": "bravo",
+  "practice": false,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 60,
+  "time_elapsed": 61000,
+  "internal_node_id": "0.0-60.0",
+  "rt": null,
+  "task": "recall_word",
+  "list": 1,
+  "position": 3,
+  "word": "cargo",
+  "practice": false,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 61,
+  "time_elapsed": 62000,
+  "internal_node_id": "0.0-61.0",
+  "rt": null,
+  "task": "recall_word",
+  "list": 1,
+  "position": 4,
+  "word": "delta",
+  "practice": false,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 62,
+  "time_elapsed": 63000,
+  "internal_node_id": "0.0-62.0",
+  "rt": null,
+  "task": "recall",
+  "list": 1,
+  "listWords": [
+   "alpha",
+   "bravo",
+   "cargo",
+   "delta"
+  ],
+  "recallText": "alpha bravo",
+  "recalled": [
+   true,
+   true,
+   false,
+   false
+  ],
+  "nCorrect": 2,
+  "proportion": 0.5,
+  "intrusions": [],
+  "repeats": 0,
+  "practice": false,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 63,
+  "time_elapsed": 64000,
+  "internal_node_id": "0.0-63.0",
+  "rt": null,
+  "task": "recall_word",
+  "list": 2,
+  "position": 1,
+  "word": "eagle",
+  "practice": false,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 64,
+  "time_elapsed": 65000,
+  "internal_node_id": "0.0-64.0",
+  "rt": null,
+  "task": "recall_word",
+  "list": 2,
+  "position": 2,
+  "word": "flute",
+  "practice": false,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 65,
+  "time_elapsed": 66000,
+  "internal_node_id": "0.0-65.0",
+  "rt": null,
+  "task": "recall_word",
+  "list": 2,
+  "position": 3,
+  "word": "grape",
+  "practice": false,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 66,
+  "time_elapsed": 67000,
+  "internal_node_id": "0.0-66.0",
+  "rt": null,
+  "task": "recall_word",
+  "list": 2,
+  "position": 4,
+  "word": "hotel",
+  "practice": false,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 67,
+  "time_elapsed": 68000,
+  "internal_node_id": "0.0-67.0",
+  "rt": null,
+  "task": "recall",
+  "list": 2,
+  "listWords": [
+   "eagle",
+   "flute",
+   "grape",
+   "hotel"
+  ],
+  "recallText": "eagle flute",
+  "recalled": [
+   true,
+   true,
+   false,
+   false
+  ],
+  "nCorrect": 2,
+  "proportion": 0.5,
+  "intrusions": [],
+  "repeats": 0,
+  "practice": false,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-button-response",
+  "trial_index": 68,
+  "time_elapsed": 69000,
+  "internal_node_id": "0.0-68.0",
+  "rt": null,
+  "task": "recall_summary",
+  "recallProportion": 0.375,
+  "nCorrect": 3,
+  "nWords": 8,
+  "practice": false,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 69,
+  "time_elapsed": 70000,
+  "internal_node_id": "0.0-69.0",
+  "rt": null,
+  "task": "fixation",
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "canvas-keyboard-response",
+  "trial_index": 70,
+  "time_elapsed": 71000,
+  "internal_node_id": "0.0-70.0",
+  "rt": null,
+  "task": "staircase_interval",
+  "interval": 1,
+  "practice": true,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "canvas-keyboard-response",
+  "trial_index": 71,
+  "time_elapsed": 72000,
+  "internal_node_id": "0.0-71.0",
+  "rt": null,
+  "task": "isi",
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "canvas-keyboard-response",
+  "trial_index": 72,
+  "time_elapsed": 73000,
+  "internal_node_id": "0.0-72.0",
+  "rt": null,
+  "task": "staircase_interval",
+  "interval": 2,
+  "practice": true,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 73,
+  "time_elapsed": 74000,
+  "internal_node_id": "0.0-73.0",
+  "rt": 610,
+  "task": "staircase",
+  "trial": 1,
+  "level": -7,
+  "contrast": 0.3,
+  "targetInterval": 2,
+  "response": "f",
+  "correct": true,
+  "practice": true,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 74,
+  "time_elapsed": 75000,
+  "internal_node_id": "0.0-74.0",
+  "rt": null,
+  "task": "feedback",
+  "practice": true,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 75,
+  "time_elapsed": 76000,
+  "internal_node_id": "0.0-75.0",
+  "rt": null,
+  "task": "fixation",
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "canvas-keyboard-response",
+  "trial_index": 76,
+  "time_elapsed": 77000,
+  "internal_node_id": "0.0-76.0",
+  "rt": null,
+  "task": "staircase_interval",
+  "interval": 1,
+  "practice": true,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "canvas-keyboard-response",
+  "trial_index": 77,
+  "time_elapsed": 78000,
+  "internal_node_id": "0.0-77.0",
+  "rt": null,
+  "task": "isi",
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "canvas-keyboard-response",
+  "trial_index": 78,
+  "time_elapsed": 79000,
+  "internal_node_id": "0.0-78.0",
+  "rt": null,
+  "task": "staircase_interval",
+  "interval": 2,
+  "practice": true,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 79,
+  "time_elapsed": 80000,
+  "internal_node_id": "0.0-79.0",
+  "rt": 620,
+  "task": "staircase",
+  "trial": 2,
+  "level": -10,
+  "contrast": 0.3,
+  "targetInterval": 1,
+  "response": "j",
+  "correct": false,
+  "practice": true,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 80,
+  "time_elapsed": 81000,
+  "internal_node_id": "0.0-80.0",
+  "rt": null,
+  "task": "feedback",
+  "practice": true,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 81,
+  "time_elapsed": 82000,
+  "internal_node_id": "0.0-81.0",
+  "rt": null,
+  "task": "fixation",
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "canvas-keyboard-response",
+  "trial_index": 82,
+  "time_elapsed": 83000,
+  "internal_node_id": "0.0-82.0",
+  "rt": null,
+  "task": "staircase_interval",
+  "interval": 1,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "canvas-keyboard-response",
+  "trial_index": 83,
+  "time_elapsed": 84000,
+  "internal_node_id": "0.0-83.0",
+  "rt": null,
+  "task": "isi",
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "canvas-keyboard-response",
+  "trial_index": 84,
+  "time_elapsed": 85000,
+  "internal_node_id": "0.0-84.0",
+  "rt": null,
+  "task": "staircase_interval",
+  "interval": 2,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 85,
+  "time_elapsed": 86000,
+  "internal_node_id": "0.0-85.0",
+  "rt": 610,
+  "task": "staircase",
+  "trial": 1,
+  "level": -7,
+  "contrast": 0.3,
+  "targetInterval": 2,
+  "response": "f",
+  "correct": true,
+  "practice": false,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 86,
+  "time_elapsed": 87000,
+  "internal_node_id": "0.0-86.0",
+  "rt": null,
+  "task": "fixation",
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "canvas-keyboard-response",
+  "trial_index": 87,
+  "time_elapsed": 88000,
+  "internal_node_id": "0.0-87.0",
+  "rt": null,
+  "task": "staircase_interval",
+  "interval": 1,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "canvas-keyboard-response",
+  "trial_index": 88,
+  "time_elapsed": 89000,
+  "internal_node_id": "0.0-88.0",
+  "rt": null,
+  "task": "isi",
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "canvas-keyboard-response",
+  "trial_index": 89,
+  "time_elapsed": 90000,
+  "internal_node_id": "0.0-89.0",
+  "rt": null,
+  "task": "staircase_interval",
+  "interval": 2,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 90,
+  "time_elapsed": 91000,
+  "internal_node_id": "0.0-90.0",
+  "rt": 620,
+  "task": "staircase",
+  "trial": 2,
+  "level": -10,
+  "contrast": 0.3,
+  "targetInterval": 1,
+  "response": "j",
+  "correct": false,
+  "practice": false,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 91,
+  "time_elapsed": 92000,
+  "internal_node_id": "0.0-91.0",
+  "rt": null,
+  "task": "fixation",
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "canvas-keyboard-response",
+  "trial_index": 92,
+  "time_elapsed": 93000,
+  "internal_node_id": "0.0-92.0",
+  "rt": null,
+  "task": "staircase_interval",
+  "interval": 1,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "canvas-keyboard-response",
+  "trial_index": 93,
+  "time_elapsed": 94000,
+  "internal_node_id": "0.0-93.0",
+  "rt": null,
+  "task": "isi",
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "canvas-keyboard-response",
+  "trial_index": 94,
+  "time_elapsed": 95000,
+  "internal_node_id": "0.0-94.0",
+  "rt": null,
+  "task": "staircase_interval",
+  "interval": 2,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 95,
+  "time_elapsed": 96000,
+  "internal_node_id": "0.0-95.0",
+  "rt": 630,
+  "task": "staircase",
+  "trial": 3,
+  "level": -7,
+  "contrast": 0.3,
+  "targetInterval": 2,
+  "response": "f",
+  "correct": true,
+  "practice": false,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-button-response",
+  "trial_index": 96,
+  "time_elapsed": 97000,
+  "internal_node_id": "0.0-96.0",
+  "rt": null,
+  "task": "threshold",
+  "thresholdLevel": -11.5,
+  "thresholdContrast": 0.266,
+  "usedFallback": false,
+  "nReversals": 10,
+  "reversals": [
+   -10,
+   -13,
+   -10,
+   -11.5,
+   -10,
+   -11.5,
+   -10,
+   -11.5,
+   -10,
+   -11.5
+  ],
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 97,
+  "time_elapsed": 98000,
+  "internal_node_id": "0.0-97.0",
+  "rt": null,
+  "task": "fixation",
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "canvas-keyboard-response",
+  "trial_index": 98,
+  "time_elapsed": 99000,
+  "internal_node_id": "0.0-98.0",
+  "rt": 570,
+  "task": "yesno",
+  "trial": 1,
+  "isSignal": true,
+  "contrast": 0.266,
+  "response": "f",
+  "respondedYes": true,
+  "correct": true,
+  "practice": false,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 99,
+  "time_elapsed": 100000,
+  "internal_node_id": "0.0-99.0",
+  "rt": null,
+  "task": "fixation",
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "canvas-keyboard-response",
+  "trial_index": 100,
+  "time_elapsed": 101000,
+  "internal_node_id": "0.0-100.0",
+  "rt": 590,
+  "task": "yesno",
+  "trial": 2,
+  "isSignal": false,
+  "contrast": 0,
+  "response": "j",
+  "respondedYes": false,
+  "correct": true,
+  "practice": false,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 101,
+  "time_elapsed": 102000,
+  "internal_node_id": "0.0-101.0",
+  "rt": null,
+  "task": "fixation",
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "canvas-keyboard-response",
+  "trial_index": 102,
+  "time_elapsed": 103000,
+  "internal_node_id": "0.0-102.0",
+  "rt": 610,
+  "task": "yesno",
+  "trial": 3,
+  "isSignal": true,
+  "contrast": 0.266,
+  "response": "f",
+  "respondedYes": true,
+  "correct": true,
+  "practice": false,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-keyboard-response",
+  "trial_index": 103,
+  "time_elapsed": 104000,
+  "internal_node_id": "0.0-103.0",
+  "rt": null,
+  "task": "fixation",
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "canvas-keyboard-response",
+  "trial_index": 104,
+  "time_elapsed": 105000,
+  "internal_node_id": "0.0-104.0",
+  "rt": 630,
+  "task": "yesno",
+  "trial": 4,
+  "isSignal": false,
+  "contrast": 0,
+  "response": "j",
+  "respondedYes": false,
+  "correct": true,
+  "practice": false,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ },
+ {
+  "trial_type": "html-button-response",
+  "trial_index": 105,
+  "time_elapsed": 106000,
+  "internal_node_id": "0.0-105.0",
+  "rt": null,
+  "task": "timing",
+  "timing": {
+   "tasks": {
+    "stroop": {
+     "ms": 60000
+    },
+    "nback": {
+     "ms": 60000
+    },
+    "posner": {
+     "ms": 60000
+    },
+    "recall": {
+     "ms": 60000
+    },
+    "contrast": {
+     "ms": 60000
+    }
+   },
+   "totalTaskMs": 300000,
+   "unfinished": []
+  },
+  "refresh": {
+   "hz": 59.94,
+   "medianFrameMs": 16.68,
+   "sdMs": 0.21,
+   "nDroppedFrames": 0,
+   "nFrames": 60,
+   "plausible": true,
+   "nominalHz": 60
+  },
+  "viewingDistanceInstructedCm": 57,
+  "innerWidth": 1440,
+  "innerHeight": 800,
+  "devicePixelRatio": 2,
+  "fullscreen": true,
+  "participantCode": "K7M2QX9P",
+  "sessionNumber": 3,
+  "questionnaire": {
+   "hoursSlept": 7.5,
+   "bedTime": "23:30",
+   "wakeTime": "07:00",
+   "kss": 4,
+   "caffeine": false,
+   "device": "laptop"
+  },
+  "sessionMetadata": {
+   "timestamp": "2026-11-18T15:30:00.000Z",
+   "timezone": "America/Los_Angeles",
+   "userAgent": "SyntheticFixture/1.0",
+   "screenWidth": 1440,
+   "screenHeight": 900,
+   "jsPsychVersion": "8.4.0"
+  },
+  "taskOrder": [
+   "stroop",
+   "nback",
+   "posner",
+   "recall",
+   "contrast"
+  ]
+ }
+]
