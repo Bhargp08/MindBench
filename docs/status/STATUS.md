@@ -16,5 +16,6 @@
 - Written: `docs/ethics/self_pilot_policy.md`, `docs/ethics/data_management.md` (concise).
 - **Deferred:** the consent form. A draft `consent_form.md` is kept for later; its lint tests are skipped with `pytest.mark.skip` ("Deferred until other participants join; Bharg approved Nov 17, 2026"). Must be finalized, approved and un-skipped before any other participant takes part.
 - The "no institutional approval claims" guard stays active.
-- Open placeholders: retention end date (data management); consent contact method (deferred form).
+- Retention set (Bharg, Nov 17, 2026): raw data until Dec 31, 2028 or 2 years after write-up publication, whichever is later, then deleted; open data on Zenodo kept indefinitely.
+- Open placeholder: consent contact method (deferred form).
 - Pending: Cursor review and Bharg's approval.
