@@ -37,7 +37,7 @@ export function buildPosnerTimeline({ getSeed, nValid = 96, nInvalid = 24 }) {
       i = 0;
       return `<p>Task 2 of 5: where is the dot?</p>
         <p>Keep your eyes on the middle. An arrow will appear, then a dot will appear in the left or right box.
-        The arrow is usually right, but not always.</p>
+        The arrow usually points to where the dot will appear, but not always.</p>
         <p>Press <b>F</b> if the dot is in the <b>left</b> box and <b>J</b> if it is in the <b>right</b> box, as fast and accurately as you can.</p>`;
     },
   };
