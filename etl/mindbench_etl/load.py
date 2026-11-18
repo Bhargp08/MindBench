@@ -5,7 +5,9 @@ from pathlib import Path
 
 from .validate import ValidationError, parse_json_bytes, validate_session
 
-PILOT_SESSIONS = 10
+# No formal pilot was run. Sessions 1-2 are smoke tests on the deployed site (flagged is_pilot = 1) and are excluded
+# from analysis; confirmatory sessions are 3-44. Change with --pilot-sessions if the smoke tests were run differently.
+PILOT_SESSIONS = 2
 SESSION_LEVEL_KEYS = ("participantCode", "sessionNumber", "questionnaire", "sessionMetadata", "taskOrder")
 
 

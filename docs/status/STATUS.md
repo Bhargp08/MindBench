@@ -94,7 +94,7 @@
 
 ## MB-11: Free recall (merged)
 - 2,080-word pool built from the EFF Large Wordlist (`src/data/wordpool.json`, script `scripts/build-wordpool.mjs`, source sha256 recorded): 520 words each of length 5-8, no two words within one edit. Licence recorded in `docs/design/wordpool.md`: CC BY per EFF's site policy, **not confirmed per file** (policy text/badge disagree on version; list page has no licence line; article cites third-party Ghent data). Attribution in the JSON and README.
-- Tested logic: scorer ("Apple ", "aple", "APPLE" correct; "apply" incorrect when it is a pool word; typo tolerance only for 5+ letter words; deterministic ties; no double credit), exact serial-position proportions, session proportion (P2), and a fixed study-wide assignment with **no list reuse across all 52 sessions including the 10 pilot sessions** (every pool word used exactly once; lists length-matched). 147 JS tests pass.
+- Tested logic: scorer ("Apple ", "aple", "APPLE" correct; "apply" incorrect when it is a pool word; typo tolerance only for 5+ letter words; deterministic ties; no double credit), exact serial-position proportions, session proportion (P2), and a fixed study-wide assignment with **no list reuse across 52 session slots** (every pool word used once; 44 planned sessions after the scope change—see `deviations.md` S2). 193 JS tests pass after scope PR.
 - Shell (`src/tasks/recall.js`) wired into the battery: 2 lists of 20 words at 2 s per word, no distractor, 90 s typed recall with an "I'm done" button; logs per-list score, intrusions and a session summary (`recall_summary`).
 - Verified in a browser harness (2 lists of 6 words, scripted typing): words shown in order, typo and punctuation handled, intrusions flagged, summary 6/12 = 0.5. Real study lists load for sessions 1 and 52 and session 53 is refused. Full 20-word/90 s timing not run.
 - Limitations: word frequency is not controlled (design asked for it); the pool had a keyword check only for sensitive words and contains a few brand/unusual words.
@@ -119,4 +119,13 @@
 - **Not tested live:** the real Google Drive download (no credentials; API facts checked against Google's docs). Needs Bharg's one-time service-account setup (external) in `docs/design/etl.md`.
 - Hand-offs: MB-15 must exclude `practice = 1` rows and apply the exclusion rules into `excluded_reason`.
 - Cursor review (Nov 18, 2026): acceptance criteria met; TDD preserved (empty diff on `etl/tests/` vs `19b5526`); local ETL pytest 88/88; fixture task counts sum to 106; credentials/env-only pattern verified in `test_download.py`.
+- Approved by Bharg and merged after Cursor review (Nov 18, 2026).
+
+## Scope change: no formal pilot (merged, Bharg, Nov 18, 2026)
+- MB-13 (10 self-pilot sessions, think-aloud study, interviews, qualitative coding) is **skipped**. Replaced by 1-2 smoke-test sessions on the deployed site to confirm saving works. Recorded as deviation S1 in `docs/design/deviations.md`; preregistration statements in `docs/design/prereg_notes.md`.
+- Code and tests changed first: ETL default `is_pilot` cutoff 10 -> 2 (otherwise the first 8 real confirmatory sessions would have been flagged pilot and excluded); recall list constants now 44 planned sessions (2 smoke + 42 confirmatory), the 2,080-word pool is kept with 320 spare words. ETL 90 tests, JS 193 tests pass.
+- Docs updated: `design.md` (sections 1, 3, 5, 6, 8), `etl.md`, `wordpool.md`, `battery.md`, `data_management.md`.
+- **Caveat for the smoke tests:** `is_pilot` follows the session number from a per-browser counter. Run them in the browser profile used for the study, or real sessions could be flagged pilot (see `etl.md`).
+- Open: the deferred consent form draft still mentions pilot participants and think-aloud notes; revisit only if other participants join. The GitHub Pages deploy is still not enabled (needs Bharg).
+- Cursor review (Nov 18, 2026): `deviations.md` S1–S3 and `prereg_notes.md` satisfy prereg-integrity for pre-registration scope; ETL `PILOT_SESSIONS=2` + CLI regression test; recall lists 44 planned / 320 spare verified in tests; local ETL 90/90, JS 193/193.
 - Approved by Bharg and merged after Cursor review (Nov 18, 2026).

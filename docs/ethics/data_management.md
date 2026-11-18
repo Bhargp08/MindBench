@@ -9,7 +9,7 @@ Random 8-character participant code (no ambiguous characters), generated in MB-0
 Raw data goes through DataPipe to private Google Drive (D1). Downloads run locally with credentials in environment variables. Local copies live in gitignored `data/`. The repo and CI hold simulated data only. Sleep and sleepiness data are health-related and stay private.
 
 ## Retention
-Raw data is kept until Dec 31, 2028 or 2 years after the write-up is published, whichever is later, then deleted. De-identified open data on Zenodo is kept indefinitely. Pilot sessions are flagged `is_pilot` and excluded from confirmatory analysis.
+Raw data is kept until Dec 31, 2028 or 2 years after the write-up is published, whichever is later, then deleted. De-identified open data on Zenodo is kept indefinitely. Smoke-test sessions (the first 2, flagged `is_pilot`) are excluded from analysis; no formal pilot was run.
 
 ## De-identification
 Before any release: replace codes with new unrelated ones, drop free-text fields, reduce timestamps to the date or coarser (final rule in MB-24), and coarsen device and browser details. A check script verifies this.

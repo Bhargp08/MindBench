@@ -44,25 +44,35 @@ def test_two_sessions_and_a_second_participant_coexist(db, session3, session11):
 
 
 class TestPilotFlag:
+    """is_pilot marks the 1-2 smoke-test sessions run on the deployed site (no formal pilot was run)."""
+
     def flag(self, db, n, rows):
         load_session(db, with_session(rows, session=n))
         return db.execute("SELECT is_pilot FROM sessions WHERE session_number = ?", (n,)).fetchone()[0]
 
-    def test_pilot_sessions_get_is_pilot_1(self, db, session3):
-        assert self.flag(db, 3, session3) == 1
+    def test_default_cutoff_is_two_sessions(self):
+        from mindbench_etl.load import PILOT_SESSIONS
 
-    def test_confirmatory_sessions_get_is_pilot_0(self, db, session11):
+        assert PILOT_SESSIONS == 2
+
+    def test_smoke_test_sessions_get_is_pilot_1(self, db, session3):
+        assert self.flag(db, 1, session3) == 1
+        assert self.flag(db, 2, session3) == 1
+
+    def test_confirmatory_sessions_get_is_pilot_0(self, db, session3, session11):
+        assert self.flag(db, 3, session3) == 0  # the first confirmatory session must NOT be flagged
         assert self.flag(db, 11, session11) == 0
 
-    def test_boundary_is_session_10_versus_11(self, db, session3):
-        assert self.flag(db, 1, session3) == 1
-        assert self.flag(db, 10, session3) == 1
-        assert self.flag(db, 11, session3) == 0
-        assert self.flag(db, 52, session3) == 0
+    def test_boundary_is_session_2_versus_3(self, db, session3):
+        assert self.flag(db, 2, session3) == 1
+        assert self.flag(db, 3, session3) == 0
+        assert self.flag(db, 44, session3) == 0
 
-    def test_number_of_pilot_sessions_is_configurable(self, db, session3):
+    def test_number_of_smoke_test_sessions_is_configurable(self, db, session3):
+        load_session(db, with_session(session3, session=3), pilot_sessions=4)
+        assert db.execute("SELECT is_pilot FROM sessions").fetchone()[0] == 1
         load_session(db, with_session(session3, session=5), pilot_sessions=4)
-        assert db.execute("SELECT is_pilot FROM sessions").fetchone()[0] == 0
+        assert db.execute("SELECT is_pilot FROM sessions WHERE session_number = 5").fetchone()[0] == 0
 
 
 def test_excluded_reason_starts_null_and_survives_a_reload(db, session3):

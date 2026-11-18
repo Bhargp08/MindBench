@@ -1,15 +1,25 @@
 import { describe, it, expect } from "vitest";
 import pool from "../src/data/wordpool.json";
-import { buildRecallAssignments, getSessionLists, RECALL_ASSIGNMENT_SEED, N_SESSIONS, PILOT_SESSIONS } from "../src/lib/recallLists.js";
+import {
+  buildRecallAssignments,
+  getSessionLists,
+  RECALL_ASSIGNMENT_SEED,
+  N_SESSIONS,
+  SMOKE_TEST_SESSIONS,
+  CONFIRMATORY_SESSIONS,
+  PLANNED_SESSIONS,
+} from "../src/lib/recallLists.js";
 
 const flat = (assignments) => assignments.flatMap((session) => session.flatMap((list) => list));
 
-describe("buildRecallAssignments (full study: 52 sessions x 2 lists x 20 words, pilot sessions included)", () => {
+describe("buildRecallAssignments (52 session slots x 2 lists x 20 words; the study uses 44 of them)", () => {
   const a = buildRecallAssignments({ pool: pool.words, seed: 1 });
 
-  it("has 52 sessions of 2 lists of 20 words", () => {
+  it("has 52 session slots of 2 lists of 20 words; the study plans 44 (42 confirmatory + 2 smoke tests)", () => {
     expect(N_SESSIONS).toBe(52);
-    expect(PILOT_SESSIONS).toBe(10);
+    expect(SMOKE_TEST_SESSIONS).toBe(2);
+    expect(CONFIRMATORY_SESSIONS).toBe(42);
+    expect(PLANNED_SESSIONS).toBe(44);
     expect(a).toHaveLength(52);
     for (const session of a) {
       expect(session).toHaveLength(2);
@@ -17,18 +27,28 @@ describe("buildRecallAssignments (full study: 52 sessions x 2 lists x 20 words, 
     }
   });
 
-  it("never reuses a word or a list: all 2,080 words appear exactly once across all sessions", () => {
+  it("never reuses a word or a list: all 2,080 words appear exactly once across the 52 slots", () => {
     const words = flat(a);
     expect(words).toHaveLength(2080);
     expect(new Set(words).size).toBe(2080);
     expect(new Set(words)).toEqual(new Set(pool.words));
   });
 
-  it("keeps the 10 pilot sessions and the 42 confirmatory sessions word-disjoint", () => {
-    const pilot = new Set(flat(a.slice(0, PILOT_SESSIONS)));
-    const confirmatory = flat(a.slice(PILOT_SESSIONS));
-    expect(pilot.size).toBe(400);
-    for (const w of confirmatory) expect(pilot.has(w)).toBe(false);
+  it("needs only 42 sessions x 40 words = 1,680 words for the confirmatory sessions (3-44), disjoint from the smoke tests (1-2)", () => {
+    const smoke = new Set(flat(a.slice(0, SMOKE_TEST_SESSIONS)));
+    const confirmatory = flat(a.slice(SMOKE_TEST_SESSIONS, PLANNED_SESSIONS));
+    expect(smoke.size).toBe(80);
+    expect(confirmatory).toHaveLength(1680);
+    expect(new Set(confirmatory).size).toBe(1680);
+    for (const w of confirmatory) expect(smoke.has(w)).toBe(false);
+  });
+
+  it("leaves 320 spare words (session slots 45-52) disjoint from the 44 planned sessions", () => {
+    const planned = new Set(flat(a.slice(0, PLANNED_SESSIONS)));
+    const spare = flat(a.slice(PLANNED_SESSIONS));
+    expect(planned.size).toBe(1760);
+    expect(spare).toHaveLength(320);
+    for (const w of spare) expect(planned.has(w)).toBe(false);
   });
 
   it("matches word length across lists: every list has 5 words of each length 5, 6, 7 and 8", () => {

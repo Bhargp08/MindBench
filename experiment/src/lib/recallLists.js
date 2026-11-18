@@ -1,8 +1,12 @@
 import pool from "../data/wordpool.json";
 import { createRng, shuffle } from "./rng.js";
 
-export const N_SESSIONS = 52; // 10 pilot + 42 confirmatory
-export const PILOT_SESSIONS = 10;
+// No formal pilot was run. The study uses 44 sessions: 2 smoke tests on the deployed site (sessions 1-2) and 42
+// confirmatory sessions (3-44). The 2,080-word pool has 52 session slots, so slots 45-52 (320 words) are spare.
+export const SMOKE_TEST_SESSIONS = 2;
+export const CONFIRMATORY_SESSIONS = 42;
+export const PLANNED_SESSIONS = SMOKE_TEST_SESSIONS + CONFIRMATORY_SESSIONS;
+export const N_SESSIONS = 52; // session slots the pool can supply without reuse
 export const LISTS_PER_SESSION = 2;
 export const LIST_LENGTH = 20;
 export const RECALL_ASSIGNMENT_SEED = 20261117; // fixed for the whole study so every device gets the same lists
