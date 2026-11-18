@@ -3,12 +3,10 @@ import re
 import subprocess
 from pathlib import Path
 
-import pytest
 
 ROOT = Path(__file__).resolve().parents[2]
 ETHICS = ROOT / "docs" / "ethics"
 
-CONSENT_DEFERRED = "Deferred until other participants join; Bharg approved Nov 17, 2026"
 
 CONSENT_HEADINGS = [
     "Purpose",
@@ -61,7 +59,6 @@ def test_required_headings_present():
             assert any(h.lower() in x for x in have), f"{name}: missing heading '{h}'"
 
 
-@pytest.mark.skip(reason=CONSENT_DEFERRED)
 def test_consent_form_headings_present():
     path = ETHICS / "consent_form.md"
     assert path.is_file(), "missing docs/ethics/consent_form.md"
@@ -70,7 +67,6 @@ def test_consent_form_headings_present():
         assert any(h.lower() in x for x in have), f"consent_form.md: missing heading '{h}'"
 
 
-@pytest.mark.skip(reason=CONSENT_DEFERRED)
 def test_open_data_is_separate_checkbox():
     text = (ETHICS / "consent_form.md").read_text(encoding="utf-8")
     assert "- [ ]" in text, "consent form needs checkbox(es)"

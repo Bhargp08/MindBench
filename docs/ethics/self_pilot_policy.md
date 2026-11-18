@@ -1,6 +1,6 @@
 # Self-Experiment Policy
 
-Status: DRAFT for Bharg's approval.
+Status: approved (Bharg, Nov 17, 2026).
 
 This is a personal, preregistered self-experiment (N = 1). No institutional review board review has been obtained; never describe it as institutionally reviewed or overseen.
 

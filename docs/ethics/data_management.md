@@ -1,6 +1,6 @@
 # Data Management Plan
 
-Status: DRAFT for Bharg's approval. Current scope: Bharg is the only participant.
+Status: approved (Bharg, Nov 17, 2026). Current scope: Bharg is the only participant.
 
 ## ID scheme
 Random 8-character participant code (no ambiguous characters), generated in MB-06. No names, emails or IP addresses in the dataset. Any code-to-person key stays offline, never in the repo.
