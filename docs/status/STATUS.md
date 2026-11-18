@@ -41,3 +41,9 @@
 - Design doc updated to match (primary/secondary outcomes, H1/H2/H3, Holm family of 2).
 - Cursor fix before merge: Holm comparison test uses n_sims=2000 (spec minimum); VERSIONS.md lists exact numpy/scipy/matplotlib pins; MB-03 STATUS notes 5→2 primary supersession.
 - Approved by Bharg and merged after Cursor review (Nov 17, 2026).
+
+## MB-06: Battery scaffold (PR open)
+- Implemented and tested (24 JS tests): config loader, participant codes, questionnaire validator, mock saver, session metadata, info-screen text. Plus a jsPsych 8.4.0 shell (fullscreen, info screen, participant code, questionnaire, finish) built with Vite 5.4.21.
+- Verified by hand in the browser (mock mode): one session produced one JSON file with every field.
+- DataPipe: the right package is the **extension** `@jspsych/extension-pipe` 0.2.0, not the plugin (see `docs/design/datapipe.md`). Production saver not yet written (needs its own failing tests and Bharg's approval).
+- Not in this unit: tasks (MB-07-MB-11), refresh-rate measurement (timing log in MB-12), DataPipe dashboard setup (Bharg).
