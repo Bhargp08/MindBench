@@ -15,6 +15,7 @@ import { buildContrastTimeline, seedFrom } from "./tasks/contrast.js";
 import { buildPosnerTimeline } from "./tasks/posner.js";
 import { buildStroopTimeline } from "./tasks/stroop.js";
 import { buildNBackTimeline } from "./tasks/nback.js";
+import { buildRecallTimeline } from "./tasks/recall.js";
 
 const JSPSYCH_VERSION = "8.4.0";
 
@@ -195,9 +196,10 @@ const timeline = [
   ...buildPosnerTimeline({ getSeed: () => seedFrom(state.participantCode, state.sessionNumber) }),
   ...buildStroopTimeline({ getSeed: () => seedFrom(state.participantCode, state.sessionNumber) }),
   ...buildNBackTimeline({ getSeed: () => seedFrom(state.participantCode, state.sessionNumber) }),
+  ...buildRecallTimeline({ jsPsych, getSessionNumber: () => state.sessionNumber }),
   {
     type: htmlButtonResponse,
-    stimulus: "<p>Contrast, cueing, color and letter tasks complete. The last task and the final assembly are added in later steps of the project (MB-11, MB-12).</p>",
+    stimulus: "<p>All five tasks complete. Counterbalanced task order, practice blocks and timing checks are added in the next step of the project (MB-12).</p>",
     choices: ["Finish"],
   },
 ];
