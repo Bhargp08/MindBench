@@ -8,7 +8,7 @@ import { createRng, shuffle } from "../src/lib/rng.js";
 const SOURCE_SHA256 = "addd35536511597a02fa0a9ff1e5284677b8883b83e986e43f15a3db996b903e";
 const SEED = 20261117;
 const LENGTHS = [5, 6, 7, 8];
-const PER_LENGTH = 520; // 2,080 words = 52 sessions x 2 lists x 20 words
+const PER_LENGTH = 520; // 2,080 words = 52 session slots x 2 lists x 20 words (the study uses 44; the rest are spare)
 
 const path = process.argv[2];
 if (!path) throw new Error("Pass the path to eff_large_wordlist.txt");

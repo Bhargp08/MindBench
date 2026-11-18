@@ -23,7 +23,7 @@ def main(argv=None):
     ld = sub.add_parser("load", help="validate and load downloaded files into SQLite (idempotent)")
     ld.add_argument("--raw", default="data/raw")
     ld.add_argument("--db", default="data/mindbench.sqlite")
-    ld.add_argument("--pilot-sessions", type=int, default=PILOT_SESSIONS)
+    ld.add_argument("--pilot-sessions", type=int, default=PILOT_SESSIONS, help="sessions 1..N are flagged is_pilot (smoke-test runs); default 2")
     i = sub.add_parser("init-db", help="create an empty database")
     i.add_argument("--db", default="data/mindbench.sqlite")
     args = p.parse_args(argv)

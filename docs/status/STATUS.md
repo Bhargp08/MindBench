@@ -120,3 +120,10 @@
 - Hand-offs: MB-15 must exclude `practice = 1` rows and apply the exclusion rules into `excluded_reason`.
 - Cursor review (Nov 18, 2026): acceptance criteria met; TDD preserved (empty diff on `etl/tests/` vs `19b5526`); local ETL pytest 88/88; fixture task counts sum to 106; credentials/env-only pattern verified in `test_download.py`.
 - Approved by Bharg and merged after Cursor review (Nov 18, 2026).
+
+## Scope change: no formal pilot (PR open, Bharg, Nov 18, 2026)
+- MB-13 (10 self-pilot sessions, think-aloud study, interviews, qualitative coding) is **skipped**. Replaced by 1-2 smoke-test sessions on the deployed site to confirm saving works. Recorded as deviation S1 in `docs/design/deviations.md`; preregistration statements in `docs/design/prereg_notes.md`.
+- Code and tests changed first: ETL default `is_pilot` cutoff 10 -> 2 (otherwise the first 8 real confirmatory sessions would have been flagged pilot and excluded); recall list constants now 44 planned sessions (2 smoke + 42 confirmatory), the 2,080-word pool is kept with 320 spare words. ETL 90 tests, JS 193 tests pass.
+- Docs updated: `design.md` (sections 1, 3, 5, 6, 8), `etl.md`, `wordpool.md`, `battery.md`, `data_management.md`.
+- **Caveat for the smoke tests:** `is_pilot` follows the session number from a per-browser counter. Run them in the browser profile used for the study, or real sessions could be flagged pilot (see `etl.md`).
+- Open: the deferred consent form draft still mentions pilot participants and think-aloud notes; revisit only if other participants join. The GitHub Pages deploy is still not enabled (needs Bharg).

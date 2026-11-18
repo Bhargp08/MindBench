@@ -25,5 +25,5 @@ Logged in the `setup` and final `timing` rows: refresh-rate estimate from `reque
 
 ## Not done here
 - GitHub Pages deploy: **not enabled** (needs Bharg's approval; `pages.yml` stays disabled).
-- Full-length session timing and real-display checks (done in MB-13 on real hardware).
+- Full-length session timing and real-display checks: not done; the timing log of the 1-2 smoke-test sessions on the deployed site will give the first real-hardware numbers (MB-13 was skipped, see `deviations.md`).
 - Dev-only `?quick` mode shortens every block for testing; it is ignored in production builds.

@@ -32,7 +32,7 @@ Input is the JSON array of jsPsych rows the experiment uploads (or the dev mock 
 ## Loading (`load.py`)
 - **Idempotent:** re-loading a file upserts on the keys; counts do not change; rows missing from a newer upload are removed.
 - **Atomic:** a file is validated before any write, and each file loads in one transaction, so a bad file or a database error part-way leaves nothing behind.
-- **Pilot flag:** `is_pilot = 1` for sessions 1-10, `0` from session 11 (`--pilot-sessions` changes the cut).
+- **Pilot flag:** `is_pilot = 1` for sessions 1-2 (the smoke-test runs; no formal pilot was run), `0` from session 3 (`--pilot-sessions` changes the cut). The flag follows the **session number**, which comes from a per-browser counter: run the smoke tests in the same browser profile you will use for the study so the counter continues at 3. If the counter restarts (cleared site data, another browser or device), real sessions would be flagged as pilot; check with `SELECT session_number, is_pilot FROM sessions` and re-load with `--pilot-sessions 0` (or correct the flag).
 - **`excluded_reason` is `NULL` at load** and is never overwritten by a reload. The preregistered exclusion rules are applied in MB-15.
 - **Practice rows** keep their `practice = 1` tag; rows without a tag (fixation, cues) have `practice = NULL`. **MB-15 must exclude practice rows** and use only rows with `practice = 0`.
 

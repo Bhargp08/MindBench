@@ -15,7 +15,7 @@
 - Practical position: reuse for this research with attribution is low-risk. Revisit before releasing the word list on its own (the open data release will include the words participants saw, with attribution).
 
 ## Selection rules
-Alphabetic words of 5-8 letters (4 hyphenated or short words excluded); greedy alphabetical removal of any word within one edit of a kept word (so typo matching is never ambiguous across the pool); 520 words per length chosen by seeded shuffle; stored alphabetically. 2,080 = 52 sessions (10 pilot + 42 confirmatory) x 2 lists x 20 words, **each word used exactly once** (no list reuse).
+Alphabetic words of 5-8 letters (4 hyphenated or short words excluded); greedy alphabetical removal of any word within one edit of a kept word (so typo matching is never ambiguous across the pool); 520 words per length chosen by seeded shuffle; stored alphabetically. 2,080 = 52 session slots x 2 lists x 20 words, **each word used at most once** (no list reuse). The study plans 44 sessions (42 confirmatory x 40 = 1,680 words, plus up to 2 smoke-test sessions x 40 = 80), so **320 words (slots 45-52) are spare**. No formal pilot was run (see `deviations.md`).
 
 ## Lists
 Fixed study-wide assignment (`recallLists.js`, seed 20261117): every list has exactly 5 words of each length 5, 6, 7, 8 (length-matched); word order inside a list is shuffled. Session N always gets the same 2 lists; sessions outside 1-52 are refused rather than reusing words.

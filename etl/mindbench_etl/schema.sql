@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS participants (
 CREATE TABLE IF NOT EXISTS sessions (
     participant_code TEXT NOT NULL REFERENCES participants (participant_code),
     session_number INTEGER NOT NULL CHECK (session_number >= 1),
-    is_pilot INTEGER NOT NULL CHECK (is_pilot IN (0, 1)),   -- 1 for the 10 pilot sessions (excluded from confirmatory analysis)
+    is_pilot INTEGER NOT NULL CHECK (is_pilot IN (0, 1)),   -- 1 for the first 2 sessions (smoke tests on the deployed site, not a formal pilot); excluded from analysis
     excluded_reason TEXT,                                  -- NULL unless a preregistered exclusion rule (MB-15) or a manual note sets it
     timestamp TEXT,
     timezone TEXT,
