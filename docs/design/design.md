@@ -31,36 +31,42 @@ All values below are **[design choice]** unless noted. They are chosen to fit th
 Each task has a short instruction screen and a practice block with feedback (MB-12).
 
 ## 4. Hypotheses and outcomes
-**Primary outcomes (one per task; preregistered):**
+**Primary outcomes (2; preregistered; the only members of the Holm family):**
 | ID | Outcome (per session) | Definition |
 |---|---|---|
-| P1 | Contrast threshold | Mean of last 6 reversals (dB or contrast units; lower = better) |
-| P2 | Posner validity effect | Mean correct invalid RT minus mean correct valid RT (ms), after trimming |
-| P3 | Stroop interference | Mean correct incongruent RT minus mean correct congruent RT (ms), after trimming |
-| P4 | 2-back d' | z(H) - z(FA) with log-linear correction |
-| P5 | Recall proportion | Correct words / 40 (also serial-position curve, secondary) |
+| P1 | 2-back d' | z(H) - z(FA) with log-linear correction (higher = better) |
+| P2 | Recall proportion | Correct words / 40 (higher = better; serial-position curve is secondary) |
 
-**Secondary:** SDT d' and c (yes/no block), Stroop accuracy interference, mean RT per task, DDM parameters (H3), sleepiness effects.
+**Why these two (decision by Bharg, Nov 17, 2026; evidence in `power.md`):** among the battery's outcomes they have the strongest prior evidence of sensitivity to sleep loss in the Lim & Dinges (2010) meta-analysis of 24-48 h total sleep deprivation (working-memory accuracy g = -0.555; short-term memory recall g = -0.383, with directly matching n-back and verbal recall studies). That evidence is from total sleep deprivation; effects of natural sleep variation are probably smaller.
 
-- **H1 (sleep, directional):** more prior-night sleep predicts better performance: lower P1, smaller P3, higher P4 and P5. For P2 (validity effect) no reliable direction is established **[UNVERIFIED]**, so H1 for P2 is two-sided.
-- **H2 (time of day, two-sided):** AM and PM differ on P1-P5 (no direction assumed: time-of-day effects are task-dependent). Tested with paired AM/PM comparisons within day.
-- **H3 (mechanism, Stroop and Posner):** if sleep or time of day has an effect on RT performance, it acts on drift rate v, boundary separation a, both, or neither. Expectation that less sleep lowers drift rate is **[UNVERIFIED]**. "Cannot tell" is an acceptable answer.
+**Secondary / exploratory (outside the Holm family; no multiplicity correction; labeled exploratory in all reports):**
+| ID | Outcome | Definition |
+|---|---|---|
+| S1 | Stroop interference | Mean correct incongruent RT minus mean correct congruent RT (ms), after trimming |
+| S2 | Posner validity effect | Mean correct invalid RT minus mean correct valid RT (ms), after trimming |
+| S3 | Contrast threshold | Mean of last 6 reversals (lower = better) |
+| S4 | SDT d' and criterion c | Yes/no block, log-linear corrected |
+| S5 | Other | Stroop accuracy interference, mean RT per task, recall serial-position curve, DDM parameters (H3), sleepiness effects |
+
+- **H1 (sleep, directional, confirmatory):** more prior-night sleep predicts better performance: higher P1 and higher P2. Directional predictions for the secondary outcomes (lower S1 interference, lower S3 threshold; S2 two-sided, no reliable direction **[UNVERIFIED]**) are exploratory.
+- **H2 (time of day, two-sided, confirmatory):** AM and PM differ on P1 and P2 (no direction assumed: time-of-day effects are task-dependent). Tested with paired AM/PM comparisons within day. The same comparison on S1-S3 is exploratory.
+- **H3 (mechanism, Stroop and Posner; exploratory, outside the Holm family):** if sleep or time of day has an effect on RT performance (S1, S2), it acts on drift rate v, boundary separation a, both, or neither. Expectation that less sleep lowers drift rate is **[UNVERIFIED]**. "Cannot tell" is an acceptable answer.
 - **Classic-effect checks (manipulation checks, not hypotheses):** Stroop interference > 0, Posner validity effect > 0, a U-shaped serial-position curve.
 
 ## 5. Exclusion and data rules (code exactly as written, MB-15)
 1. **Trial RT trimming:** drop Stroop and Posner trials with RT < 200 ms or > 2,500 ms (RT exactly 200 or 2,500 is kept). Design choice: the upper bound equals the response deadline.
-2. **Error trials:** RT outcomes (P2, P3) use correct trials only.
+2. **Error trials:** RT outcomes (S1, S2) use correct trials only.
 3. **Session exclusion:** exclude the whole session if Stroop congruent accuracy < 60% (exactly 60% is kept), or if the session is incomplete (any of the 5 tasks or the questionnaire missing).
 4. **Pilot data:** the first 10 sessions (`is_pilot = 1`) are never in confirmatory analyses.
 5. **Missing data:** no imputation. Sessions missing the sleep log are dropped from H1 analyses only. Missing sessions are not made up, except the extension rule in section 7.
 6. **Stop rule:** a stopped session (see `self_pilot_policy.md`) counts as incomplete.
 
 ## 6. Analysis plan (summary; details in MB-18 to MB-21)
-- **H1:** per primary outcome, regression of the outcome on sleep hours, session number (linear plus log term) and time of day, with AR(1) or HAC errors; the PM and AM of a day are not independent, so day is a grouping term. Report estimates with 95% intervals, plus a Bayesian version (MB-20).
+- **H1:** per outcome (P1, P2 confirmatory; S-outcomes exploratory), regression of the outcome on sleep hours, session number (linear plus log term) and time of day, with AR(1) or HAC errors; the PM and AM of a day are not independent, so day is a grouping term. Report estimates with 95% intervals, plus a Bayesian version (MB-20).
 - **H2:** paired AM/PM difference per day (paired t, bootstrap CI with at least 10,000 resamples).
 - **H3:** DDM fits per condition (PyDDM) with competing drift/boundary/both/neither models, compared by BIC; posterior-predictive checks on RT quantiles.
 - **Practice effects:** modeled explicitly via session number, preregistered.
-- **Multiple comparisons:** Holm correction across the 5 primary outcomes within each of H1 and H2 (alpha = .05). Secondary outcomes are reported without correction and labeled exploratory. **Flag for MB-04:** Holm lowers power below the spec's uncorrected figures (about 80% for r = 0.43 at 40 sessions); MB-04 must state the effective power.
+- **Multiple comparisons:** Holm correction across the 2 primary outcomes (P1, P2) within each of H1 and H2 (alpha = .05). Secondary outcomes are reported without correction and labeled exploratory. Effective power under this family is in `power.md` (about 0.74 at r = 0.43, 42 sessions, with AR(1) and shared nightly sleep).
 - **Inference criteria:** a frequentist effect is "supported" if its Holm-adjusted p < .05 and the direction matches; null results are reported as such, with intervals.
 
 ## 7. Stopping rule and deviations

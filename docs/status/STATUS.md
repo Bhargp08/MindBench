@@ -27,8 +27,17 @@
 - Follow-up: total-deprivation vs natural-variation caveat added to `literature.md` (PR mb/MB-02-caveat).
 
 ## MB-03: Design document (merged)
-- `docs/design/design.md`: hypotheses H1-H3, primary outcomes P1-P5, explicit design choices for every unverified parameter (Posner 80/20, 2-back 30% targets, trial counts, timings), exclusion rules, analysis summary, stopping and deviation rules.
+- `docs/design/design.md`: hypotheses H1-H3, explicit design choices for every unverified parameter (Posner 80/20, 2-back 30% targets, trial counts, timings), exclusion rules, analysis summary, stopping and deviation rules.
 - Built with Sonnet; spec recommends Opus for MB-03. No code or tests (doc unit).
-- Flag for MB-04: Holm correction over 5 primary outcomes reduces power relative to the spec's figures.
 - Cursor fix before merge: free-recall word-pool requirement corrected to 2,080 (52 sessions × 40 words).
+- Approved by Bharg and merged after Cursor review (Nov 17, 2026).
+- **Superseded by MB-04:** original draft had 5 primary outcomes (P1–P5) with Holm over 5; confirmatory primaries are now P1 (2-back d') and P2 (recall), per Bharg's MB-04 decision.
+
+## MB-04: Power analysis (merged)
+- `analysis/python/mindbench/power.py` + tests, `docs/design/power.md`, figure and numbers via `scripts/power_report.py`.
+- **Decisions (Bharg, Nov 17, 2026):** keep 42 sessions; reduce primary outcomes to 2 (P1 2-back d', P2 recall proportion), chosen from the verified Lim & Dinges (2010) Table 2; Stroop, Posner, contrast threshold and others are secondary/exploratory, outside the Holm family.
+- Effective power at 42 sessions, r = .43 (AR(1) + shared nightly sleep + Holm over 2): about 0.74. 80% effective power needs r of about 0.46. A null result is likely and acceptable.
+- Carry to MB-18: AR(1) errors alone do not inflate type-I; the shared AM/PM nightly sleep does (0.083 uncorrected). Model AR(1) errors and day grouping.
+- Design doc updated to match (primary/secondary outcomes, H1/H2/H3, Holm family of 2).
+- Cursor fix before merge: Holm comparison test uses n_sims=2000 (spec minimum); VERSIONS.md lists exact numpy/scipy/matplotlib pins; MB-03 STATUS notes 5→2 primary supersession.
 - Approved by Bharg and merged after Cursor review (Nov 17, 2026).
