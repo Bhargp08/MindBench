@@ -56,10 +56,16 @@ export function buildStroopTrials({ seed = 1, nCongruent = 60, nIncongruent = 60
   }
   for (const ink of balancedInks(nNeutral, rng)) cells.push({ condition: "neutral", word: NEUTRAL_WORD, ink });
 
-  let items = cells;
+  let items = null;
   for (let attempt = 0; attempt < 200; attempt++) {
-    items = shuffle([...cells], rng);
-    if (repairRepeats(items)) break;
+    const candidate = shuffle([...cells], rng);
+    if (repairRepeats(candidate)) {
+      items = candidate;
+      break;
+    }
+  }
+  if (!items) {
+    throw new Error("Could not build a Stroop sequence without consecutive word/ink repeats");
   }
   return items.map((c, i) => ({ trial: i + 1, ...c }));
 }
