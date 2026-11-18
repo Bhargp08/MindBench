@@ -42,18 +42,19 @@
 - Cursor fix before merge: Holm comparison test uses n_sims=2000 (spec minimum); VERSIONS.md lists exact numpy/scipy/matplotlib pins; MB-03 STATUS notes 5→2 primary supersession.
 - Approved by Bharg and merged after Cursor review (Nov 17, 2026).
 
-## MB-06: Battery scaffold (PR open)
+## MB-06: Battery scaffold (merged)
 - Implemented and tested (24 JS tests): config loader, participant codes, questionnaire validator, mock saver, session metadata, info-screen text. Plus a jsPsych 8.4.0 shell (fullscreen, info screen, participant code, questionnaire, finish) built with Vite 5.4.21.
 - Verified by hand in the browser (mock mode): one session produced one JSON file with every field.
-- DataPipe: the right package is the **extension** `@jspsych/extension-pipe` 0.2.0, not the plugin (see `docs/design/datapipe.md`). Production saver not yet written (needs its own failing tests and Bharg's approval).
-- Not in this unit: tasks (MB-07-MB-11), refresh-rate measurement (timing log in MB-12), DataPipe dashboard setup (Bharg).
+- DataPipe: the right package is the **extension** `@jspsych/extension-pipe` 0.2.0, not the plugin (see `docs/design/datapipe.md`).
+- Not in this unit originally: tasks (MB-07–MB-11), refresh-rate measurement (timing log in MB-12), DataPipe dashboard setup (Bharg).
+- Approved by Bharg and merged after Cursor review (Nov 17, 2026).
 
-## MB-06b: Production saver (stacked on MB-06, PR open)
+## MB-06b: Production saver (merged)
 - `experiment/src/lib/pipeExtension.js` (DataPipe extension adapter) + production branch of `createSaver`; shell wired for production mode and a `?simulate` flag. 32 JS tests pass.
-- Verified in browser with a fake ID and `?simulate` only; no real upload tested.
-- Do not merge before PR #7 (MB-06).
+- Verified in browser with a fake ID and `?simulate` only; no real upload tested (needs Bharg's DataPipe experiment ID).
+- Approved by Bharg and merged after Cursor review (Nov 17, 2026; reopened as PR #9 after stacked #8 closed).
 
-## MB-07: Contrast staircase + SDT block (PR open)
+## MB-07: Contrast staircase + SDT block (merged)
 - Pure logic (tested): seeded RNG, 1-up/2-down and 1-up/3-down staircase (dB units, range [-40, 0], start -10, step 3 then 1.5 dB after the 2nd reversal, stop at 10 reversals or 60 trials, threshold = mean of last 6 reversals), Gabor luminance, balanced 2IFC intervals, 60-trial yes/no block (30 signal / 30 noise) with hit/FA counts. 60 JS tests pass.
 - Canvas shell (`src/tasks/contrast.js`, `src/lib/drawGabor.js`): 2IFC staircase then yes/no block at the session threshold; logs level, contrast, target interval, response and correctness per trial.
 - Verified in a browser (mock mode, scripted responder): full session ran without errors; 38 staircase trials, 60 yes/no trials (30/30), per-trial fields logged, Gabor rendering checked visually.
@@ -61,6 +62,7 @@
 - Observation for MB-15/ETL: a guessing observer pins the staircase at the 0 dB ceiling (reversals recorded at the clamp). Add a data-quality flag for thresholds at the ceiling or floor.
 - Not verified: physical stimulus size and timing accuracy on real displays (Gabor size is in pixels; viewing distance is unspecified); no practice block yet (MB-12).
 - Keeping the consent-form lint active (structure only) per Bharg, Nov 17, 2026.
+- Approved by Bharg and merged after Cursor review (Nov 17, 2026).
 
 ## MB-08: Posner cueing (merged)
 - Tested pure logic: seeded trial generator (120 trials = 96 valid + 24 invalid, sides 60/60 overall and 48/48 + 12/12 by validity, cue direction, fixation 500-1000 ms), response mapping (F = left, J = right), scoring (validity effect = mean invalid - mean valid correct RT, trimming RT < 200 or > 2500 with boundary values kept, accuracy per condition). 74 JS tests pass.
@@ -80,10 +82,12 @@
 - Cursor fix before merge: `buildStroopTrials` throws if it cannot eliminate consecutive word/ink repeats (previously could return a dirty sequence after 200 failed repairs).
 - Approved by Bharg and merged after Cursor review (Nov 17, 2026).
 
-## MB-10: 2-back working memory (PR open)
+## MB-10: 2-back working memory (merged)
 - Tested pure logic: normal quantile and d'/criterion (`lib/sdt.js`, log-linear correction by default, throws on extreme rates when uncorrected), seeded 2-back generator (60 trials = 18 targets + 3 one-back + 3 three-back lures + 34 others + 2 start; none in positions 1-2; labels verified against the letters over 200 seeds), and session scoring (positions 1-2 not scored, lures count as false alarms). 116 JS tests pass.
-- d' tests use values computed independently with scipy, including a hand-worked example (15/18 hits, 6/40 false alarms: H 0.815789, FA 0.158537, d' 1.899925, c 0.050528) and extreme cases (18/18 and 0/40: d' 4.188857). The same values as the MB-15 Python tests (1.6832, 1.8060, 4.6675) pass in JS.
+- d' tests use values computed independently with scipy, including a hand-worked example (15/18 hits, 6/40 false alarms: H 0.815789, FA 0.158537, d' 1.899925, c 0.050528) and extreme cases (18/18 and 0/40: d' 4.188857). The same values as the MB-15 Python tests (1.6832, 1.8060, 4.6675) pass in JS. Cursor recompute matched scipy to ≥5 decimals.
 - Shell (`src/tasks/nback.js`) wired into the battery after Stroop: letter 500 ms, fixed 2,500 ms trial, SPACE for a match.
 - Design choices added to `design.md`: go/no-go response, 58 scored trials, log-linear correction on every dataset. P1 is 2-back d' (primary, Holm family of 2).
 - Verified in a browser harness (14 trials, scripted responder): labels and responses correct, no errors. Full 60-trial block and real timing not run.
 - MB-15 should reuse these formulas in Python (`sdt.py`) and add cross-language tests.
+- Cursor fix before merge: STATUS marked MB-06 / MB-06b / MB-07 as merged (were stale “PR open”).
+- Approved by Bharg and merged after Cursor review (Nov 17, 2026).
