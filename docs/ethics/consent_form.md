@@ -1,6 +1,6 @@
 # MindBench Participant Consent Form
 
-**Status:** DRAFT for Bharg's approval. This is a personal, preregistered self-experiment run by Bharg Patel. No institutional review board review has been obtained, and nobody involved is claiming institutional oversight.
+**Status:** DEFERRED DRAFT. Not needed while Bharg is the only participant; to be finalized and approved before anyone else takes part. This is a personal, preregistered self-experiment run by Bharg Patel. No institutional review board review has been obtained, and nobody involved is claiming institutional oversight.
 
 ## Purpose
 MindBench is a set of short computer tasks measuring attention, perception and memory. The main question is whether naturally varying sleep, or time of day, changes how people perform. Bharg is the main participant. A small number of adult friends may take part as pilot participants to help improve the instructions.

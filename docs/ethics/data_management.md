@@ -1,33 +1,18 @@
 # Data Management Plan
 
-**Status:** DRAFT for Bharg's approval.
+Status: DRAFT for Bharg's approval. Current scope: Bharg is the only participant.
 
 ## ID scheme
-- Each participant gets a random 8-character code with no ambiguous characters (generated in MB-06). The code is not derived from a name, email or any personal detail.
-- The key linking a code to a person, if one exists at all, is kept offline by Bharg, never in the repo, never in the dataset.
-- The dataset holds no names, emails or IP addresses.
+Random 8-character participant code (no ambiguous characters), generated in MB-06. No names, emails or IP addresses in the dataset. Any code-to-person key stays offline, never in the repo.
 
 ## Storage
-- Raw data is collected through DataPipe and stored privately in Google Drive (decision D1).
-- Downloads run locally from Bharg's machine, with credentials in environment variables. No secrets in code, notebooks, issues or commits.
-- Local copies live in `data/`, which is gitignored. The repo and CI hold only **simulated** data.
-- Sleep and sleepiness data are health-related and stay private.
+Raw data goes through DataPipe to private Google Drive (D1). Downloads run locally with credentials in environment variables. Local copies live in gitignored `data/`. The repo and CI hold simulated data only. Sleep and sleepiness data are health-related and stay private.
 
 ## Retention
-- Raw data is kept while the project runs and for the paper and release. After that Bharg decides whether to keep or delete it; [retention end date to be set by Bharg].
-- On a participant's withdrawal request, their data is deleted from Drive and the local database, then confirmed back to them.
-- Pilot data is flagged (`is_pilot`) and excluded from confirmatory analysis.
+Kept while the project runs and through the paper and release. [Retention end date: Bharg to set.] Pilot sessions are flagged `is_pilot` and excluded from confirmatory analysis.
 
 ## De-identification
-Before any release:
-1. Participant codes are replaced with new, unrelated codes.
-2. Free-text fields are removed.
-3. Timestamps are reduced to the date or coarser (Bharg decides the final rule in MB-24).
-4. Device and user-agent details are removed or coarsened.
-5. A check script verifies this. Records of people without consent for release are dropped.
+Before any release: replace codes with new unrelated ones, drop free-text fields, reduce timestamps to the date or coarser (final rule in MB-24), and coarsen device and browser details. A check script verifies this.
 
 ## Release rule
-- Bharg's own data may be released in de-identified form on Zenodo (CC-BY-4.0), linked from the OSF registration.
-- **Friends' trial-level data is not published** unless that person ticked the open-data box. Otherwise it is used for pilot and UX purposes only.
-- Publishing is an external action that Bharg performs himself, after approval.
-- Recruiting beyond adult friends needs proper institutional oversight first. This is outside the current scope.
+Bharg's own de-identified data may be released on Zenodo (CC-BY-4.0), linked from the OSF registration. Releasing is an external action Bharg does himself after approval. If other participants join later, their trial-level data is not published without their explicit consent (see the deferred consent form).

@@ -12,6 +12,9 @@
 - `renv.lock` (once R is installed and confirmed)
 
 ## MB-01: Ethics, consent, data management (PR open)
-- Drafted `docs/ethics/{consent_form,data_management,self_pilot_policy}.md`. Session length (25–35 min) is an **estimate** until timed in MB-13.
-- Open placeholders for Bharg: contact method (consent form), retention end date (data management), final timestamp rule (MB-24).
-- Pending: Cursor review, Bharg's read-through and approval.
+- Scope change (Bharg, Nov 17, 2026): Bharg is the only participant for now.
+- Written: `docs/ethics/self_pilot_policy.md`, `docs/ethics/data_management.md` (concise).
+- **Deferred:** the consent form. A draft `consent_form.md` is kept for later; its lint tests are skipped with `pytest.mark.skip` ("Deferred until other participants join; Bharg approved Nov 17, 2026"). Must be finalized, approved and un-skipped before any other participant takes part.
+- The "no institutional approval claims" guard stays active.
+- Open placeholders: retention end date (data management); consent contact method (deferred form).
+- Pending: Cursor review and Bharg's approval.

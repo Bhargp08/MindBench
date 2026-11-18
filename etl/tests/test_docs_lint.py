@@ -3,21 +3,26 @@ import re
 import subprocess
 from pathlib import Path
 
+import pytest
+
 ROOT = Path(__file__).resolve().parents[2]
 ETHICS = ROOT / "docs" / "ethics"
 
+CONSENT_DEFERRED = "Deferred until other participants join; Bharg approved Nov 17, 2026"
+
+CONSENT_HEADINGS = [
+    "Purpose",
+    "What you will do",
+    "Voluntary participation",
+    "Withdrawal and deletion",
+    "What is stored",
+    "Who sees your data",
+    "Open data option",
+    "Age confirmation",
+    "Signature and date",
+]
+
 REQUIRED = {
-    "consent_form.md": [
-        "Purpose",
-        "What you will do",
-        "Voluntary participation",
-        "Withdrawal and deletion",
-        "What is stored",
-        "Who sees your data",
-        "Open data option",
-        "Age confirmation",
-        "Signature and date",
-    ],
     "data_management.md": [
         "ID scheme",
         "Storage",
@@ -56,6 +61,16 @@ def test_required_headings_present():
             assert any(h.lower() in x for x in have), f"{name}: missing heading '{h}'"
 
 
+@pytest.mark.skip(reason=CONSENT_DEFERRED)
+def test_consent_form_headings_present():
+    path = ETHICS / "consent_form.md"
+    assert path.is_file(), "missing docs/ethics/consent_form.md"
+    have = headings(path)
+    for h in CONSENT_HEADINGS:
+        assert any(h.lower() in x for x in have), f"consent_form.md: missing heading '{h}'"
+
+
+@pytest.mark.skip(reason=CONSENT_DEFERRED)
 def test_open_data_is_separate_checkbox():
     text = (ETHICS / "consent_form.md").read_text(encoding="utf-8")
     assert "- [ ]" in text, "consent form needs checkbox(es)"
