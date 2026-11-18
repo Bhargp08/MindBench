@@ -1,6 +1,6 @@
 # Status
 
-## MB-00: Repo, decisions, CI skeleton (awaiting merge)
+## MB-00: Repo, decisions, CI skeleton (merged)
 
 ### Approved exception
 - The R placeholder test (`analysis/r/tests/testthat/test-placeholder.R`) is skipped via `skip()` until R is installed and confirmed. Bharg approved this skip on PR #1 (Cursor review, Nov 17, 2026). Remove the skip and create `renv.lock` once R is confirmed.
@@ -10,3 +10,12 @@
 - `experiment/index.html` (MB-06 / MB-12)
 - `dashboard/app.py` (MB-16)
 - `renv.lock` (once R is installed and confirmed)
+
+## MB-01: Ethics, consent, data management (merged)
+- Scope change (Bharg, Nov 17, 2026): Bharg is the only participant for now.
+- Written and approved: `docs/ethics/self_pilot_policy.md`, `docs/ethics/data_management.md`.
+- Consent form: draft kept in `docs/ethics/consent_form.md` for later use; structure lint tests are active. Must be finalized (contact method filled in) before any other participant takes part. Bharg approved deferring *use* of the form while he is the only participant (Nov 17, 2026).
+- The "no institutional approval claims" guard stays active.
+- Retention set (Bharg, Nov 17, 2026): raw data until Dec 31, 2028 or 2 years after write-up publication, whichever is later, then deleted; open data on Zenodo kept indefinitely.
+- Open placeholder: consent contact method (deferred form).
+- Approved by Bharg and merged after Cursor review (Nov 17, 2026).
