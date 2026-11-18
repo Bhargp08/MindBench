@@ -53,3 +53,10 @@ def test_download_without_credentials_exits_2_and_names_the_variables(tmp_path, 
     assert main(["download", "--dest", str(tmp_path / "raw")]) == 2
     err = capsys.readouterr().err
     assert "MINDBENCH_DRIVE_FOLDER_ID" in err and "GOOGLE_APPLICATION_CREDENTIALS" in err
+
+
+def test_default_command_line_load_does_not_flag_real_sessions_as_pilot(tmp_path):
+    """The fixtures are sessions 3 and 11: with the default cutoff of 2 neither is a smoke-test session."""
+    db = tmp_path / "x.sqlite"
+    main(["load", "--raw", str(raw_dir(tmp_path)), "--db", str(db)])
+    assert sqlite3.connect(db).execute("SELECT COUNT(*) FROM sessions WHERE is_pilot = 1").fetchone()[0] == 0
