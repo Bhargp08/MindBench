@@ -86,9 +86,9 @@ def test_fit_handles_gaps_in_the_slots():
 
 def test_t_test_uses_included_days_minus_5_degrees_of_freedom():
     days = np.array([1, 1, 2, 2, 3, 5, 5, 6, 6, 7, 7, 8, 8])
-    assert mp.n_included_days(days) == 8
+    assert mp.n_included_days(days) == 7  # days 1, 2, 3, 5, 6, 7, 8
     p = mp.t_pvalue(b=2.0, se=1.0, days=days)
-    assert p == pytest.approx(2 * stats.t.sf(2.0, df=8 - 5))
+    assert p == pytest.approx(2 * stats.t.sf(2.0, df=7 - 5))
     assert mp.t_pvalue(b=-2.0, se=1.0, days=days) == pytest.approx(p)
 
 
