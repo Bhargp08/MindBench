@@ -47,3 +47,8 @@
 - Verified by hand in the browser (mock mode): one session produced one JSON file with every field.
 - DataPipe: the right package is the **extension** `@jspsych/extension-pipe` 0.2.0, not the plugin (see `docs/design/datapipe.md`). Production saver not yet written (needs its own failing tests and Bharg's approval).
 - Not in this unit: tasks (MB-07-MB-11), refresh-rate measurement (timing log in MB-12), DataPipe dashboard setup (Bharg).
+
+## MB-06b: Production saver (stacked on MB-06, PR open)
+- `experiment/src/lib/pipeExtension.js` (DataPipe extension adapter) + production branch of `createSaver`; shell wired for production mode and a `?simulate` flag. 32 JS tests pass.
+- Verified in browser with a fake ID and `?simulate` only; no real upload tested.
+- Do not merge before PR #7 (MB-06).
