@@ -1,0 +1,9 @@
+{
+  "name": "mindbench-experiment",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": { "test": "vitest run" },
+  "dependencies": { "jspsych": "8.4.0" },
+  "devDependencies": { "vitest": "2.1.9" }
+}
