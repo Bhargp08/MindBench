@@ -12,6 +12,7 @@ import { pipeFilename } from "./lib/pipeExtension.js";
 import { buildSessionMetadata } from "./lib/sessionMetadata.js";
 import { INFO_SCREEN_TEXT } from "./lib/info.js";
 import { buildContrastTimeline, seedFrom } from "./tasks/contrast.js";
+import { buildPosnerTimeline } from "./tasks/posner.js";
 
 const JSPSYCH_VERSION = "8.4.0";
 
@@ -189,9 +190,10 @@ const timeline = [
     },
   },
   ...buildContrastTimeline({ getSeed: () => seedFrom(state.participantCode, state.sessionNumber) }),
+  ...buildPosnerTimeline({ getSeed: () => seedFrom(state.participantCode, state.sessionNumber) }),
   {
     type: htmlButtonResponse,
-    stimulus: "<p>Contrast tasks complete. The other tasks are added in later steps of the project (MB-08 to MB-12).</p>",
+    stimulus: "<p>Contrast and cueing tasks complete. The other tasks are added in later steps of the project (MB-09 to MB-12).</p>",
     choices: ["Finish"],
   },
 ];
