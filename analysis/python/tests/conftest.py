@@ -35,7 +35,7 @@ def make_session(
     for _ in range(staircase):
         add("staircase", practice=0, rt=600, correct=1, level=-10)
     if threshold:
-        add("threshold", thresholdLevel=-11.5, thresholdContrast=0.266, usedFallback=False, nReversals=10)
+        add("threshold", practice=None, thresholdLevel=-11.5, thresholdContrast=0.266, usedFallback=False, nReversals=10)
     for k in range(yesno):
         add("yesno", practice=0, rt=600, correct=1, isSignal=bool(k % 2), respondedYes=bool(k % 2))
     for k in range(posner):
@@ -45,13 +45,14 @@ def make_session(
     for k in range(nback):
         position = k + 1
         typ = "start" if position <= 2 else ("target" if position % 3 == 0 else "nontarget")
-        add("nback", practice=0, position=position, type=typ, isTarget=typ == "target", responded=typ == "target")
+        responded = typ == "target"
+        add("nback", practice=0, rt=700 if responded else None, position=position, type=typ, isTarget=typ == "target", responded=responded)
     for k in range(lists):
         add("recall", practice=0, listWords=["a", "b", "c", "d"], recalled=[True, True, False, False], nCorrect=2, list=k + 1)
     if summary:
         add("recall_summary", practice=0, recallProportion=0.5, nCorrect=2 * lists, nWords=4 * lists)
     if timing:
-        add("timing", timing={"tasks": {}, "totalTaskMs": 1, "unfinished": list(unfinished)})
+        add("timing", practice=None, timing={"tasks": {}, "totalTaskMs": 1, "unfinished": list(unfinished)})
     return {
         "participant_code": "K7M2QX9P",
         "session_number": 3,

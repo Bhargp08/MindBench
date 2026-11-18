@@ -96,10 +96,20 @@ class TestRule3StroopAccuracy:
     def test_exactly_60_percent_is_kept_below_is_excluded(self, correct, total, expected):
         assert self.excluded(stroop_session(total, correct)) is expected
 
-    def test_trials_dropped_by_rt_trimming_do_not_count_toward_accuracy(self):
-        # 3 correct + 3 anticipations (RT 100 ms, dropped by rule 1): accuracy is 3/3, not 3/6
-        assert self.excluded(stroop_session(6, 3, wrong_rt=100)) is False
+    def test_the_accuracy_check_is_made_before_rt_trimming_so_anticipations_count_as_errors(self):
+        # 3 correct + 3 errors with RT 100 ms (rule 1 would drop them from RT outcomes): accuracy is 3/6, not 3/3
+        assert self.excluded(stroop_session(6, 3, wrong_rt=100)) is True
         assert self.excluded(stroop_session(6, 3, wrong_rt=300)) is True
+
+    def test_key_mashing_under_200_ms_cannot_dodge_the_check(self):
+        # every congruent response is an error faster than 200 ms: all would be trimmed, but the session must still be excluded
+        assert self.excluded(stroop_session(10, 0, wrong_rt=120)) is True
+
+    def test_fast_but_correct_responses_count_as_correct(self):
+        s = stroop_session(5, 5)
+        for t in s["trials"][-5:]:
+            t["rt"] = 150
+        assert self.excluded(s) is False
 
     def test_a_missing_response_counts_as_an_error(self):
         s = stroop_session(5, 3)
@@ -143,10 +153,12 @@ class TestRule3Incomplete:
     def test_missing_questionnaire(self):
         assert reasons_containing(self.reasons(questionnaire=False), "questionnaire")
 
-    @pytest.mark.parametrize("kw,task", [({"posner": 2}, "posner"), ({"nback": 5}, "nback"), ({"yesno": 3}, "contrast"), ({"lists": 1}, "recall")])
-    def test_one_trial_or_list_short_is_incomplete_the_exact_count_is_complete(self, kw, task):
-        assert reasons_containing(self.reasons(**kw), f"missing {task}")
-        assert self.reasons() == []
+    @pytest.mark.parametrize("key,task", [("posner", "posner"), ("stroop", "stroop"), ("nback", "nback"), ("yesno", "contrast"), ("lists", "recall")])
+    def test_one_short_is_incomplete_exact_is_complete_and_extra_is_not_an_exclusion(self, key, task):
+        exact = {"posner": 3, "stroop": 3, "nback": 6, "yesno": 4, "lists": 2}[key]
+        assert reasons_containing(self.reasons(**{key: exact - 1}), f"missing {task}")
+        assert self.reasons(**{key: exact}) == []
+        assert self.reasons(**{key: exact + 1}) == []  # more than the design count is only a data warning (scoring.data_warnings)
 
     def test_recall_without_its_summary_row_is_incomplete(self):
         assert reasons_containing(self.reasons(summary=False), "missing recall")
@@ -159,6 +171,13 @@ class TestRule3Incomplete:
         reasons = self.reasons(posner=0, stroop=0)
         text = " ".join(reasons)
         assert "posner" in text and "stroop" in text
+
+    def test_a_full_size_session_passes_with_the_default_design_counts_and_one_short_fails(self):
+        full = dict(posner=120, stroop=120, nback=60, yesno=60, lists=2)
+        assert ex.rule3_session_exclusion(make_session(**full)) == []
+        for key, task in [("posner", "posner"), ("stroop", "stroop"), ("nback", "nback"), ("yesno", "contrast"), ("lists", "recall")]:
+            short = {**full, key: full[key] - 1}
+            assert reasons_containing(ex.rule3_session_exclusion(make_session(**short)), f"missing {task}"), key
 
     def test_default_expected_counts_are_the_design_counts(self):
         assert ex.EXPECTED_SCORED == {"posner": 120, "stroop": 120, "nback": 60, "yesno": 60, "recall_lists": 2}
@@ -193,6 +212,13 @@ class TestRule5:
         s = make_session(hours=None)
         assert ex.exclusion_reasons(s, FIXTURE_EXPECTED) == []  # still analyzed for everything else
         assert ex.h1_eligible(s, FIXTURE_EXPECTED) is False
+
+    def test_h1_eligible_respects_a_manual_exclusion_reason(self):
+        s = make_session()
+        s["excluded_reason"] = "manual: hardware crash"
+        assert ex.h1_eligible(s, FIXTURE_EXPECTED) is False
+        s["excluded_reason"] = "auto: something recomputed elsewhere"
+        assert ex.h1_eligible(s, FIXTURE_EXPECTED) is True  # automatic reasons are recomputed from the rules, not trusted
 
     def test_h1_eligible_needs_an_unexcluded_session_with_a_sleep_log(self):
         assert ex.h1_eligible(make_session(), FIXTURE_EXPECTED) is True

@@ -2,6 +2,7 @@
 JavaScript implementation (experiment/src/lib/sdt.js, used by the in-browser 2-back scorer) and this Python module
 agree on a grid of count combinations, so the two cannot silently drift apart."""
 import json
+import os
 import shutil
 import subprocess
 
@@ -14,8 +15,11 @@ from conftest import REPO
 CASES = [(15, 18, 6, 40), (18, 18, 0, 40), (0, 18, 40, 40), (9, 18, 20, 40), (50, 50, 0, 50), (1, 2, 1, 2), (30, 60, 12, 60), (2, 2, 0, 2), (0, 5, 5, 5)]
 
 
-@pytest.mark.skipif(shutil.which("node") is None, reason="node is not installed")
 def test_javascript_and_python_dprime_agree():
+    if shutil.which("node") is None:
+        if os.environ.get("CI"):
+            pytest.fail("node is required in CI for the JS-vs-Python d' check")
+        pytest.skip("node is not installed")
     js = (REPO / "experiment" / "src" / "lib" / "sdt.js").as_uri()
     script = f"""
 import {{ dPrimeFromCounts }} from {json.dumps(js)};

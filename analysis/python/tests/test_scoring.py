@@ -1,7 +1,7 @@
 import pytest
 
 from mindbench import exclusions as ex
-from mindbench.scoring import load_sessions, score_database, score_session, serial_position
+from mindbench.scoring import data_warnings, load_sessions, score_database, score_session, serial_position
 
 from conftest import FIXTURE_EXPECTED, insert_fixture, make_session, trial
 
@@ -150,3 +150,85 @@ class TestApplyExclusions:
         summary = ex.apply_exclusions(db)  # would otherwise write an automatic reason
         assert self.reason(db, 3) == "manual: hardware crash"
         assert summary["manual_kept"] == [("K7M2QX9P", 3)]
+
+
+def nback_session(rows):
+    """A session whose scored 2-back trials are exactly `rows`: (position, type, responded, rt)."""
+    s = make_session(nback=0)
+    base = len(s["trials"])
+    for k, (position, typ, responded, rt) in enumerate(rows):
+        s["trials"].append(trial("nback", base + k, practice=0, rt=rt, position=position, type=typ, isTarget=typ == "target", responded=responded))
+    return s
+
+
+class TestTwoBackScoring:
+    def test_a_response_counts_only_within_the_2000_ms_window_from_letter_onset(self):
+        s = nback_session([
+            (3, "target", True, 2000),      # exactly 2,000 ms: a hit
+            (4, "target", True, 2001),      # too late: a miss
+            (5, "nontarget", True, 2000),   # a false alarm
+            (6, "nontarget", True, 2500),   # too late: a correct rejection
+            (7, "nontarget", False, None),
+        ])
+        r = score_session(s)
+        assert (r["P1_hits"], r["P1_n_targets"]) == (1, 2)
+        assert (r["P1_false_alarms"], r["P1_n_nontargets"]) == (1, 3)
+
+    def test_positions_1_and_2_are_not_scored_even_if_responded_to(self):
+        s = nback_session([(1, "start", True, 400), (2, "start", True, 500), (3, "target", True, 700), (4, "nontarget", False, None)])
+        r = score_session(s)
+        assert (r["P1_n_targets"], r["P1_n_nontargets"]) == (1, 1)
+        assert r["P1_false_alarms"] == 0
+
+    def test_lures_are_non_targets_and_their_false_alarms_are_reported(self):
+        s = nback_session([
+            (3, "target", True, 700), (4, "lure1", True, 600), (5, "lure3", False, None), (6, "nontarget", True, 800), (7, "lure1", False, None),
+        ])
+        r = score_session(s)
+        assert r["P1_n_nontargets"] == 4
+        assert r["P1_false_alarms"] == 2
+        assert r["P1_lure_false_alarms"] == 1
+
+
+class TestYesNoReporting:
+    def test_trials_without_a_response_are_counted(self):
+        s = make_session(yesno=0)
+        base = len(s["trials"])
+        for k, (sig, yes, response) in enumerate([(True, True, "f"), (False, False, "j"), (True, False, None), (False, False, None)]):
+            t = trial("yesno", base + k, practice=0, rt=600 if response else None, correct=int(sig == yes), response=response, isSignal=sig, respondedYes=yes)
+            s["trials"].append(t)
+        r = score_session(s)
+        assert r["S4_n_no_response"] == 2
+
+
+class TestDataWarnings:
+    def test_a_clean_session_has_none(self):
+        assert data_warnings(make_session(), FIXTURE_EXPECTED) == []
+
+    def test_more_trials_than_the_design_count_is_a_warning_not_an_exclusion(self):
+        w = data_warnings(make_session(posner=4), FIXTURE_EXPECTED)
+        assert any("posner" in x and "more than" in x for x in w)
+
+    def test_recall_scores_that_disagree_with_the_recalled_flags_or_summary_are_flagged(self):
+        s = make_session()
+        next(t for t in s["trials"] if t["task"] == "recall" and t["practice"] == 0)["data"]["nCorrect"] = 3  # flags say 2
+        assert any("recall" in x for x in data_warnings(s, FIXTURE_EXPECTED))
+        s = make_session()
+        next(t for t in s["trials"] if t["task"] == "recall_summary" and t["practice"] == 0)["data"]["nCorrect"] = 99
+        assert any("summary" in x for x in data_warnings(s, FIXTURE_EXPECTED))
+
+    def test_p2_consistency_flag(self):
+        assert score_session(make_session())["P2_consistent"] is True
+        s = make_session()
+        next(t for t in s["trials"] if t["task"] == "recall" and t["practice"] == 0)["data"]["nCorrect"] = 3
+        assert score_session(s)["P2_consistent"] is False
+        assert score_session(make_session(lists=0, summary=False))["P2_consistent"] is None
+
+    def test_score_database_reports_the_warnings_and_uses_the_single_h1_definition(self, db):
+        insert_fixture(db, "K7M2QX9P_session3.json")
+        db.execute("UPDATE sessions SET excluded_reason = 'manual: hardware crash'")
+        db.commit()
+        (row,) = score_database(db, expected=FIXTURE_EXPECTED)
+        assert row["warnings"] == []
+        assert row["excluded"] is True and row["excluded_reason"] == "manual: hardware crash"
+        assert row["h1_eligible"] is False
