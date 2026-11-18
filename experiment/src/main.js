@@ -14,6 +14,7 @@ import { INFO_SCREEN_TEXT } from "./lib/info.js";
 import { buildContrastTimeline, seedFrom } from "./tasks/contrast.js";
 import { buildPosnerTimeline } from "./tasks/posner.js";
 import { buildStroopTimeline } from "./tasks/stroop.js";
+import { buildNBackTimeline } from "./tasks/nback.js";
 
 const JSPSYCH_VERSION = "8.4.0";
 
@@ -193,9 +194,10 @@ const timeline = [
   ...buildContrastTimeline({ getSeed: () => seedFrom(state.participantCode, state.sessionNumber) }),
   ...buildPosnerTimeline({ getSeed: () => seedFrom(state.participantCode, state.sessionNumber) }),
   ...buildStroopTimeline({ getSeed: () => seedFrom(state.participantCode, state.sessionNumber) }),
+  ...buildNBackTimeline({ getSeed: () => seedFrom(state.participantCode, state.sessionNumber) }),
   {
     type: htmlButtonResponse,
-    stimulus: "<p>Contrast, cueing and color tasks complete. The other tasks are added in later steps of the project (MB-10 to MB-12).</p>",
+    stimulus: "<p>Contrast, cueing, color and letter tasks complete. The last task and the final assembly are added in later steps of the project (MB-11, MB-12).</p>",
     choices: ["Finish"],
   },
 ];

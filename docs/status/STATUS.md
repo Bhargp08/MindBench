@@ -79,3 +79,11 @@
 - Stroop interference is S1 (secondary/exploratory).
 - Cursor fix before merge: `buildStroopTrials` throws if it cannot eliminate consecutive word/ink repeats (previously could return a dirty sequence after 200 failed repairs).
 - Approved by Bharg and merged after Cursor review (Nov 17, 2026).
+
+## MB-10: 2-back working memory (PR open)
+- Tested pure logic: normal quantile and d'/criterion (`lib/sdt.js`, log-linear correction by default, throws on extreme rates when uncorrected), seeded 2-back generator (60 trials = 18 targets + 3 one-back + 3 three-back lures + 34 others + 2 start; none in positions 1-2; labels verified against the letters over 200 seeds), and session scoring (positions 1-2 not scored, lures count as false alarms). 116 JS tests pass.
+- d' tests use values computed independently with scipy, including a hand-worked example (15/18 hits, 6/40 false alarms: H 0.815789, FA 0.158537, d' 1.899925, c 0.050528) and extreme cases (18/18 and 0/40: d' 4.188857). The same values as the MB-15 Python tests (1.6832, 1.8060, 4.6675) pass in JS.
+- Shell (`src/tasks/nback.js`) wired into the battery after Stroop: letter 500 ms, fixed 2,500 ms trial, SPACE for a match.
+- Design choices added to `design.md`: go/no-go response, 58 scored trials, log-linear correction on every dataset. P1 is 2-back d' (primary, Holm family of 2).
+- Verified in a browser harness (14 trials, scripted responder): labels and responses correct, no errors. Full 60-trial block and real timing not run.
+- MB-15 should reuse these formulas in Python (`sdt.py`) and add cross-language tests.
