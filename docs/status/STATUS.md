@@ -61,3 +61,11 @@
 - Observation for MB-15/ETL: a guessing observer pins the staircase at the 0 dB ceiling (reversals recorded at the clamp). Add a data-quality flag for thresholds at the ceiling or floor.
 - Not verified: physical stimulus size and timing accuracy on real displays (Gabor size is in pixels; viewing distance is unspecified); no practice block yet (MB-12).
 - Keeping the consent-form lint active (structure only) per Bharg, Nov 17, 2026.
+
+## MB-08: Posner cueing (PR open)
+- Tested pure logic: seeded trial generator (120 trials = 96 valid + 24 invalid, sides 60/60 overall and 48/48 + 12/12 by validity, cue direction, fixation 500-1000 ms), response mapping (F = left, J = right), scoring (validity effect = mean invalid - mean valid correct RT, trimming RT < 200 or > 2500 with boundary values kept, accuracy per condition). 74 JS tests pass.
+- Shell (`src/tasks/posner.js`) wired into the battery after the contrast block: placeholder boxes, arrow cue 100 ms + 200 ms gap (SOA 300 ms), target until response or 2,500 ms.
+- Design choice added to `design.md`: respond to the target side with F/J (the design only said "target until response").
+- Verified in a browser harness (10 trials, 8 valid + 2 invalid, scripted responder): correct logging (SOA, validity, side, cue, response, RT), no errors; display checked visually. The full 120-trial block and real RT timing were not run.
+- Hypothesis handling follows design.md: the validity effect (S2) is secondary/exploratory and two-sided; MB-15 owns the preregistered exclusion functions.
+- Bharg (Nov 17, 2026): no approval pauses needed; failing tests are still committed before implementation.
