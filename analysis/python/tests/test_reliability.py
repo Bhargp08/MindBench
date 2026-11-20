@@ -28,7 +28,7 @@ class TestShroutFleiss:
         assert r["WMS"] == pytest.approx(6.2639, abs=1e-3)
 
     def test_confidence_intervals_of_the_example(self):
-        # reference values from the McGraw & Wong F-based intervals (as printed by common ICC software for this matrix)
+        # reference values recomputed by hand from the Shrout & Fleiss / McGraw & Wong formulas (independent check in the MB-19 review)
         assert rel.icc_ci(SF, "ICC(1,1)") == pytest.approx((-0.133, 0.722), abs=0.01)
         assert rel.icc_ci(SF, "ICC(2,1)") == pytest.approx((0.019, 0.761), abs=0.01)
         assert rel.icc_ci(SF, "ICC(3,1)") == pytest.approx((0.342, 0.946), abs=0.01)
@@ -131,6 +131,30 @@ def simulate(n_days=21, seed=0, trend=0.0, day_sd=1.0, noise_sd=1.0):
     k = 2 * (days - 1) + pm + 1
     y = trend * np.log(k) + np.repeat(rng.normal(scale=day_sd, size=n_days), 2) + rng.normal(scale=noise_sd, size=2 * n_days)
     return days, pm, k, y
+
+
+class TestInputChecks:
+    def test_k_must_be_positive_and_finite(self):
+        y = np.arange(10.0)
+        for bad in (0.0, -1.0, np.nan):
+            k = np.arange(1.0, 11.0); k[3] = bad
+            with pytest.raises(ValueError, match="k"):
+                rel.practice_residuals(y, k)
+
+    def test_test_retest_rejects_a_nonpositive_k(self):
+        days, pm, k, y = simulate(seed=1)
+        k = k.astype(float) - 1      # k = 0 for the first session
+        with pytest.raises(ValueError, match="k"):
+            rel.test_retest(days, pm, k, y, n_boot=0)
+
+    def test_spearman_brown_at_minus_one_does_not_divide_by_zero(self):
+        assert np.isnan(rel.spearman_brown(-1.0))
+
+    def test_slot_labels_must_be_0_or_1(self):
+        with pytest.raises(ValueError, match="slot"):
+            rel.paired_matrix(np.array([1, 1]), np.array([0, 2]), np.array([1.0, 2.0]))
+        with pytest.raises(ValueError, match="slot"):
+            rel.paired_matrix(np.array([1, 1]), np.array(["AM", "PM"]), np.array([1.0, 2.0]))
 
 
 class TestResiduals:
