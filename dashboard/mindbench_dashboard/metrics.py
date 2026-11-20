@@ -101,12 +101,18 @@ def _local_start(timestamp, tz_name):
     return t.astimezone(zone)
 
 
-def _time_of_day(local):
-    """AM before 12:00 local, PM from 12:00; and whether the start was inside the planned 07:00-11:00 / 17:00-21:00 window."""
+def _day_and_slot(local):
+    """Prereg D2/D9: AM/PM and the study day come from the logged local start time (never from odd/even session numbers).
+
+    AM = 04:00 to before 12:00, PM = 12:00 onward. A start from 00:00 up to (not including) 04:00 belongs to the previous
+    calendar day and counts as that day's PM session; it is outside the planned windows. Returns (date, "AM"/"PM", in_window).
+    """
     minutes = local.hour * 60 + local.minute
+    if local.hour < 4:
+        return local.date() - dt.timedelta(days=1), "PM", False
     am = local.hour < 12
     lo, hi = AM_WINDOW if am else PM_WINDOW
-    return ("AM" if am else "PM"), lo <= minutes <= hi
+    return local.date(), ("AM" if am else "PM"), lo <= minutes <= hi
 
 
 def _meta(conn):
@@ -126,7 +132,7 @@ def session_overview(conn, expected=None):
         missing = set(missing_tasks(s, expected))
         complete = {name: name not in missing for name in (*TASKS, "questionnaire")}
         local = _local_start(s["timestamp"], s["timezone"] or m["timezone"])
-        tod, in_window = _time_of_day(local) if local else (None, None)
+        day, tod, in_window = _day_and_slot(local) if local else (None, None, None)
         correct, total = _stroop_congruent_accuracy(s)
         flag = "no_trials" if total == 0 else ("below_60_percent" if correct * 5 < total * 3 else "ok")
         codes = [_code(r) for r in reasons] + (["manual exclusion (see database note)"] if manual else [])
@@ -135,7 +141,7 @@ def session_overview(conn, expected=None):
             "participant_code": s["participant_code"],
             "session_number": s["session_number"],
             "is_pilot": s["is_pilot"],
-            "local_date": local.date().isoformat() if local else None,
+            "local_date": day.isoformat() if local else None,
             "local_start": local.isoformat(timespec="minutes") if local else None,
             "time_of_day": tod,
             "in_planned_window": in_window,
@@ -151,6 +157,11 @@ def session_overview(conn, expected=None):
             "stroop_flag": flag,
             "source_filename": m["source_filename"],
         })
+    seen = set()
+    for r in sorted(rows, key=lambda r: (r["participant_code"], r["session_number"])):
+        key = (r["participant_code"], r["local_date"], r["time_of_day"])
+        r["duplicate_slot"] = bool(r["local_date"]) and key in seen   # D2/D9: only the first session of a day and slot is analysed
+        seen.add(key)
     return rows
 
 

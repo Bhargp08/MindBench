@@ -77,7 +77,7 @@ else:
     ov = pd.DataFrame(d["overview"])
     if not ov.empty:
         ov["excluded_codes"] = ov["excluded_codes"].map("; ".join)
-        cols = ["session_number", "is_pilot", "local_date", "time_of_day", "in_planned_window", "battery_finished", "n_tasks_complete",
+        cols = ["session_number", "is_pilot", "local_date", "time_of_day", "in_planned_window", "duplicate_slot", "battery_finished", "n_tasks_complete",
                 "sleep_logged", "total_task_minutes", "refresh_hz", "refresh_plausible", "stroop_flag", "excluded_codes"]
         st.dataframe(ov[cols], hide_index=True)
         st.caption("stroop_flag compares congruent-trial accuracy with the preregistered 60% exclusion limit; the value is not shown.")

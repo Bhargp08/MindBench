@@ -37,6 +37,6 @@ MINDBENCH_DASHBOARD_PUBLIC=1 uv run --project dashboard streamlit run dashboard/
 Paths default to `data/mindbench.sqlite`, `data/raw`, `data/etl_report.json` (all gitignored); override with `MINDBENCH_DB`, `MINDBENCH_RAW`, `MINDBENCH_REPORT`.
 
 ## Notes and limits
-- The AM/PM label and the planned-window check use the logged local start time. If the preregistration changes how time of day or "day" is defined (decisions D1/D2 in `prereg_draft.md`), `metrics._time_of_day` and the local-date logic must change with it.
+- Time of day and day follow the preregistration (D1/D2/D9), in `metrics._day_and_slot`: AM = 04:00 to before 12:00, PM = 12:00 onward, from the logged local start time and never from odd/even session numbers; a start from 00:00 up to 04:00 belongs to the previous calendar day as its PM session (outside the planned windows); a second session in the same day and slot is flagged `duplicate_slot` (only the first is analysed). The day number of the schedule uses this day.
 - Gaps are computed from loaded sessions and skipped partial files. A session whose file never reached Drive cannot be told apart from one that was never started ("no file").
 - Not tested live against real data or a real Drive folder. The visual layout was checked in a browser against a synthetic database only.
