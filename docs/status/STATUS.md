@@ -189,3 +189,9 @@ Branch `mb/MB-05b-prereg-stats`. `docs/design/prereg_draft.md` now has the D3 mi
 - 27 tests (272 in the analysis suite at merge), written failing first, no data: every H/P/S ID in `prereg_draft.md` appears in the table; empty results give "pending" and no numbers.
 - Cursor review: no blockers; merged PR #25 (Nov 20, 2026).
 - Not done: MB-18 (needs R) so no rows filled yet; deviations part B stays empty until registration; write-up assembly is MB-23; running analyses on real scored data remains after collection.
+
+## MB-23: Paper write-up (PR open)
+- `docs/writeup/paper_template.md` -> `paper.md` via `mindbench/writeup.py` and `scripts/build_paper.py`: Introduction, Methods, Power, Results (the pending MB-22 tables, confirmatory then exploratory), Deviations from preregistration (from `deviations.md`), Limitations, availability, AI-tools note, References. `docs/design/writeup.md`.
+- 25 tests, written failing first: every number must come from a placeholder (script output) or a registered design constant; placeholders with no value show `[PENDING: ...]`; with no results the paper makes no claims; committed `paper.md` equals the builder's output; no IRB/pilot false claims; citation keys match references.
+- Power figure regenerated from the mixed-model JSON (the old `power_curves.png` is the superseded GLS one and is not used).
+- Not done: no data, so no results prose; **no PDF** (no pandoc/LaTeX installed); three references (Levitt 1971, Shrout & Fleiss 1979, Wagenmakers et al. 2007) have unverified bibliographic details and are flagged in the paper; registration link pending.
