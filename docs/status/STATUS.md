@@ -163,9 +163,10 @@ Branch `mb/MB-05b-prereg-stats`. `docs/design/prereg_draft.md` now has the D3 mi
 - **Statistical review done:** wording fixes applied (same-slot rule, glmmTMB pinning, df justification, D5 AR form, Holm sign rule, DDM, ICC, D2, D4). Deferred: strict convergence check in `mixed_power.py` needs a simulation re-run (noted in `power.md`).
 - The MB-16 dashboard work is on `mb/MB-16-dashboard`; its day assignment must follow D2 and AM/PM must follow D9.
 
-## MB-19: Test-retest reliability (PR open)
+## MB-19: Test-retest reliability (merged)
 - `mindbench/reliability.py`: ICC(1,1)/(2,1)/(3,1) from two-way ANOVA mean squares, F-based and day-bootstrap intervals, practice residuals (`y ~ k + ln(k)`), paired AM/PM matrix, `test_retest` (primary = residual ICC(3,1), raw and ICC(2,1) alongside), split-half with Spearman-Brown, Koo & Li labels (thresholds UNVERIFIED). Follows prereg D6. `docs/design/reliability.md`.
-- 44 tests, written failing first (Shrout & Fleiss example 0.1657 / 0.2898 / 0.7148; Spearman-Brown 0.5 -> 0.6667); simulated data only.
+- Reliability tests in the analysis suite (188 at merge time), written failing first (Shrout & Fleiss example 0.1657 / 0.2898 / 0.7148; Spearman-Brown 0.5 -> 0.6667); simulated data only.
+- Cursor review: merged PR #22 (Nov 20, 2026).
 - Not done: running it on real scored data (after collection, MB-22); Koo & Li thresholds not checked against the paper.
 
 ## MB-20: Bayesian regression, PyMC (merged)
