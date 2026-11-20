@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TEMPLATE (not installed). macOS launchd job: nightly ETL at 02:30.
+     Install yourself: copy to ~/Library/LaunchAgents/com.mindbench.nightly.plist (edit YOURNAME), then
+       launchctl load ~/Library/LaunchAgents/com.mindbench.nightly.plist
+     Remove with: launchctl unload ~/Library/LaunchAgents/com.mindbench.nightly.plist -->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.mindbench.nightly</string>
+  <key>ProgramArguments</key>
+  <array><string>/bin/sh</string><string>/Users/YOURNAME/MindBench/dashboard/schedule/nightly.sh</string></array>
+  <key>StartCalendarInterval</key>
+  <dict><key>Hour</key><integer>2</integer><key>Minute</key><integer>30</integer></dict>
+  <key>StandardErrorPath</key><string>/Users/YOURNAME/MindBench/data/nightly.launchd.err</string>
+</dict>
+</plist>
