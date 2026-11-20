@@ -21,6 +21,6 @@
 | ArviZ | 1.3.0 | pinned (MB-20); `az.waic` no longer exists in 1.x, WAIC is computed in `bayes.py` |
 | Python (analysis/python, dashboard) | 3.13 (`.python-version`; `requires-python >=3.12,<3.15`) | raised from 3.11: PyMC 6 and scipy 1.18 need 3.12+; the dashboard depends on the analysis package (MB-20) |
 | numpy, scipy, numba, llvmlite (analysis/python) | numpy >=2.0,<2.4 (2.3.5 locked); scipy >=1.18 (1.18.1); numba <0.63 (0.62.1); llvmlite <0.46 (0.45.1) | PyMC 6 needs scipy >=1.18; newer llvmlite has no Intel-Mac wheel, and numba 0.62 supports numpy up to 2.3 (MB-20) |
-| PyDDM | 0.9.0 | recorded, not yet installed (MB-21); API [UNVERIFIED] |
+| PyDDM | 0.9.0 | installed in the `bayes` uv group (MB-21); API checked against 0.9.0: bound `B` is the half-width, `OverlayUniformMixture` takes `umixturecoef`, fit value via `fitted.fitresult.value()` |
 
 Registry versions were checked Nov 17, 2026 (per spec). Follow the docs for the pinned version, not older tutorials.
