@@ -175,3 +175,9 @@ Branch `mb/MB-05b-prereg-stats`. `docs/design/prereg_draft.md` now has the D3 mi
 - **Prereg draft:** D5 paragraph updated to match the priors and the integrated-out day intercept (the lint test still passes). Needs Bharg's eye before the registration; re-tag `prereg-v1` if already created.
 - Cursor review: no blockers; merged PR #23 (Nov 20, 2026); `VERSIONS.md` deduped for the Python/numpy/scipy rows.
 - Not done: run on real data (MB-22); trial-level hierarchical models from the spec (not in prereg D5).
+
+## MB-21: Drift-diffusion models, PyDDM (PR open)
+- `mindbench/ddm.py` (spec in `docs/design/ddm.md`, prereg D7): four competing models (null / drift / boundary / both; drift per condition, shared t0, fixed 2% uniform contaminant), ML fits with PyDDM 0.9.0, BIC with the 2-unit "cannot tell" rule, the under-5%-errors boundary-identifiability rule, EZ-diffusion, observed vs predicted RT quantiles (.1/.3/.5/.7/.9, correct and error) with a figure function, median-sleep and AM/PM grouping.
+- 40 tests, written failing first, simulated data only: analytic P = 0.88080 and MDT = 0.76159 (PyDDM matches, so B is the half-width), EZ worked example (v 0.0999, a 0.1400, Ter 0.3000), recovery within 10% over 10 seeds, drift-only effect picked in at least 8 of 10 simulations.
+- Finding: when errors fall under 5% in a group the boundary is not identifiable and a drift verdict can hide a boundary change; results carry a note saying so. Pooled (non-hierarchical) fits make BIC differences optimistic; the write-up must say so.
+- Not done: real data (MB-22); hierarchical Bayesian DDM (not chosen in the prereg); 2-back DDM (left out per D7).

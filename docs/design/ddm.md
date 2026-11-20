@@ -32,10 +32,12 @@ BIC per model (PyDDM `LossBIC`). The model with the lowest BIC is the best; if t
 
 **Identifiability rule (prereg D7).** If error trials are under **5%** of the pooled trials of the task in either session group, boundary separation is **not identifiable** for that task: only `null` and `drift` are compared, and the boundary result is reported as not identifiable, not as a null effect.
 
+**Caveat when the boundary is not identifiable.** Only null and drift are compared then, and a wider boundary that removes errors can look like a drift change (simulated: boundary +0.8 gave a "drift" verdict). `compare_models` therefore returns a `note` saying a drift verdict cannot exclude a boundary change; the write-up must quote it.
+
 ## Checks
 - **EZ-diffusion** (Wagenmakers et al., 2007; s = 0.1) per condition and group from accuracy, RT mean and variance of correct trials. A sanity check only, not an inference. Pc of exactly 0, 0.5 or 1 gets the standard edge correction (Pc = 1 - 1/(2n), and so on); the function says when it did.
 - **Predictive checks:** RT quantiles (.1, .3, .5, .7, .9) for correct and error responses, observed vs predicted by the fitted model, for every condition x group cell. Cells with fewer than 5 trials of a response type have no observed quantiles and are marked, not filled.
-- **Tests with simulated data:** analytic P and MDT, the EZ worked example, parameter recovery (500 trials x 2 conditions, 10 seeds, within 10% on average), and a drift-only effect picked by BIC in at least 8 of 10 simulations.
+- **Tests with simulated data:** analytic P and MDT, the EZ worked example, parameter recovery (500 trials x 2 conditions, 10 seeds, within 10% on average), and a drift-only effect picked by BIC in at least 8 of 10 simulations, a boundary-only effect (with identifiable errors) not called drift, no-effect data rarely called an effect. Simulated trials slower than 2,000 ms are dropped, as the prereg exclusion would drop them. The suite takes about 5 minutes (about 70 PyDDM fits).
 
 ## Limits
 Single pooled fit per task, not hierarchical: trials from different sessions are treated as exchangeable within a cell, which ignores between-session variability and makes BIC differences optimistic. The prereg allows the hierarchical Bayesian alternative only if chosen before registration; it was not, so this stays the pooled fit and the write-up says so. No across-trial variability in drift, start point or `t0` (so slow errors are not well captured). Exploratory.
