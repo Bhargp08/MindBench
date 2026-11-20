@@ -5,7 +5,7 @@ Pure functions on arrays; this module never reads the database or real outcomes 
 Definition (prereg D6, docs/design/prereg_draft.md): ICC(3,1) consistency with days as targets and the AM and PM sessions as
 the two measurements, computed on residuals from y ~ k + ln(k) (k = study session number minus 2); the raw ICC is
 reported next to it, plus ICC(2,1) for absolute agreement. Shrout & Fleiss (1979) forms from a two-way ANOVA;
-F-based confidence intervals after McGraw & Wong (1996); a bootstrap over days (10,000 resamples by default).
+F-based confidence intervals (Shrout & Fleiss 1979 for forms 1 and 3, McGraw & Wong 1996 for form 2); a bootstrap over days (10,000 resamples by default).
 """
 import numpy as np
 from scipy import stats
@@ -117,19 +117,28 @@ def _design(k):
 
 
 def practice_residuals(y, k):
-    """Residuals of y ~ k + ln(k) (ordinary least squares over all included sessions), removing the practice curve."""
+    """Residuals of y ~ k + ln(k) (ordinary least squares over all included sessions), removing the practice curve.
+
+    `k` must be the real study session number minus 2 (gaps from stopped sessions are kept, not renumbered 1..n).
+    """
     y = np.asarray(y, dtype=float)
     k = np.asarray(k, dtype=float)
     if len(y) != len(k) or len(y) < 5:
         raise ValueError("need at least 5 sessions with matching y and k")
+    if not np.isfinite(k).all() or (k <= 0).any():
+        raise ValueError("k must be finite and positive (k = study session number minus 2, so the first confirmatory session is 1)")
     X = _design(k)
-    beta, *_ = np.linalg.lstsq(X, y, rcond=None)
+    beta, _, rank, _ = np.linalg.lstsq(X, y, rcond=None)
+    if rank < 3:
+        raise ValueError("k has too few distinct values to fit y ~ k + ln(k)")
     return y - X @ beta
 
 
 def paired_matrix(days, pm, values):
     """Days x 2 matrix (AM, PM) from per-session arrays, keeping only days that have both sessions. Returns (matrix, kept day ids)."""
     days, pm, values = np.asarray(days), np.asarray(pm), np.asarray(values, dtype=float)
+    if pm.dtype.kind not in "biuf" or not np.isin(pm, (0, 1)).all():
+        raise ValueError("slot (pm) must be 0 for AM and 1 for PM")
     cells = {}
     for d, p, v in zip(days, pm, values):
         if (d, int(p)) in cells:
@@ -153,7 +162,7 @@ def test_retest(days, pm, k, y, level=0.95, n_boot=10_000, seed=20261119):
 
     `raw` uses the outcome as is; `residual` uses residuals from y ~ k + ln(k) (fitted on all included sessions) so that
     learning across the study does not inflate stability. The primary result is the residual ICC(3,1).
-    Only days with both sessions are used. Shared night, day component and adjacency mean this is within-day consistency
+    `k` is the real study session number minus 2 (not a 1..n row index). Only days with both sessions are used. Shared night, day component and adjacency mean this is within-day consistency
     as well as stability; the interval from the F distribution assumes independent days, so the bootstrap over days is reported too.
     """
     days, pm, k, y = (np.asarray(a) for a in (days, pm, k, y))
@@ -165,7 +174,8 @@ def test_retest(days, pm, k, y, level=0.95, n_boot=10_000, seed=20261119):
     X_res, kept2 = paired_matrix(days, pm, resid)
     if len(kept) < 3:
         raise ValueError("need at least 3 days with both an AM and a PM session")
-    assert kept.tolist() == kept2.tolist()
+    if kept.tolist() != kept2.tolist():
+        raise ValueError("internal error: raw and residual day sets differ")
     return {
         "n_days": len(kept), "n_sessions": int(len(y)), "days": kept.tolist(),
         "raw": _summary(X_raw, n_boot, seed, level),
@@ -175,9 +185,13 @@ def test_retest(days, pm, k, y, level=0.95, n_boot=10_000, seed=20261119):
 
 
 def spearman_brown(r, factor=2):
-    """Spearman-Brown prophecy: reliability of a test `factor` times as long, from reliability r."""
+    """Spearman-Brown prophecy: reliability of a test `factor` times as long, from reliability r.
+
+    A monotone transform: for negative r (and negative interval endpoints) the result can fall below -1 and is not a reliability bound.
+    """
     r = float(r)
-    return factor * r / (1 + (factor - 1) * r)
+    den = 1 + (factor - 1) * r
+    return float(factor * r / den) if den != 0 else float("nan")
 
 
 def split_trials(trials):
