@@ -183,3 +183,8 @@ Branch `mb/MB-05b-prereg-stats`. `docs/design/prereg_draft.md` now has the D3 mi
 - Finding: when errors fall under 5% in a group the boundary is not identifiable and a drift verdict can hide a boundary change; `compare_models` returns a note that drift cannot exclude a boundary change. Pooled (non-hierarchical) fits make BIC differences optimistic; documented in `ddm.md`.
 - Cursor review: no blockers; merged PR #24 (Nov 20, 2026).
 - Not done: real data (MB-22); hierarchical Bayesian DDM (not chosen in the prereg); 2-back DDM (left out per D7).
+
+## MB-22: Synthesis and deviations (PR open)
+- `mindbench/synthesis.py` (`docs/design/synthesis.md`): a results table with one row per preregistered analysis (15 rows), source columns for MB-18/19/20/21, prereg decision rules (confirmatory from the frequentist result only; wrong-direction H1 not supported; everything else labelled exploratory/descriptive), convergence flag, and a `deviations.md` parser/renderer.
+- 27 tests, written failing first, no data: every H/P/S ID in `prereg_draft.md` appears in the table (the spec's consistency check); empty results give "pending" and no numbers.
+- Not done: MB-18 (needs R) so nothing is filled in; deviations part B stays empty until registration; write-up assembly is MB-23.
