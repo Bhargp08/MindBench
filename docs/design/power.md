@@ -26,6 +26,8 @@ Code: `analysis/python/mindbench/mixed_power.py`; report: `analysis/python/scrip
 
 **Headline (share 0.30):** r = 0.43: **0.58**; r = 0.30: **0.27**; 80% power (Holm, both true) needs r of about **0.53** (linear interpolation on the r grid). Without a day component (share 0) the figures are 0.63 and 0.29. The study is therefore **less sensitive than the earlier GLS figures suggested** (0.74 / 0.39 / r of about 0.46): those came from a model that was anti-conservative once a day component exists.
 
+**Known limitation (review finding):** the fit's convergence flag in `mixed_power.py` is lenient (`res.success or finite objective`), so `fit_failures: 0` in the results file does not prove every fit converged. Tightening it (use `res.success`, count boundary hits separately) changes code, so the simulation would have to be re-run; deferred to the next change to this module.
+
 **Not simulated:** missed sessions, practice effects, non-normal errors, correlated outcomes, a day component larger than 30%. Real power is lower if sessions are missed. Paired AM/PM power (H2) is unchanged below.
 
 ---
