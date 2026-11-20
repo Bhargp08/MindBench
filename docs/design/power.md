@@ -2,7 +2,38 @@
 
 Code: `analysis/python/mindbench/power.py`. Tests: `analysis/python/tests/test_power.py`. Figure and numbers: `figures/power_curves.png`, `power_results.json` (made by `analysis/python/scripts/power_report.py`; seed 20261117; 1,000 simulations per point, so sampling error is about +/-0.015 and neighboring points can be slightly non-monotone).
 
-## Model
+## Primary model and power (MB-05b; supersedes the GLS figures below)
+Code: `analysis/python/mindbench/mixed_power.py`; report: `analysis/python/scripts/power_mixed_report.py`; numbers: `docs/design/power_mixed_results.json` (base seed 20261118, **2,000 simulations per scenario**, so sampling error is about +/-0.01).
+
+**Model (preregistration decision D3).** `y = b0 + b1*sleep + b2*k + b3*ln(k) + b4*PM + u_day + e`: random intercept for day, AR(1) residuals over calendar slots (slot = 2*(day-1)+PM+1, so missed sessions leave gaps), REML, b1 tested with t on df = included days - 5. Fitted by our own REML code (residual variance profiled out; L-BFGS-B over the day-variance ratio and phi). **Matching R `glmmTMB` is not done yet: it waits until R is installed** (R is only in CI, where the R tests are skipped); until then the Python fit is checked only by the simulation tests (recovery of known variance components, type-I error near .05).
+
+**Why the GLS was replaced.** The GLS with AR(1) in session order has no day term. When 30% of the residual variance is shared within a day, its type-I error is **0.105** (FWER under Holm 0.122), roughly double the nominal .05, because AM and PM share the night's sleep and the day component.
+
+**Data-generating process.** Sleep ~ N(0, 1) per day, shared by AM and PM; `y = r*sleep + sqrt(1-r^2)*e`, e = sqrt(share)*day + sqrt(1-share)*AR(1) (phi = 0.3); 21 days x 2 sessions, no missed sessions, outcomes with independent noise. Planning scenario: **share = 0.30** (an assumption; no data). Holm over the 2 primary outcomes.
+
+**Type-I error (r = 0):** share 0.30: single test **0.056**, FWER **0.059**; share 0: 0.048 and 0.043.
+
+**Power at 42 sessions, share 0.30 (planning scenario):**
+| r | single test, uncorrected | Holm, both outcomes true | Holm, one outcome true |
+|---|---|---|---|
+| 0.30 | 0.34 | 0.27 | 0.28 |
+| 0.35 | 0.44 | 0.36 | 0.36 |
+| 0.40 | 0.54 | 0.49 | 0.48 |
+| 0.43 | 0.62 | 0.58 | 0.57 |
+| 0.45 | 0.67 | 0.62 | 0.61 |
+| 0.50 | 0.76 | 0.73 | 0.73 |
+| 0.55 | 0.86 | 0.84 | 0.84 |
+
+**Headline (share 0.30):** r = 0.43: **0.58**; r = 0.30: **0.27**; 80% power (Holm, both true) needs r of about **0.53** (linear interpolation on the r grid). Without a day component (share 0) the figures are 0.63 and 0.29. The study is therefore **less sensitive than the earlier GLS figures suggested** (0.74 / 0.39 / r of about 0.46): those came from a model that was anti-conservative once a day component exists.
+
+**Not simulated:** missed sessions, practice effects, non-normal errors, correlated outcomes, a day component larger than 30%. Real power is lower if sessions are missed. Paired AM/PM power (H2) is unchanged below.
+
+---
+
+# Earlier figures (superseded)
+Everything below describes the GLS / Cochrane-Orcutt analysis used before MB-05b. It is kept for the record; **do not quote these power numbers as the planning power.**
+
+## Model (superseded)
 DV = r * sleep + noise. Sleep ~ N(0, 1); noise is unit-variance AR(1) with phi = 0.3; r is the within-person correlation. **AM and PM sessions of a day share the same night's sleep** (as in the design), so the predictor is autocorrelated too. The analysis uses a one-step Cochrane-Orcutt AR(1) correction. "Effective power" includes the AR(1) correction and Holm over the **2 primary outcomes** (P1 2-back d', P2 recall proportion), which share the sleep predictor and have independent errors.
 
 ## Primary outcomes: why these two (Bharg's decision, Nov 17, 2026)
@@ -28,10 +59,10 @@ Caveats: (1) these effects are from total sleep deprivation; natural sleep varia
 Analytic paired t: d_z = 0.5 needs n = 34 (0.808); d_z = 0.3 needs n = 90 (0.804); 21 AM/PM pairs at d_z = 0.65 give 0.809. Simulated i.i.d. correlation test: n = 40, r = .43 about 0.80; n = 28 about 0.65; n = 40, r = .30 about 0.48.
 
 ## Findings that differ from, or add to, the spec (kept for MB-18)
-1. **AR(1) errors alone do not inflate type-I error** when sleep is independent across sessions (about 0.050). Inflation appears because AM and PM share the same sleep value: uncorrected type-I is about 0.083 at n = 40, phi = 0.3; the AR(1) correction brings it to about 0.061 (slightly liberal). This still motivates the AR model in MB-18, but the reason is the shared nightly sleep. **MB-18 must model this (AR(1) errors, and day as a grouping term).**
+1. **AR(1) errors alone do not inflate type-I error** when sleep is independent across sessions (about 0.050). Inflation appears because AM and PM share the same sleep value: uncorrected type-I is about 0.083 at n = 40, phi = 0.3; the AR(1) correction brings it to about 0.061 (slightly liberal). This still motivates the AR model in MB-18, but the reason is the shared nightly sleep. **MB-18 must model this (AR(1) errors, and day as a grouping term); MB-05b made this the primary model.**
 2. Holm and AR/shared-sleep results are **calibrated by simulation, not from the spec**.
 
-## Power at the planned 42 sessions (direct simulation at n = 42)
+## Power at the planned 42 sessions (direct simulation at n = 42; superseded, GLS model)
 | Within-person r | i.i.d., no correction | AR(1) + shared sleep | + Holm, 2 primary outcomes (both true) | Superseded: Holm over 5 |
 |---|---|---|---|---|
 | 0.43 | 0.81 | 0.75 | **0.74** | 0.64 |
@@ -44,10 +75,10 @@ If only one of the two primary outcomes has a true effect at r = 0.43, its power
 **AM vs PM (H2):** 21 paired days at d_z = 0.65 give 0.81 for one test and **0.71 at alpha = .025** (Bonferroni bound for 2 outcomes; Holm is slightly better); 80% at alpha = .025 would need 26 pairs (about 26 days).
 
 ## Session count
-**Decision (Bharg, Nov 17, 2026): 42 sessions (21 days x 2).** With 2 primary outcomes, effective power at r = 0.43 is about 0.74 (60 sessions would give about 0.89).
+**Decision (Bharg, Nov 17, 2026): 42 sessions (21 days x 2).** With 2 primary outcomes the effective power at r = 0.43 is about 0.58 under the primary mixed model (the superseded GLS figure was 0.74; the 60-session figure of about 0.89 is also GLS-based and was not recomputed).
 
 ## Honest framing
-At 42 sessions the study can reliably detect only large within-person effects (r of about 0.46 or more) once autocorrelation and the 2-outcome Holm family are accounted for. Effects of natural sleep variation are probably smaller than those from total sleep deprivation, so **a null result is likely, and it is an acceptable outcome** of this study. Secondary outcomes are exploratory and underpowered; they will be reported as such.
+At 42 sessions the study can reliably detect only large within-person effects (r of about 0.53 or more under the primary mixed model) once the day component, autocorrelation and the 2-outcome Holm family are accounted for. Effects of natural sleep variation are probably smaller than those from total sleep deprivation, so **a null result is likely, and it is an acceptable outcome** of this study. Secondary outcomes are exploratory and underpowered; they will be reported as such.
 
 ## Limits
 Assumes a linear within-person effect, constant phi, independent outcomes (real outcomes are probably correlated, which makes Holm less costly than shown), and normal errors. Not simulated: practice effects (modeled via session number in MB-18) and missing sessions.
