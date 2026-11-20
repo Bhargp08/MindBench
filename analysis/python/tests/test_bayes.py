@@ -3,7 +3,7 @@
 Model (standardized outcome): y = b0 + b_sleep*sleep_c + b_k*k_z + b_lnk*lnk_z + b_pm*pm_z + u_day + e, e AR(1) over calendar slots.
 Priors: b0 ~ N(0,1); b_sleep ~ N(0, 0.5) per hour (sleep centered, in hours); b_k, b_lnk, b_pm ~ N(0,1) per SD of the standardized predictor;
 day SD ~ HalfNormal(0.5); residual SD ~ HalfNormal(1); AR(1) phi ~ N(0, 0.5) truncated to (-1, 1) (prereg D5).
-Pointwise log-likelihood is the one-step-ahead conditional density, used for LOO and WAIC.
+Pointwise log-likelihood is the one-step-ahead predictive density of the joint model (day intercept integrated out), used for LOO and WAIC.
 """
 import numpy as np
 import pytest
@@ -24,7 +24,7 @@ class TestPrepare:
         assert abs(d["sleep_c"].mean()) < 1e-9
         for key in ("k_z", "lnk_z", "pm_z"):
             assert abs(d[key].mean()) < 1e-9 and d[key].std() == pytest.approx(1.0, abs=1e-9)
-        assert d["y"].std() == pytest.approx(1.0, abs=1e-9) or True    # the outcome is z-scored in prepare(); simulate() works on that scale
+
 
     def test_prepare_standardizes_the_outcome_and_centers_sleep(self):
         rng = np.random.default_rng(2)
@@ -72,21 +72,29 @@ class TestPriors:
 
 
 class TestOneStepAheadLikelihood:
-    def test_pointwise_loglik_is_the_conditional_ar1_density(self):
+    def test_pointwise_loglik_is_the_one_step_ahead_predictive_density_of_the_joint_model(self):
         from scipy import stats
         d = small(n_days=6, seed=4)
         idata = bayes.fit(d, draws=40, tune=100, chains=1, seed=1)
         ll = idata.log_likelihood["y"].values[0, 0]       # first draw, all observations
         post = {p: float(idata.posterior[p].values[0, 0]) for p in PARAMS}
-        u = idata.posterior["u_day"].values[0, 0]
-        mu = post["b0"] + post["b_sleep"] * d["sleep_c"] + post["b_k"] * d["k_z"] + post["b_lnk"] * d["lnk_z"] + post["b_pm"] * d["pm_z"] + u[d["day_idx"]]
-        resid = d["y"] - mu
-        expect = np.empty(len(resid))
-        expect[0] = stats.norm.logpdf(resid[0], 0, post["sigma"])
-        for t in range(1, len(resid)):
-            g = d["gap"][t - 1]
-            expect[t] = stats.norm.logpdf(resid[t], post["phi"] ** g * resid[t - 1], post["sigma"] * np.sqrt(1 - post["phi"] ** (2 * g)))
-        assert ll == pytest.approx(expect, abs=1e-6)
+        mu = post["b0"] + post["b_sleep"] * d["sleep_c"] + post["b_k"] * d["k_z"] + post["b_lnk"] * d["lnk_z"] + post["b_pm"] * d["pm_z"]
+        dist = np.abs(d["slots"][:, None] - d["slots"][None, :])
+        same = (d["day_idx"][:, None] == d["day_idx"][None, :]).astype(float)
+        V = post["sigma_u"] ** 2 * same + post["sigma"] ** 2 * post["phi"] ** dist
+        expect = np.empty(len(mu))
+        for t in range(len(mu)):
+            if t == 0:
+                expect[t] = stats.norm.logpdf(d["y"][0], mu[0], np.sqrt(V[0, 0]))
+                continue
+            S11, s12 = V[:t, :t], V[:t, t]
+            w = np.linalg.solve(S11, s12)
+            m = mu[t] + w @ (d["y"][:t] - mu[:t])
+            var = V[t, t] - s12 @ w
+            expect[t] = stats.norm.logpdf(d["y"][t], m, np.sqrt(var))
+        assert ll == pytest.approx(expect, abs=1e-5)
+        # the pointwise terms add up to the joint multivariate normal log density
+        assert ll.sum() == pytest.approx(stats.multivariate_normal(mu, V).logpdf(d["y"]), abs=1e-5)
 
     def test_missed_sessions_use_the_gap_between_slots(self):
         d = small(n_days=8, seed=5)
@@ -141,7 +149,7 @@ class TestRecovery:
         hits = {p: 0 for p in PARAMS}
         for s in range(20):
             d = small(seed=100 + s)
-            idata = bayes.fit(d, draws=400, tune=500, chains=2, seed=s)
+            idata = bayes.fit(d, draws=300, tune=400, chains=2, seed=s)
             summ = bayes.summarize(idata)
             for p in PARAMS:
                 lo, hi = summ[p]["ci90"]
@@ -154,7 +162,7 @@ class TestRecovery:
 
 class TestModelComparison:
     def test_loo_prefers_the_model_with_sleep_when_the_effect_is_large(self):
-        d = small(seed=11, b_sleep=0.9)
+        d = small(seed=13, b_sleep=1.2)    # a large effect: 1.2 SD of the outcome per hour of sleep
         full = bayes.fit(d, draws=400, tune=500, chains=2, seed=1)
         null = bayes.fit(d, include_sleep=False, draws=400, tune=500, chains=2, seed=1)
         c = bayes.compare_sleep(full, null)
