@@ -155,3 +155,10 @@
 - CI: `dashboard` added to the Python job matrix. VERSIONS: Streamlit 1.67.0.
 - Not tested against real data or a real Drive folder (synthetic fixtures only). The stopped-session reality (partial uploads skipped by the ETL) is surfaced in the gaps panel.
 - If prereg decisions D1/D2 (time-of-day and day definitions) change, update `metrics._time_of_day` and the local-date logic.
+
+## MB-05b: prereg statistics follow-up (Nov 19, 2026; merged as PR #20)
+Branch `mb/MB-05b-prereg-stats`. `docs/design/prereg_draft.md` now has the D3 mixed model (random intercept for day + AR(1) over calendar slots, REML, t on df = included days - 5; GLS corAR1/corCAR1/day-clustered robust SE as sensitivity only), D2 (00:00-04:00 belongs to the previous day), D4 (BCa, 10,000 resamples of whole days), D5, D6, D7, D8 (Option A only; re-tag `prereg-v1` after merge if it already exists), D9 (AM/PM from start time), the Holm wrong-direction wording, and afex removed. `power.md`, `design.md` section 6 and `prereg_notes.md` updated; the earlier GLS power figures are marked superseded. **Nothing submitted or tagged.**
+- **Planning power (mixed model, 30% day component, 2,000 simulations):** type-I 0.056 (FWER 0.059); Holm power with both outcomes true 0.58 at r = 0.43, 0.27 at r = 0.30; 80% needs r of about 0.53. The earlier GLS fit has type-I 0.105 with a day component. The study is less sensitive than the earlier 0.74 / 0.39 / 0.46 figures said.
+- **Waiting on R:** matching the Python REML fit against `glmmTMB` is not done (R not installed yet).
+- **Statistical review done:** wording fixes applied (same-slot rule, glmmTMB pinning, df justification, D5 AR form, Holm sign rule, DDM, ICC, D2, D4). Deferred: strict convergence check in `mixed_power.py` needs a simulation re-run (noted in `power.md`).
+- The MB-16 dashboard work is on `mb/MB-16-dashboard`; its day assignment must follow D2 and AM/PM must follow D9.
