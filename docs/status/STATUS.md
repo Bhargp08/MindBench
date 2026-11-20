@@ -168,9 +168,10 @@ Branch `mb/MB-05b-prereg-stats`. `docs/design/prereg_draft.md` now has the D3 mi
 - 44 tests, written failing first (Shrout & Fleiss example 0.1657 / 0.2898 / 0.7148; Spearman-Brown 0.5 -> 0.6667); simulated data only.
 - Not done: running it on real scored data (after collection, MB-22); Koo & Li thresholds not checked against the paper.
 
-## MB-20: Bayesian regression, PyMC (PR open)
+## MB-20: Bayesian regression, PyMC (merged)
 - `mindbench/bayes.py` implements prereg D5 on the D3 model (priors as given by Bharg: b_sleep N(0, 0.5)/hr; others N(0, 1)/SD; day SD HalfNormal(0.5); residual SD HalfNormal(1); phi N(0, 0.5) truncated). One-step-ahead predictive densities of the joint model (day intercept integrated out) feed PSIS-LOO and WAIC; Pareto-k reported. `docs/design/bayes.md`.
-- 17 tests, written failing first, simulated data only: recovery (pooled 90% coverage 0.925 over 20 sims), R-hat < 1.01 and no divergences, LOO prefers the true model for a large effect, priors, likelihood equals the explicit conditional formulas.
-- **Toolchain change:** PyMC 6.4.0 needs Python >= 3.12 and scipy >= 1.18; `analysis/python` now requires Python 3.12-3.14 (3.13 pinned), numpy < 2.4, numba 0.62 / llvmlite 0.45 (newer llvmlite has no Intel-Mac wheel). See VERSIONS.
+- 17 bayes tests (205 in the analysis suite), written failing first, simulated data only: recovery (pooled 90% coverage 0.925 over 20 sims), R-hat < 1.01 and no divergences, LOO prefers the true model for a large effect, priors, likelihood equals the explicit conditional formulas.
+- **Toolchain change:** PyMC 6.4.0 needs Python >= 3.12 and scipy >= 1.18; `analysis/python` now requires Python 3.12-3.14 (3.13 pinned), numpy < 2.4, numba 0.62 / llvmlite 0.45 (newer llvmlite has no Intel-Mac wheel). PyMC sits in the `bayes` uv group only (dashboard does not install it). See VERSIONS.
 - **Prereg draft:** D5 paragraph updated to match the priors and the integrated-out day intercept (the lint test still passes). Needs Bharg's eye before the registration; re-tag `prereg-v1` if already created.
-- Not done: run on real data; trial-level hierarchical models from the spec (not in prereg D5).
+- Cursor review: no blockers; merged PR #23 (Nov 20, 2026); `VERSIONS.md` deduped for the Python/numpy/scipy rows.
+- Not done: run on real data (MB-22); trial-level hierarchical models from the spec (not in prereg D5).
