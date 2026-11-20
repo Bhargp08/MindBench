@@ -23,8 +23,9 @@ class TestShroutFleiss:
         r = rel.icc(SF)
         assert r["n_targets"] == 6 and r["n_raters"] == 4
         assert r["BMS"] == pytest.approx(11.2417, abs=1e-3)
-        assert r["EMS"] == pytest.approx(1.0556, abs=1e-3)
+        assert r["EMS"] == pytest.approx(1.0194, abs=1e-3)   # Shrout & Fleiss Table: BMS 11.24, JMS 32.49, EMS 1.02, WMS 6.26
         assert r["JMS"] == pytest.approx(32.4861, abs=1e-3)
+        assert r["WMS"] == pytest.approx(6.2639, abs=1e-3)
 
     def test_confidence_intervals_of_the_example(self):
         # reference values from the McGraw & Wong F-based intervals (as printed by common ICC software for this matrix)
@@ -173,7 +174,7 @@ class TestTestRetest:
         raw, res = [], []
         for seed in range(60):
             days, pm, k, y = simulate(seed=seed, trend=1.5, day_sd=0.0, noise_sd=1.0)   # no true day-to-day stability
-            out = rel.test_retest(days, pm, k, y)
+            out = rel.test_retest(days, pm, k, y, n_boot=0)
             raw.append(out["raw"]["ICC(3,1)"]); res.append(out["residual"]["ICC(3,1)"])
         assert np.mean(raw) > 0.15            # the trend alone creates apparent stability
         assert abs(np.mean(res)) < 0.15       # removed by the y ~ k + ln(k) residuals
@@ -182,7 +183,7 @@ class TestTestRetest:
         vals = []
         for seed in range(80):
             days, pm, k, y = simulate(seed=seed, trend=1.0, day_sd=1.0, noise_sd=1.0)   # true ICC = 0.5
-            vals.append(rel.test_retest(days, pm, k, y)["residual"]["ICC(3,1)"])
+            vals.append(rel.test_retest(days, pm, k, y, n_boot=0)["residual"]["ICC(3,1)"])
         assert np.mean(vals) == pytest.approx(0.5, abs=0.07)
 
     def test_output_has_raw_and_residual_with_icc_3_1_icc_2_1_and_intervals(self):
