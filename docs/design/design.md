@@ -63,11 +63,11 @@ Each task has a short instruction screen and a practice block with feedback (MB-
 6. **Stop rule:** a stopped session (see `self_pilot_policy.md`) counts as incomplete.
 
 ## 6. Analysis plan (summary; details in MB-18 to MB-21)
-- **H1:** per outcome (P1, P2 confirmatory; S-outcomes exploratory), regression of the outcome on sleep hours, session number (linear plus log term) and time of day, with AR(1) or HAC errors; the PM and AM of a day are not independent, so day is a grouping term. Report estimates with 95% intervals, plus a Bayesian version (MB-20).
-- **H2:** paired AM/PM difference per day (paired t, bootstrap CI with at least 10,000 resamples).
+- **H1:** per outcome (P1, P2 confirmatory; S-outcomes exploratory), a linear mixed model fitted by REML: outcome on sleep hours, session number (linear plus log term) and time of day, with a random intercept for day and AR(1) residuals over calendar slots (slot = 2*(day-1)+PM+1; missed sessions leave gaps); b1 tested with t on df = included days - 5 (decision D3, MB-05b). The earlier GLS with AR(1) in session order, a corCAR1 version and day-clustered robust SEs are sensitivity analyses only. Report estimates with 95% intervals, plus a Bayesian version of the same structure (MB-20). Matching the Python fit against R `glmmTMB` waits until R is installed.
+- **H2:** paired AM/PM difference per day (paired t, BCa bootstrap CI with 10,000 resamples of whole days). A session starting 00:00-04:00 belongs to the previous day (D2); AM/PM comes from the start time (D9).
 - **H3:** DDM fits per condition (PyDDM) with competing drift/boundary/both/neither models, compared by BIC; posterior-predictive checks on RT quantiles.
 - **Practice effects:** modeled explicitly via session number, preregistered. Because there is no pilot phase, the steepest early learning falls inside the confirmatory sessions; MB-18 should keep both a linear and a log session-number term (as already planned) and report how much of the early change they absorb.
-- **Multiple comparisons:** Holm correction across the 2 primary outcomes (P1, P2) within each of H1 and H2 (alpha = .05). Secondary outcomes are reported without correction and labeled exploratory. Effective power under this family is in `power.md` (about 0.74 at r = 0.43, 42 sessions, with AR(1) and shared nightly sleep).
+- **Multiple comparisons:** Holm correction across the 2 primary outcomes (P1, P2) within each of H1 and H2 (alpha = .05). Secondary outcomes are reported without correction and labeled exploratory. Effective power under this family and the primary mixed model is in `power.md` (about 0.58 at r = 0.43 and 0.27 at r = 0.30 with 42 sessions; 80% power needs r of about 0.53; the earlier GLS figures of 0.74 / 0.39 are superseded).
 - **Inference criteria:** a frequentist effect is "supported" if its Holm-adjusted p < .05 and the direction matches; null results are reported as such, with intervals.
 
 ## 7. Stopping rule and deviations

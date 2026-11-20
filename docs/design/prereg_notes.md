@@ -17,7 +17,7 @@ Statements the preregistration should make, and things it must not claim. Not it
 
 ## Things the preregistration should state
 - Primary outcomes: P1 2-back d' (log-linear correction on every dataset) and P2 recall proportion; Holm over these 2; everything else exploratory.
-- Practice rows (`practice = 1`) and smoke-test sessions are excluded; AR(1)/day-grouping model for the shared AM/PM nightly sleep (`power.md`).
+- Practice rows (`practice = 1`) and smoke-test sessions are excluded; mixed model (day intercept + AR(1) over calendar slots) for the shared AM/PM nightly sleep (`power.md`, MB-05b).
 - Because there is no pilot phase, early confirmatory sessions include the steepest practice-related change; session number (linear and log) is a covariate.
 - Any protocol change after registration is a logged deviation (`deviations.md`, part B).
 

@@ -1,0 +1,186 @@
+{
+ "meta": {
+  "n_sims": 2000,
+  "n_days": 21,
+  "phi": 0.3,
+  "base_seed": 20261118,
+  "model": "linear mixed model: random intercept for day + AR(1) over calendar slots (slot = 2*(day-1)+PM+1), REML, b1 tested with t on df = included days - 5; covariates: sleep (centered), k, ln k, PM",
+  "dgp": "sleep drawn per day (AM and PM share it); y = r*sleep + sqrt(1-r^2)*e, e unit variance = sqrt(share)*day component + sqrt(1-share)*AR(1) noise (phi 0.3); two sessions per day, 21 days, no missing sessions; outcomes have independent noise",
+  "definitions": {
+   "type1_single": "two-sided rejection (p < .05) of a null outcome, pooled over two null outcomes",
+   "type1_fwer_holm": "any Holm rejection (two-sided) among two null outcomes",
+   "power_single": "p < .05 and b1 > 0 (uncorrected), pooled over two true outcomes",
+   "power_holm_both": "Holm-adjusted p < .05 and b1 > 0, both outcomes true (mean over the two)",
+   "power_holm_one": "Holm-adjusted p < .05 and b1 > 0 for the true outcome when the other outcome is null"
+  }
+ },
+ "scenarios": {
+  "day_share_0.00": {
+   "r0.00": {
+    "type1_single": 0.0475,
+    "type1_fwer_holm": 0.043,
+    "n_sims": 2000,
+    "fit_failures": 0
+   },
+   "r0.30": {
+    "power_single": 0.375,
+    "power_holm_both": 0.2915,
+    "power_holm_one": 0.2965,
+    "n_sims": 2000,
+    "fit_failures": 0
+   },
+   "r0.35": {
+    "power_single": 0.48525,
+    "power_holm_both": 0.409,
+    "power_holm_one": 0.4065,
+    "n_sims": 2000,
+    "fit_failures": 0
+   },
+   "r0.40": {
+    "power_single": 0.59525,
+    "power_holm_both": 0.53075,
+    "power_holm_one": 0.544,
+    "n_sims": 2000,
+    "fit_failures": 0
+   },
+   "r0.43": {
+    "power_single": 0.6765,
+    "power_holm_both": 0.626,
+    "power_holm_one": 0.623,
+    "n_sims": 2000,
+    "fit_failures": 0
+   },
+   "r0.45": {
+    "power_single": 0.72575,
+    "power_holm_both": 0.68675,
+    "power_holm_one": 0.6865,
+    "n_sims": 2000,
+    "fit_failures": 0
+   },
+   "r0.50": {
+    "power_single": 0.83375,
+    "power_holm_both": 0.8055,
+    "power_holm_one": 0.7995,
+    "n_sims": 2000,
+    "fit_failures": 0
+   },
+   "r0.55": {
+    "power_single": 0.89475,
+    "power_holm_both": 0.88,
+    "power_holm_one": 0.882,
+    "n_sims": 2000,
+    "fit_failures": 0
+   }
+  },
+  "day_share_0.30": {
+   "r0.00": {
+    "type1_single": 0.056,
+    "type1_fwer_holm": 0.0585,
+    "n_sims": 2000,
+    "fit_failures": 0
+   },
+   "r0.30": {
+    "power_single": 0.34275,
+    "power_holm_both": 0.274,
+    "power_holm_one": 0.2795,
+    "n_sims": 2000,
+    "fit_failures": 0
+   },
+   "r0.35": {
+    "power_single": 0.4365,
+    "power_holm_both": 0.3615,
+    "power_holm_one": 0.362,
+    "n_sims": 2000,
+    "fit_failures": 0
+   },
+   "r0.40": {
+    "power_single": 0.542,
+    "power_holm_both": 0.4855,
+    "power_holm_one": 0.483,
+    "n_sims": 2000,
+    "fit_failures": 0
+   },
+   "r0.43": {
+    "power_single": 0.62375,
+    "power_holm_both": 0.5765,
+    "power_holm_one": 0.5715,
+    "n_sims": 2000,
+    "fit_failures": 0
+   },
+   "r0.45": {
+    "power_single": 0.6655,
+    "power_holm_both": 0.619,
+    "power_holm_one": 0.612,
+    "n_sims": 2000,
+    "fit_failures": 0
+   },
+   "r0.50": {
+    "power_single": 0.76225,
+    "power_holm_both": 0.73125,
+    "power_holm_one": 0.732,
+    "n_sims": 2000,
+    "fit_failures": 0
+   },
+   "r0.55": {
+    "power_single": 0.8565,
+    "power_holm_both": 0.83875,
+    "power_holm_one": 0.836,
+    "n_sims": 2000,
+    "fit_failures": 0
+   }
+  }
+ },
+ "gls_ar1_comparison": {
+  "day_share_0.00": {
+   "r0.00": {
+    "type1_single": 0.06,
+    "type1_fwer_holm": 0.064,
+    "n_sims": 2000,
+    "fit_failures": 0
+   },
+   "r0.30": {
+    "power_single": 0.44,
+    "power_holm_both": 0.3675,
+    "power_holm_one": 0.3715,
+    "n_sims": 2000,
+    "fit_failures": 0
+   },
+   "r0.43": {
+    "power_single": 0.725,
+    "power_holm_both": 0.6855,
+    "power_holm_one": 0.692,
+    "n_sims": 2000,
+    "fit_failures": 0
+   }
+  },
+  "day_share_0.30": {
+   "r0.00": {
+    "type1_single": 0.105,
+    "type1_fwer_holm": 0.122,
+    "n_sims": 2000,
+    "fit_failures": 0
+   },
+   "r0.30": {
+    "power_single": 0.4365,
+    "power_holm_both": 0.36975,
+    "power_holm_one": 0.3885,
+    "n_sims": 2000,
+    "fit_failures": 0
+   },
+   "r0.43": {
+    "power_single": 0.7315,
+    "power_holm_both": 0.69775,
+    "power_holm_one": 0.685,
+    "n_sims": 2000,
+    "fit_failures": 0
+   }
+  }
+ },
+ "headline": {
+  "planning_scenario": "day_share_0.30",
+  "r0.43_holm_both": 0.5765,
+  "r0.30_holm_both": 0.274,
+  "detectable_r_80": 0.53,
+  "note": "planning scenario = 30% shared-day component; detectable r by linear interpolation of Holm-both power on the r grid"
+ }
+}
