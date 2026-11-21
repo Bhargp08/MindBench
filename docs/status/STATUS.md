@@ -148,7 +148,7 @@
 - Cursor review (Nov 18, 2026): MB-18–MB-21 coverage table complete; pilot/smoke exclusion and no false IRB/pilot claims in lint; local ETL 97/97 (prereg lint); freeze tag remains Bharg's action after merge.
 - Approved by Bharg and merged after Cursor review (Nov 18, 2026). **Bharg still submits to OSF; no agent submission.**
 
-## MB-16: Dashboard + nightly ETL (PR open)
+## MB-16: Dashboard + nightly ETL (merged, PR #21)
 - `dashboard/`: Streamlit app (`app.py`), metrics (`mindbench_dashboard/metrics.py`), nightly ETL runner (`nightly.py`), config. **Completion and data quality only**: no outcome values (P1/P2/S1-S4), no hypothesis tests. Panels: Completion (with the preregistered stopping-rule status), Session-number gaps (explained as failed validation / partial upload / no file), Skipped partial uploads, Data quality (per-session table and trends), Sleep log (local mode only). Public mode shows aggregates only (no participant codes, file names, user agent, time of day, sleep data or timestamps finer than a date).
 - 59 dashboard tests (written failing first, a9de1b3). Three structural guards: no outcome-like field names; invariance (changing performance data changes nothing displayed); the dashboard never imports the scoring/d' code.
 - Nightly ETL: optional Drive download (credentials from environment only; missing credentials reported as "skipped"), idempotent load, automatic exclusion reasons, JSON report; exit code 1 if a file failed. **Schedule templates only** (`dashboard/schedule/`: cron, macOS launchd, Windows Task Scheduler); nothing is installed.
@@ -204,3 +204,9 @@ Branch `mb/MB-05b-prereg-stats`. `docs/design/prereg_draft.md` now has the D3 mi
 - 59 public-data tests (analysis, ~355 suite) + 14 release-doc lint tests (etl); simulated data only.
 - Cursor review: no blockers; merged PR #27 (Nov 21, 2026); added whole-cell unix epoch rule after review.
 - Not done / yours: no real export or Zenodo upload; Pages deploy off; no screenshots/video; trial-level DDM/reliability not re-run from release; consent form still draft.
+
+## MB-25: Final review preparation (open)
+- The final whole-repo review is Cursor's (`docs/status/FINAL_REVIEW.md`, not written yet) and the v1.0 tag is Bharg's. This unit prepares both and fixes nothing without an approved fix list.
+- `mindbench/release_audit.py` (read-only): secrets in all history, tracked private-data files and `data_public/` check, attribution lines in commits (Cursor's own trailer counted separately), pins and lock files, open placeholders, paper traced, prereg coverage, release files. 37 tests (analysis), written failing first. Real-repo run: all pass except one Minor pin finding (`scipy>=1.18` has no upper bound).
+- `docs/status/RELEASE_CHECKLIST.md` (acceptance unchecked; Bharg-only steps; MB-13/17/18 listed as not built, MB-18 flagged as a gap), `SELF_AUDIT.md` (labelled as not the independent review), `FINAL_REVIEW_PROMPT.md` (paste-ready, covers spec section 8). STATUS heading for MB-16 corrected.
+- **No tag, no release, nothing published.** Not done: MB-18 (needs R), real data, registration, deploy.
