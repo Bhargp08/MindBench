@@ -90,6 +90,10 @@ class TestCommitMessages:
         assert ra.commit_message_problems(repo) == []
         assert ra.review_tool_trailers(repo) == 1
 
+    def test_the_owners_own_name_in_a_squash_trailer_is_not_an_attribution_to_a_tool(self, repo):
+        commit(repo, "b.txt", "b", msg="[MB-02] x (#3)\n\nCo-authored-by: Bharg Patel <bharg@example.com>")
+        assert ra.commit_message_problems(repo) == []
+
     def test_clean_messages_pass(self, repo):
         commit(repo, "b.txt", "b", msg="feat(MB-99): something")
         assert ra.commit_message_problems(repo) == []

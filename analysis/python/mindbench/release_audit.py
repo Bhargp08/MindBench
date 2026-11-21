@@ -72,17 +72,29 @@ def forbidden_tracked(root) -> list[str]:
     return problems
 
 
+REVIEW_TOOL_TRAILER = "co-authored-by: cursor <cursoragent@cursor.com>"  # added by the review tool to its own commits
+
+
+def _messages(root):
+    for rec in _git(root, "log", "--all", "--format=%H%x00%B%x01").split("\x01"):
+        if "\x00" in rec:
+            sha, body = rec.strip().split("\x00", 1)
+            yield sha, body
+
+
 def commit_message_problems(root) -> list[str]:
-    out = _git(root, "log", "--all", "--format=%H%x00%B%x01")
+    """Attribution lines other than the review tool's own trailer (which this project does not control and does not rewrite)."""
     problems = []
-    for rec in out.split("\x01"):
-        if "\x00" not in rec:
-            continue
-        sha, body = rec.strip().split("\x00", 1)
-        m = ATTRIBUTION_RE.search(body)
-        if m:
-            problems.append(f"{sha[:8]}: attribution line ({m.group(0).strip()[:30]})")
+    for sha, body in _messages(root):
+        for m in ATTRIBUTION_RE.finditer(body):
+            line = body[m.start():].splitlines()[0].strip()
+            if line.lower() != REVIEW_TOOL_TRAILER:
+                problems.append(f"{sha[:8]}: attribution line ({line[:30]})")
     return problems
+
+
+def review_tool_trailers(root) -> int:
+    return sum(1 for _, body in _messages(root) if REVIEW_TOOL_TRAILER in body.lower())
 
 
 def _python_req_ok(req: str) -> bool:
@@ -143,7 +155,8 @@ def run_all(root) -> list[dict]:
         return {"check": check, "status": "pass" if not problems else kind, "details": problems or [ok]}
 
     report = [entry("secrets in history", scan_history(root)), entry("private data tracked", forbidden_tracked(root)),
-              entry("commit messages", commit_message_problems(root), ok="no attribution lines"), entry("pins", pin_problems(root), ok="all pinned")]
+              entry("commit messages", commit_message_problems(root),
+                                                                                     ok=f"no attribution lines; {review_tool_trailers(root)} commit(s) carry the review tool's own trailer"), entry("pins", pin_problems(root), ok="all pinned")]
     markers = open_markers(root)
     report.append({"check": "open placeholders", "status": "info", "details": [f"{k}: {len(v)}" for k, v in markers.items()]})
     if root.resolve() == writeup.ROOT.resolve():
