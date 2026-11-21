@@ -164,6 +164,12 @@ class TestDeidCheck:
         rewrite(good / "sessions.csv", rows)
         assert pd_.check_public_dir(good)
 
+    def test_a_unix_epoch_in_any_cell_is_rejected(self, good):
+        rows = read(good / "sessions.csv")
+        rows[0]["hours_slept"] = "1764605700000"
+        rewrite(good / "sessions.csv", rows)
+        assert any("time of day" in p for p in pd_.check_public_dir(good))
+
     def test_the_period_column_only_holds_am_or_pm(self, good):
         rows = read(good / "sessions.csv")
         rows[0]["period"] = "08:15"
