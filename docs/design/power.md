@@ -1,6 +1,6 @@
 # Power Analysis (MB-04)
 
-Code: `analysis/python/mindbench/power.py`. Tests: `analysis/python/tests/test_power.py`. Figure and numbers: `figures/power_curves.png`, `power_results.json` (made by `analysis/python/scripts/power_report.py`; seed 20261117; 1,000 simulations per point, so sampling error is about +/-0.015 and neighboring points can be slightly non-monotone).
+Code: `analysis/python/mindbench/power.py`. Tests: `analysis/python/tests/test_power.py`. **Superseded for planning and the paper:** `figures/power_curves.png` and `power_results.json` (GLS model; `power_report.py`). Use `power_mixed_results.json` and `docs/writeup/figures/power_mixed.png` instead (MB-05b / MB-23). The GLS figure may be regenerated for the record only (seed 20261117; 1,000 simulations per point).
 
 ## Primary model and power (MB-05b; supersedes the GLS figures below)
 Code: `analysis/python/mindbench/mixed_power.py`; report: `analysis/python/scripts/power_mixed_report.py`; numbers: `docs/design/power_mixed_results.json` (base seed 20261118, **2,000 simulations per scenario**, so sampling error is about +/-0.01).
