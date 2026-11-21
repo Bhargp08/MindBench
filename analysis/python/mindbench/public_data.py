@@ -51,7 +51,7 @@ DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 CODE_SHAPE_RE = re.compile(r"\b(?=[A-Z0-9]*[A-Z])[A-Z0-9]{8}\b")  # participant codes are 8 characters of capitals and digits
 CLOCK_RE = re.compile(r"\d{1,2}:\d{2}")
 DATETIME_RE = re.compile(r"\d{4}-\d{2}-\d{2}[T ]\d")
-EPOCH_RE = re.compile(r"\b\d{10,13}\b")  # unix s/ms in any cell
+EPOCH_RE = re.compile(r"^\d{10,13}$")  # unix s/ms when a whole cell (not a substring of a decimal)
 
 
 # ------------------------------------------------------------------------------------------------ time rules
@@ -180,7 +180,7 @@ def check_public_dir(path, known_codes=()) -> list[str]:
                         if m not in seen:
                             seen.add(m)
                             problems.append(m)
-                    if CLOCK_RE.search(cell) or DATETIME_RE.search(cell) or EPOCH_RE.search(cell):
+                    if CLOCK_RE.search(cell) or DATETIME_RE.search(cell) or EPOCH_RE.match(cell.strip()):
                         m = f"{name} line {line}: column {col}: contains a time of day (nothing finer than the date may be released)"
                         if m not in seen:
                             seen.add(m)
