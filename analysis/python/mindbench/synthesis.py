@@ -108,15 +108,17 @@ def _cell(r: dict) -> str:
     return " ".join(bits)
 
 
-def render_markdown(rows: list[dict]) -> str:
+def render_markdown(rows: list[dict], title: bool = True, level: int = 2) -> str:
+    """Markdown tables, one per hypothesis group. `title=False` omits the document title and intro (for embedding);
+    `level` is the heading level of each group."""
     out = ["# Results synthesis", "",
            "One row per preregistered analysis. Confirmatory decisions use the frequentist result only; Bayesian, DDM, reliability and "
-           "secondary results are exploratory or descriptive. Pending means not yet run.", ""]
-    for group, title in GROUP_TITLES.items():
+           "secondary results are exploratory or descriptive. Pending means not yet run.", ""] if title else []
+    for group, group_title in GROUP_TITLES.items():
         sub = [r for r in rows if r["group"] == group]
         if not sub:
             continue
-        out += [f"## {title}", "", "| ID | Analysis | Tier | Frequentist | Bayesian | DDM | Reliability | Decision | Status | Sources agree |",
+        out += [f"{'#' * level} {group_title}", "", "| ID | Analysis | Tier | Frequentist | Bayesian | DDM | Reliability | Decision | Status | Sources agree |",
                 "|---|---|---|---|---|---|---|---|---|---|"]
         for r in sub:
             cells = [_cell(r["sources"][s]) if s in r["sources"] else "n/a" for s in SOURCES]
