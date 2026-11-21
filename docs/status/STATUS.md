@@ -197,3 +197,9 @@ Branch `mb/MB-05b-prereg-stats`. `docs/design/prereg_draft.md` now has the D3 mi
 - `synthesis.render_markdown`: optional `title=False` and `level` for embedding in the paper; default call path unchanged.
 - Cursor review: no blockers; merged PR #26 (Nov 20, 2026).
 - Not done: no data, so no results prose beyond pending tables; **no PDF** (no pandoc/LaTeX installed); three references bibliographically unverified; registration link pending until OSF submit.
+
+## MB-24: README, open data, demo (open)
+- `mindbench/public_data.py` (`docs/design/public_data.md`, `docs/release/open_data.md`): de-identified export (pseudonyms, study day + AM/PM, coded exclusions, closed-vocabulary trials, no free text, no clock times), `check_public_dir`, `reproduce` from the release alone (counts and the MC:S1 / MC:S2 descriptive checks, fed to the synthesis table and the paper builder), `simulate_public`. Consent rule: the owner's data is released, a friend's only with a literal `true` flag.
+- README rewritten (what it is, live-link placeholder, how to run, how to reproduce, data, AI-tools note marked `[BHARG: reword in your own voice]`, licence, citing); `CITATION.cff` (no DOI or release date invented); `docs/release/demo_script.md` (2:00, simulated data and public-mode dashboard only); `docs/release/screenshot_plan.md`.
+- 58 public-data tests (analysis) and 14 release-doc tests (etl), written failing first; simulated data only. The export self-checks and deletes its files on a failure.
+- Not done / yours: **no real data exported, nothing uploaded** (Zenodo upload, DOI, `date-released` in CITATION.cff, and the live-site link are Bharg's steps); GitHub Pages deploy stays off; no screenshots or video taken (plan and script only); trial-level DDM and reliability are not re-run from the release; the check enforces rules, not re-identification risk; the consent form is still a deferred draft.

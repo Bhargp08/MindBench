@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use MindBench, please cite it as below."
+title: "MindBench: a preregistered online experiment battery for attention, perception and memory"
+type: software
+authors:
+  - family-names: Patel
+    given-names: Bharg
+repository-code: https://github.com/Bhargp08/MindBench
+license: MIT
+abstract: >-
+  A preregistered self-experiment testing whether naturally varying sleep and time of day change
+  working-memory, free-recall, attention and perception performance. Code is MIT-licensed;
+  released data will be CC-BY-4.0.
+keywords:
+  - preregistration
+  - sleep
+  - working memory
+  - drift-diffusion model
+  - open data
+# PENDING: add the Zenodo DOI and the release date after the release (Bharg does this; nothing here is invented).

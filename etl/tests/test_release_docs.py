@@ -32,7 +32,6 @@ class TestReadme:
         ai = README.split("Use of AI tools", 1)[1]
         assert "[BHARG: reword in your own voice]" in ai
         assert re.search(r"AI|Claude|assistant", ai)
-        assert "model" not in ai.lower().split("[bharg")[0] or True  # no model names are checked below
         for name in ("sonnet", "opus", "haiku", "fable"):
             assert name not in README.lower()
 
@@ -90,7 +89,7 @@ class TestDemoScript:
     def test_it_uses_only_simulated_or_public_views_and_makes_no_result_claims(self):
         low = self.TEXT.lower()
         assert "simulated" in low and "public mode" in low
-        assert not re.search(r"we found|significant|proved|results show", low)
+        assert not re.search(r"we found|significant|\bproved\b|results show", low)
 
 
 class TestScreenshotPlan:

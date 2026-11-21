@@ -340,6 +340,55 @@ class TestReproduce:
         assert pd_.reproduce(out)["summary"]["n_participants"] == 2
 
 
+class TestCodebookAndSimulation:
+    def test_every_export_carries_a_codebook_that_describes_every_column(self, good):
+        text = (good / "codebook.md").read_text(encoding="utf-8")
+        for name, cols in pd_.COLUMNS.items():
+            assert name in text
+            for c in cols:
+                assert f"`{c}`" in text, c
+        assert "SIMULATED" not in text
+
+    def test_a_known_code_in_the_codebook_is_caught(self, good):
+        (good / "codebook.md").write_text(f"notes about {OWNER}", encoding="utf-8")
+        assert any("codebook.md" in p for p in pd_.check_public_dir(good, known_codes=[OWNER]))
+
+    def test_the_simulated_release_passes_the_check_is_labelled_and_reproduces(self, tmp_path):
+        out = tmp_path / "sim"
+        pd_.simulate_public(out, seed=1)
+        assert pd_.check_public_dir(out) == []
+        assert "SIMULATED" in (out / "codebook.md").read_text(encoding="utf-8")
+        r = pd_.reproduce(out)
+        assert r["summary"] == {"n_participants": 1, "n_sessions": 42, "n_included": 40, "n_days": 20}  # 2 smoke tests on day 1
+        assert 90 < r["results"]["MC:S1"]["frequentist"]["estimate"] < 110
+        assert 40 < r["results"]["MC:S2"]["frequentist"]["estimate"] < 60
+
+    def test_the_simulation_is_reproducible_and_seed_dependent(self, tmp_path):
+        pd_.simulate_public(tmp_path / "a", seed=3)
+        pd_.simulate_public(tmp_path / "b", seed=3)
+        pd_.simulate_public(tmp_path / "c", seed=4)
+        same = lambda x, y: (tmp_path / x / "sessions.csv").read_bytes() == (tmp_path / y / "sessions.csv").read_bytes()  # noqa: E731
+        assert same("a", "b") and not same("a", "c")
+
+    def test_the_paper_built_from_a_simulated_release_traces_every_number(self, tmp_path):
+        pd_.simulate_public(tmp_path / "sim", seed=2)
+        results = pd_.reproduce(tmp_path / "sim")["results"]
+        template = (writeup.ROOT / "docs" / "writeup" / "paper_template.md").read_text(encoding="utf-8")
+        assert writeup.untraced_numbers(writeup.build_paper(template, writeup.collect_values(results), mark=True)) == []
+
+    def test_the_command_line_can_write_a_simulated_release(self, tmp_path):
+        assert pd_.main(["simulate", "--out", str(tmp_path / "s")]) == 0
+        assert pd_.main(["reproduce", "--dir", str(tmp_path / "s")]) == 0
+
+
+class TestRepository:
+    def test_the_committed_data_public_folder_is_empty_or_passes_the_check(self):
+        folder = Path(__file__).resolve().parents[3] / "data_public"
+        files = [f for f in folder.iterdir() if f.name != ".gitkeep"]
+        if files:
+            assert pd_.check_public_dir(folder) == []
+
+
 class TestCommandLine:
     def test_export_check_and_reproduce_run_from_the_command_line(self, conn, tmp_path, capsys):
         conn.commit()
