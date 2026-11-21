@@ -190,8 +190,10 @@ Branch `mb/MB-05b-prereg-stats`. `docs/design/prereg_draft.md` now has the D3 mi
 - Cursor review: no blockers; merged PR #25 (Nov 20, 2026).
 - Not done: MB-18 (needs R) so no rows filled yet; deviations part B stays empty until registration; write-up assembly is MB-23; running analyses on real scored data remains after collection.
 
-## MB-23: Paper write-up (PR open)
-- `docs/writeup/paper_template.md` -> `paper.md` via `mindbench/writeup.py` and `scripts/build_paper.py`: Introduction, Methods, Power, Results (the pending MB-22 tables, confirmatory then exploratory), Deviations from preregistration (from `deviations.md`), Limitations, availability, AI-tools note, References. `docs/design/writeup.md`.
-- 25 tests, written failing first: every number must come from a placeholder (script output) or a registered design constant; placeholders with no value show `[PENDING: ...]`; with no results the paper makes no claims; committed `paper.md` equals the builder's output; no IRB/pilot false claims; citation keys match references.
-- Power figure regenerated from the mixed-model JSON (the old `power_curves.png` is the superseded GLS one and is not used).
-- Not done: no data, so no results prose; **no PDF** (no pandoc/LaTeX installed); three references (Levitt 1971, Shrout & Fleiss 1979, Wagenmakers et al. 2007) have unverified bibliographic details and are flagged in the paper; registration link pending.
+## MB-23: Paper write-up (merged)
+- `docs/writeup/paper_template.md` -> `paper.md` via `mindbench/writeup.py` and `scripts/build_paper.py`: Introduction, Methods, Power, Results (the pending MB-22 tables, confirmatory then exploratory), Deviations from preregistration (from `deviations.md`), Limitations (N-of-1, natural sleep variation, practice effects, no IRB claim), availability, AI-tools note, References. `docs/design/writeup.md`.
+- 25 writeup tests (full analysis suite ~300 at merge), written failing first: every number must come from a placeholder (script output) or a registered design constant; `build_paper.py` exits on untraced numbers; with no results the paper makes no claims; committed `paper.md` equals the builder's output; no IRB/pilot false claims; citation keys match references.
+- Power figure from `power_mixed_results.json` (`docs/writeup/figures/power_mixed.png`); superseded GLS `power_curves.png` removed from the repo; `power.md` points to the mixed-model outputs.
+- `synthesis.render_markdown`: optional `title=False` and `level` for embedding in the paper; default call path unchanged.
+- Cursor review: no blockers; merged PR #26 (Nov 20, 2026).
+- Not done: no data, so no results prose beyond pending tables; **no PDF** (no pandoc/LaTeX installed); three references bibliographically unverified; registration link pending until OSF submit.
