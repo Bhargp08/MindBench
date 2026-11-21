@@ -85,6 +85,11 @@ class TestCommitMessages:
         commit(repo, "c.txt", "c", msg="feat: y\n\nGenerated with a tool")
         assert len(ra.commit_message_problems(repo)) == 2
 
+    def test_the_review_tools_own_trailer_is_counted_separately_not_failed(self, repo):
+        commit(repo, "b.txt", "b", msg="docs: note\n\nCo-authored-by: Cursor <cursoragent@cursor.com>")
+        assert ra.commit_message_problems(repo) == []
+        assert ra.review_tool_trailers(repo) == 1
+
     def test_clean_messages_pass(self, repo):
         commit(repo, "b.txt", "b", msg="feat(MB-99): something")
         assert ra.commit_message_problems(repo) == []
@@ -94,7 +99,7 @@ class TestPins:
     def test_floating_npm_versions_are_flagged(self, repo):
         commit(repo, "experiment/package.json", json.dumps({"dependencies": {"a": "^1.2.3", "b": "2.0.0", "c": "~3.0.0", "d": "*"}}))
         problems = ra.pin_problems(repo)
-        assert sum(("experiment" in p) for p in problems) == 3
+        assert sum(("experiment" in p and "lock" not in p) for p in problems) == 3  # the missing lock file is a separate finding
 
     def test_python_dependencies_need_an_exact_pin_or_an_upper_bound(self, repo):
         commit(repo, "etl/pyproject.toml", '[project]\nname="x"\ndependencies = ["a==1.0", "b>=2", "c>=1,<2", "d"]\n')
