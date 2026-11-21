@@ -29,8 +29,10 @@ class TestSelfAudit:
         low = self.TEXT.lower()
         assert "not the independent review" in low and "release_audit" in low
 
-    def test_it_does_not_pretend_to_be_the_cursor_review(self):
-        assert not (STATUS / "FINAL_REVIEW.md").exists()
+    def test_the_independent_review_lives_in_final_review_not_self_audit(self):
+        if (STATUS / "FINAL_REVIEW.md").exists():
+            assert "independent" in (STATUS / "FINAL_REVIEW.md").read_text(encoding="utf-8").lower()
+        assert "not the independent review" in self.TEXT.lower()
 
 
 class TestCursorPrompt:

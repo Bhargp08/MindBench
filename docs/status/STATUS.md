@@ -205,8 +205,8 @@ Branch `mb/MB-05b-prereg-stats`. `docs/design/prereg_draft.md` now has the D3 mi
 - Cursor review: no blockers; merged PR #27 (Nov 21, 2026); added whole-cell unix epoch rule after review.
 - Not done / yours: no real export or Zenodo upload; Pages deploy off; no screenshots/video; trial-level DDM/reliability not re-run from release; consent form still draft.
 
-## MB-25: Final review preparation (open)
-- The final whole-repo review is Cursor's (`docs/status/FINAL_REVIEW.md`, not written yet) and the v1.0 tag is Bharg's. This unit prepares both and fixes nothing without an approved fix list.
-- `mindbench/release_audit.py` (read-only): secrets in all history, tracked private-data files and `data_public/` check, attribution lines in commits (Cursor's own trailer counted separately), pins and lock files, open placeholders, paper traced, prereg coverage, release files. 37 tests (analysis), written failing first. Real-repo run: all pass except one Minor pin finding (`scipy>=1.18` has no upper bound).
-- `docs/status/RELEASE_CHECKLIST.md` (acceptance unchecked; Bharg-only steps; MB-13/17/18 listed as not built, MB-18 flagged as a gap), `SELF_AUDIT.md` (labelled as not the independent review), `FINAL_REVIEW_PROMPT.md` (paste-ready, covers spec section 8). STATUS heading for MB-16 corrected.
-- **No tag, no release, nothing published.** Not done: MB-18 (needs R), real data, registration, deploy.
+## MB-25: Final review preparation + independent review (merged)
+- `mindbench/release_audit.py` (read-only): secrets in all history, tracked private-data guard, commit-message rules (Cursor trailer counted separately), pins/locks, open placeholders, paper traceability, prereg coverage, release files. 37 tests (analysis) + 4 doc lint tests (etl). **Audit on `main`: all checks pass** after `scipy>=1.18,<2` (PR #28).
+- `docs/status/RELEASE_CHECKLIST.md`, `SELF_AUDIT.md`, `FINAL_REVIEW_PROMPT.md`; **`docs/status/FINAL_REVIEW.md`** (Cursor independent review, Nov 21, 2026): **no Critical findings**; **Major open:** MB-18 (R frequentist) not built; v1.0 remains Bharg's.
+- Cursor: merged PR #28; scipy pin fix approved in review; wrote `FINAL_REVIEW.md`.
+- **No tag, no release, nothing published.** Bharg: approve fix list, checklist, OSF/Zenodo/deploy/data collection, then tag v1.0 if desired.
