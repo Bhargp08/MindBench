@@ -83,12 +83,12 @@ def _messages(root):
 
 
 def commit_message_problems(root) -> list[str]:
-    """Attribution lines other than the review tool's own trailer (which this project does not control and does not rewrite)."""
+    """Attribution lines other than the review tool's own trailer (not controlled or rewritten here) and a squash-merge trailer naming the owner."""
     problems = []
     for sha, body in _messages(root):
         for m in ATTRIBUTION_RE.finditer(body):
             line = body[m.start():].splitlines()[0].strip()
-            if line.lower() != REVIEW_TOOL_TRAILER:
+            if line.lower() != REVIEW_TOOL_TRAILER and not line.lower().startswith("co-authored-by: bharg patel"):
                 problems.append(f"{sha[:8]}: attribution line ({line[:30]})")
     return problems
 
